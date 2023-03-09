@@ -1,11 +1,14 @@
 const {MongoClient} = require('mongodb');
+const dotenv = require('dotenv').config();
+const passkey = process.env.MONGO_PASSWORD;
+const dbname = process.env.MONGO_DBNAME;
 
 async function main () {
 
     /*
         This is the uri to connect to the database that I have set up for the project. 
     */
-    const uri = "mongodb+srv://Akihi:PASSAkihi@akihi.gbpc1wh.mongodb.net/?retryWrites=true&w=majority";
+    const uri = `mongodb+srv://${dbname}:${passkey}@akihi.gbpc1wh.mongodb.net/?retryWrites=true&w=majority`;
 
     const client = new MongoClient(uri);
 
