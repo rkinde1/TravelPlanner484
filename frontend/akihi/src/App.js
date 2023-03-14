@@ -1,5 +1,7 @@
 import './Itinerary.js';
 import './App.css';
+import 'react-router-dom';
+import Testing from './Itinerary.js';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <Routes>
+        <Route path="itinerary" element={<Testing />} />
+      </Routes>
     </div>
   );
 }
