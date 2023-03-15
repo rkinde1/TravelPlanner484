@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './Itinerary.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Testing from './Itinerary.js';
+import {Testing, Notes, CreateProjectButton, Date} from './Itinerary.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    //Import function from file and call here
     <App />
     <Testing />
+    <CreateProjectButton />
+    <Date />
   </React.StrictMode>
 );
 
