@@ -7,6 +7,7 @@ function App() {
       <div className="App">
         <h1>Welcome to your Itinerary</h1>
         <CreateProjectButton />
+        <hr></hr>
       </div>
     </div>
   );

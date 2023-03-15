@@ -24,4 +24,9 @@
 
 .home {
   background-color: #3291E9;
+  color: white;
+}
+
+hr {
+  background: black;
 }

@@ -33,18 +33,13 @@ function Date() {
         clone.id = "some_id";
         document.body.appendChild(clone);
     }
-    /*Needs to be fixed*/
-    let deleteNewRow = () => {
-        var div = document.getElementById('duplicate'),
-        clone = div.cloneNode(true);
-        clone.id = "some_id";
-        document.body.removeChild(clone);
-    }
     return(
         <div>
             <fieldset>
-                <button>Expand</button> 
-                <h1>Day 1</h1> 
+                <div className="flex-container">
+                    <button className="expand">Expand</button> 
+                    <h1>Day 1</h1> 
+                </div>
                 <div id='duplicate'>
                     <button onClick={addNewRow}>+</button>
                     <select>
@@ -56,7 +51,7 @@ function Date() {
                     <input type="datetime-local" placeholder="Arrival Time"></input>
                     <input type="textfield" oninput="" placeholder="place"></input>
                     <input type="number" placeholder="Cost"></input>
-                    <button onClick={deleteNewRow}>Delete Row</button>
+                    <button>Delete Row</button>
                     <Notes />
                 </div>
             </fieldset>
