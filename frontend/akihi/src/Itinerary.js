@@ -1,4 +1,5 @@
 import './Itinerary.css';
+import React, {useState} from 'react';
 
 function Testing(){
     return (
@@ -26,22 +27,26 @@ function Notes() {
 
 //Will display date field set in which notes is under
 function Date() {
-    let i = 1;
-    var original = document.getElementById('duplicate');
-    const addDay = () => {
-        var clone = original.cloneNode(true);
-        i++;
-        clone.id = 'duplicate' + i;
-        original.parentNode.appendChild(clone);
-        //When it calls itself, it will create another date
-    }    
+    let addNewRow = () => {
+        var div = document.getElementById('duplicate'),
+        clone = div.cloneNode(true);
+        clone.id = "some_id";
+        document.body.appendChild(clone);
+    }
+    /*Needs to be fixed*/
+    let deleteNewRow = () => {
+        var div = document.getElementById('duplicate'),
+        clone = div.cloneNode(true);
+        clone.id = "some_id";
+        document.body.removeChild(clone);
+    }
     return(
         <div>
             <fieldset>
                 <button>Expand</button> 
                 <h1>Day 1</h1> 
-                <div id="duplicate">
-                    <button onclick={addDay}>+</button>
+                <div id='duplicate'>
+                    <button onClick={addNewRow}>+</button>
                     <select>
                         <option value="Flight">Flight</option>
                         <option value="hotel">Hotel</option>
@@ -51,11 +56,27 @@ function Date() {
                     <input type="datetime-local" placeholder="Arrival Time"></input>
                     <input type="textfield" oninput="" placeholder="place"></input>
                     <input type="number" placeholder="Cost"></input>
-                    <button>Delete Row</button>
+                    <button onClick={deleteNewRow}>Delete Row</button>
                     <Notes />
                 </div>
             </fieldset>
         </div>
     );
 }
+
+/*
+function BookingForm() {
+    const [events,setEvent] = useState(() => 'Date');
+    let addDay = (e) => {
+        e.preventDefault()
+        setEvent([events, <Date key={events.length} />])
+    }
+    return (
+        <div>
+            {events}
+            <button onClick={addDay}>+</button>
+        </div>
+    )
+}
+*/
 export {Testing, Notes, CreateProjectButton, Date};
