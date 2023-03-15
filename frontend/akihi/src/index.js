@@ -11,7 +11,6 @@ root.render(
   <React.StrictMode>
     <App />
     <Testing />
-    <CreateProjectButton />
     <Date />
   </React.StrictMode>
 );

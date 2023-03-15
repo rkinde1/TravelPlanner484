@@ -7,13 +7,8 @@ function Testing(){
 }
 
 function CreateProjectButton() {
-    const handleClick = () => {
-        //Function is called
-        //New project number is created under the user account
-        //Doesn't work: return(<h1>Hello my love</h1>);
-    };
     return (
-        <button type="button" onClick={handleClick}>Create Project</button>
+        <button type="button" >Create Project</button>
     );
 }
 
@@ -31,19 +26,36 @@ function Notes() {
 
 //Will display date field set in which notes is under
 function Date() {
+    let i = 1;
+    var original = document.getElementById('duplicate');
     const addDay = () => {
+        var clone = original.cloneNode(true);
+        i++;
+        clone.id = 'duplicate' + i;
+        original.parentNode.appendChild(clone);
         //When it calls itself, it will create another date
-    }
+    }    
     return(
         <div>
             <fieldset>
                 <button>Expand</button> 
                 <h1>Day 1</h1> 
-                <button>+</button>
-                <Notes />
+                <div id="duplicate">
+                    <button onclick={addDay}>+</button>
+                    <select>
+                        <option value="Flight">Flight</option>
+                        <option value="hotel">Hotel</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="datetime-local" placeholder="Arrival Time"></input>
+                    <input type="textfield" oninput="" placeholder="place"></input>
+                    <input type="number" placeholder="Cost"></input>
+                    <button>Delete Row</button>
+                    <Notes />
+                </div>
             </fieldset>
         </div>
     );
 }
-
 export {Testing, Notes, CreateProjectButton, Date};
