@@ -10,6 +10,8 @@ function Hero(){
             <h1> START YOUR DREAM TO TRAVEL</h1>
             <p>No Need To Remember We Do It For You</p>
 
+        <button className="btn btn-primary">Book Today!</button>
+
         </div>
 
     )
