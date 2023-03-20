@@ -5,12 +5,12 @@ import './Itinerary.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Testing, Notes, CreateProjectButton, Date} from './Itinerary.js';
-import Login from './login.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
+    <Date />
   </React.StrictMode>
 );
 

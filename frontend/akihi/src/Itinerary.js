@@ -1,15 +1,12 @@
 import './Itinerary.css';
 import React, {useState} from 'react';
 
-/*A testing button that will turn into a turn button for the google maps*/
 function Testing(){
     return (
         <p>Toggle Google Maps?</p>
     );
 }
 
-/*When pressed this button will create another project under the username. It will send a window.alert for the 
-user to input name, location, start, and end date*/
 function CreateProjectButton() {
     return (
         <button type="button" >Create Project</button>
