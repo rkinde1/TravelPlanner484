@@ -10,7 +10,7 @@ root.render(
   <React.StrictMode>
     //Import function from file and call here
     <App />
-    <Testing />
+    */<Testing />*/
   </React.StrictMode>
 );
 
