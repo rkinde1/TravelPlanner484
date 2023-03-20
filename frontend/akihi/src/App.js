@@ -1,29 +1,30 @@
 import './Itinerary.js';
 import './App.css';
 import 'react-router-dom';
-import Testing from './Itinerary.js';
+
 
 function App() {
   return (
+  <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to your Itinerary</h1>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="home">
+        <h1>Welcome to you Itinerary</h1>
+        <CreateProjectButton/>
+        <br></br>
+
+        <Link to ={'login'}>Login</Link>
+          <Link to={'itinerary'}>Itinerary</Link>
+      </div>
       <Routes>
-        <Route path="itinerary" element={<Testing />} />
+        <Route path ="/app" element = {<App/>}/>
+        <Route path="login" element={<Login/>}></Route>
+      <Route path ='itinerary' element={<Date/>}/>
       </Routes>
+      <hr></hr>
     </div>
+  </BrowserRouter>
+
+
   );
 }
 
