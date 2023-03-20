@@ -9,13 +9,18 @@ function Testing(){
 }
 
 /*When pressed this button will create another project under the username. It will send a window.alert for the 
-user to input name, location, start, and end date*/
+user to input name, location, start, and end date
+The location will send a request to Google Maps API
+The start and end date will send data to Date
+
+*/
 function CreateProjectButton() {
     return (
         <button type="button" >Create Project</button>
     );
 }
 
+/*Separate Notes function that is part of a single place*/
 function Notes() {
     return (
         <div>
