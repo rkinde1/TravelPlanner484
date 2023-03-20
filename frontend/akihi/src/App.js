@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter, Switch, Routes, Route, Link } from 'react-router-dom';
 import Login from './login.js';
+import Signup from './Signup.js';
 
 function App() {
   return (
@@ -12,12 +13,10 @@ function App() {
         <h1>Welcome to your Itinerary</h1>
         <CreateProjectButton />
         <br></br>
-          <Link to={'/app'}>Home</Link>
           <Link to={'login'}>Login</Link>
           <Link to={'itinerary'}>Itinerary</Link>
         </div>
           <Routes>
-              <Route index path="/" element={<App/>}/>
               <Route path="login" element={<Login/>}></Route>
               <Route path='itinerary' element={<Date />} />
           </Routes>

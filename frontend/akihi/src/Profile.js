@@ -23,7 +23,7 @@ export function UserInfo(){
 }
 
 //export function uploadProfilePicture{
-  //  return(
+  //  return (
     //    <div>
             
       //  </div>
