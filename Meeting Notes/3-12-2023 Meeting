@@ -1,0 +1,121 @@
+Backend Team Will be Ian and Malcom
+
+Present: Malcom, Rose, Dan ,Tosin, Garret, Ibana, Ian
+
+We cannot do anything until front end has created anything
+
+Front end has to do first and roles had to be reestablished
+
+APIs may need approval ( Talk to Jal for Possible Advice)
+
+Meeting:
+
+How To Work on React.js
+
+API Concerns
+
+Figma
+
+What to have done and how to add the deadlines
+
+Roles:
+
+Ibana – Landing Page/homepage, Itinerary
+
+Rose – Itinerary
+
+Dan- Navbar
+
+Tosin- Booking, Itinerary, Profile Page
+
+Garret- Budgeting
+
+To Do:
+
+Schema
+
+API needs to be searched
+
+Sprint End : Middle of Spring Break
+
+Challenges:
+
+Midterm Week for majority of the team
+
+Authentication Status – Ian
+
+Ian is still looking into google authentication API and using oauth authenication for the website for one of the pages
+
+
+
+Personal Note:
+
+-Allow team to commit notes so Jal can see commits
+
+Try to ask Jal for uploading things earlier
+
+Updates:
+
+Google Maps API – Rose Kinder found it
+
+To Do: get the proper URL And authorization and make calls to get the response to get the output
+
+Tools :
+
+Bootstrap, React.js
+
+Bootstrap: Portfolio Template Bootstrap
+
+Navbar is going to be changed
+
+API – Malcom Thompson: Etherscan API getting the pricing of the instrument and what is needed is authorization and count the identifier and the requires ( POST MAN)
+
+Figma Comments:
+
+Garett: Add other category + pie chart + when mouse hovers show costs
+
+Booking.com and TRip.com need a functional website that can allow us to use the free API
+
+Potential Concerns :
+
+Do we neeed to be a valid business to add the feature of being able to access data for the APOI?
+
+How to pull information for the budget site and also ensure it is doable and update the budet site ? ( API needed for the dynamic website)
+
+What would be needed ?
+
+Figma Question :
+
+Are we able to generate code for figma to create the bare bones of the website ?
+
+Procedures:
+
+Code Each Part
+
+Start with html and CSS
+
+HTML and CSS done
+
+Start with the barebones
+
+Team leader wants us to create a schema on data we need on our page
+
+Note done by next week what we have done
+
+Backend to Frontend
+
+Get the forms down and also have to done to users
+
+Backend created the connection and set down everything
+
+Form validation for the frontend in order to have it done to the databased connection
+
+Example create a form for the user and also then being able to have it routing down
+
+Query for which is the favorite or number one spot for the user and create a prompt
+
+Backend needs the functionality
+
+ Additional:
+
+API needed to find restaurants that are close
