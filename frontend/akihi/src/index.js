@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Testing, Notes, CreateProjectButton, Date} from './Itinerary.js';
 import Login from './login.js';
+import Signup from './Signup.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
