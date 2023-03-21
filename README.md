@@ -6,10 +6,13 @@
 -Duplicate place row functionality in Itinerary.js
 
 -Connecting cost of place to Budget feature
+
+-Create routes to all features
+
 # Garett: Budget Feature
 # Tosin: Reservations page
 # Dan: NavBar
-# Ibana: Home Page
+# Ibana: Home Page + Not Found page
 # Rose: Itinerary page + create project page + Delete Project page + Oauth + google Maps API
 ## Figmas
 ## Figma link: https://www.figma.com/file/VVyeL0noI2PMyVN7Med7sY/Itinerary?node-id=4%3A15&t=HvDAtLkMX1VvPPEV-0
