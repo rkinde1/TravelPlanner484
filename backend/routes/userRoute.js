@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const { getUser, createUser, updateUser, deleteUser } = require('../controllers/usersController');
+const { getUser, createUser, updateUser, deleteUser } = require('../controllers/userController');
 
 /*
     This is the current routes of the application. Basically the routes that  
