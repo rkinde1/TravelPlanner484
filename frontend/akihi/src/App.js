@@ -4,6 +4,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Signup from './Signup.js';
+import {UserInfo} from './Profile'
+
+
 
 function App() {
   return (
@@ -14,11 +17,16 @@ function App() {
         <CreateProjectButton />
         <br></br>
           <Link to={'login'}>Login</Link>
+          <Link to={'signup'}>Signup</Link>
+          <Link to={'profile'}>Profile</Link>
           <Link to={'itinerary'}>Itinerary</Link>
+
         </div>
           <Routes>
               <Route path="login" element={<Login/>}></Route>
-              <Route path='itinerary' element={<Date />} />
+              <Route path="signup" element={<Signup/>}></Route>
+              <Route path='itinerary' element={<Date />}/>
+              <Route path = 'profile' element = {<UserInfo/>}/>
           </Routes>
         <hr></hr>
     </div>

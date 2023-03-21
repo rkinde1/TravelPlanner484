@@ -1,33 +1,32 @@
-import './Profile.css';
 import React, {useState} from 'react';
 
 export function UserInfo(){
+    const firstName = localStorage.getItem('first-name')
+    const lastName = localStorage.getItem('first-name')
+    const email = localStorage.getItem('email')
+    const dob = localStorage.getItem('date-of-birth')
+  
     return(
         <div className = "UserInfo">
-            <label for = "firstName"> First Name: </label>
-            <input type="text" placeholder="First Name" id = "firstName" required></input><br></br>
-            <label for = "lastName"> Last Name: </label>
-            <input type="text" placeholder="Last Name" id = "lastName" required></input><br></br>
-            <label for = "username"> Username: </label>
-            <input type="text" placeholder="Username" id = "username" required></input><br></br>
-            <label for = "email"> Email: </label>
-            <input type="text" placeholder="Email" id = "email"></input><br></br>
-            <label for = "dob"> Date of Birth: </label>
-            <input type="date" placeholder="Date of Birth" id = "dob"></input><br></br>
-            <label for = "acctCreatedDate"> Member Since: </label>
-            <input type = "date" id = "acctCreatedDate"></input><br></br>
-            <label for = "numOfProjects"> Number of vacations:  </label>
-            <input type = "number" id = "numOfProjects"></input>
+          <h1>User Profile</h1>
+            <h3>Name: <span id = "first-name"></span></h3>
+            <h3>Email: </h3>
+            <h3>Date of Birth: </h3>
+            <h3>Member Since: </h3>
+            <h3>Number of Projects: </h3>
+
         </div>
     ) 
 }
 
-//export function uploadProfilePicture{
-  //  return (
-    //    <div>
-            
-      //  </div>
-    //)
-//}
+export function Activity(){
+  return(
+    <h1>Posts and Comments</h1>
+  )
+}
 
-
+export function uploadProfilePicture(){
+  return(
+    <h1>hi</h1>
+  )
+}

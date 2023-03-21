@@ -1,32 +1,54 @@
 import React, {useState} from 'react';
+import './Signup.css';
+import {useNavigate} from 'react-router-dom';
+
+/*onSubmit = {handleSubmit}*/
 
 function Signup () {
+
     return(
-        <div>
-            <form>
+        <div className = "signupForm">
+            < form id = "form"s>
                 <fieldset>
                     <h1>Signup</h1>
-                    <label for="fname">First Name: </label>
-                    <input type="text" name="fname" placeholder="First Name"></input>
+                    <label htmlFor="fname">First Name: </label>
+                    <input type="text" id="fname" placeholder="First Name" >
+                    </input>
                     <br></br>
-                    <label for="fname">Last Name: </label>
-                    <input type="text" name="lname" placeholder="Last Name"></input>
+
+                    <label htmlFor="lname">Last Name: </label>
+                    <input type="text" id="lname" placeholder="Last Name"
+                        
+                        >
+                    </input>
                     <br></br>
-                    <label for="email">Email: </label>
-                    <input type="text" name="email" placeholder="Email"></input>
+
+                    <label htmlFor="email">Email: </label>
+                    <input type="text" id="email" placeholder="Email"
+                        
+                        >
+                    </input>
                     <br></br>
-                    <label for="dob">Date of Birth: </label>
-                    <input type="date" name="dob" placeholder="Date of Birth"></input>
+
+                    <label htmlFor="dob">Date of Birth: </label>
+                    <input type="date" id="dob" placeholder="Date of Birth"
+                       
+                        >
+                    </input>
                     <br></br>
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" placeholder="Password"></input>
-                    <label for="verifypassword">Verify Password:</label>
-                    <input type="password" name="verifypassword" placeholder="Verify Password"></input>
+
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="password" placeholder="Password"></input>
                     <br></br>
-                    <input type="submit"></input>
+                    <label htmlFor="verifypassword">Verify Password:</label>
+                    <input type="password" id="verifypassword" placeholder="Verify Password"></input>
+                    <br></br>
+                    <input type="submit" id = "submit"></input>
                 </fieldset>
+               
             </form>
         </div>
+
     );
 }
 
