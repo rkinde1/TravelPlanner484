@@ -2,7 +2,9 @@
 # For the front end design we have assigned certain design tasks with figma links included:
 # Spring Break Features to do list:
 -Delete row functionality in Itinerary.js
+
 -Duplicate place row functionality in Itinerary.js
+
 -Connecting cost of place to Budget feature
 # Garett: Budget Feature
 # Tosin: Reservations page
