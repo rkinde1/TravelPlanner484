@@ -1,5 +1,6 @@
 import './Itinerary.css';
 import React, {useState} from 'react';
+import ToggleGoogle from './googlemaps.js';
 
 /*A testing button that will turn into a turn button for the google maps*/
 function Testing(){
@@ -43,12 +44,13 @@ function Date() {
     }
     return(
         <div>
-            <fieldset>
+            <ToggleGoogle />
+            <fieldset id='duplicate'>
                 <div className="flex-container">
                     <button className="expand">Expand</button> 
                     <h1>Day 1</h1> 
                 </div>
-                <div id='duplicate'>
+                <div>
                     <button onClick={addNewRow}>+</button>
                     <select>
                         <option value="Flight">Flight</option>
