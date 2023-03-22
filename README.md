@@ -7,7 +7,7 @@
 
 -Connecting cost of place to Budget feature
 
--Create routes to all features
+-Host website and get it up and running so that Rose can connect to the API's
 
 # Garett: Budget Feature
 # Tosin: Reservations page
