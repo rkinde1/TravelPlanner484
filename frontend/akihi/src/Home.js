@@ -6,7 +6,7 @@ function Home(){
     return(
         // Add In Navbar for react.js so we can have to run all over
 
-<Hero/>
+    <Hero/>
 
     )
 }

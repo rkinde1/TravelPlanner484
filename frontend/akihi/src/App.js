@@ -9,20 +9,19 @@ import Home from "./Home";
 
 function App() {
   return (
-    <Home />
     <BrowserRouter>
     <div className="App">
       <div className="home">
-        <h1>Welcome to your Itinerary</h1>
-        <CreateProjectButton />
+          <h1>Welcome to your Itinerary</h1>
+          <CreateProjectButton />
         <br></br>
           <Link to={'login'}>Login</Link>
           <Link to={'signup'}>Signup</Link>
           <Link to={'profile'}>Profile</Link>
           <Link to={'itinerary'}>Itinerary</Link>
-
         </div>
           <Routes>
+              <Route path="/" element={<Home />} />
               <Route path="login" element={<Login/>}></Route>
               <Route path="signup" element={<Signup/>}></Route>
               <Route path='itinerary' element={<Date />}/>
