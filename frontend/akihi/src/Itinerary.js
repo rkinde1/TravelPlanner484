@@ -44,7 +44,7 @@ function Date() {
     }
     return(
         <div>
-            <ToggleGoogle />
+            <p>Toggle Google Maps?</p><ToggleGoogle />
             <fieldset id='duplicate'>
                 <div className="flex-container">
                     <button className="expand">Expand</button> 
