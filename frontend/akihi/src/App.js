@@ -5,11 +5,11 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Signup from './Signup.js';
 import {UserInfo} from './Profile'
-
-
+import Home from "./Home";
 
 function App() {
   return (
+    <Home />
     <BrowserRouter>
     <div className="App">
       <div className="home">
@@ -33,5 +33,6 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 export default App;
