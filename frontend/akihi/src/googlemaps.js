@@ -1,4 +1,5 @@
 import './googlemaps.css';
+import GoogleMapReact from 'google-map-react';
 function ToggleGoogle () {
     return (
         <div>
@@ -9,4 +10,24 @@ function ToggleGoogle () {
         </div>
     );
 }
-export default ToggleGoogle;
+
+function Map () {
+    const location = {
+        address: '1600 Amphitheatre Parkway, Mountain View, california.',
+        lat: 37,
+        lng: 122
+    }
+    return(
+        <div className="map">
+          <div className="google-map">
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: 'AIzaSyBHkcq_xi7Xcm3JIf2i2qIzFhlauTl87KQ' }}
+              defaultCenter={location}
+              defaultZoom={17}
+            >
+            </GoogleMapReact>
+          </div>
+        </div>
+    )
+}
+export {ToggleGoogle, Map};

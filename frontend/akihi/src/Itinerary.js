@@ -1,6 +1,6 @@
 import './Itinerary.css';
 import React, {useState} from 'react';
-import ToggleGoogle from './googlemaps.js';
+import {ToggleGoogle, Map} from './googlemaps.js';
 
 /*A testing button that will turn into a turn button for the google maps*/
 function Testing(){
@@ -45,6 +45,7 @@ function Date() {
     return(
         <div>
             <p>Toggle Google Maps?</p><ToggleGoogle />
+            <Map />
             <fieldset id='duplicate'>
                 <div className="flex-container">
                     <button className="expand">Expand</button> 
