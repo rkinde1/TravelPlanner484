@@ -1,6 +1,6 @@
 import './Itinerary.css';
 import React, {useState} from 'react';
-import ToggleGoogle from './googlemaps.js';
+import {ToggleGoogle, Map} from './googlemaps.js';
 
 /*A testing button that will turn into a turn button for the google maps*/
 function Testing(){
@@ -36,6 +36,7 @@ function Notes() {
 
 //Will display date field set in which notes is under
 function Date() {
+    const[showMessage, setShowMessage] = useState(false);
     let addNewRow = () => {
         var div = document.getElementById('duplicate'),
         clone = div.cloneNode(true);
@@ -45,6 +46,7 @@ function Date() {
     return(
         <div>
             <p>Toggle Google Maps?</p><ToggleGoogle />
+            <Map />
             <fieldset id='duplicate'>
                 <div className="flex-container">
                     <button className="expand">Expand</button> 
@@ -59,7 +61,17 @@ function Date() {
                         <option value="other">Other</option>
                     </select>
                     <input type="datetime-local" placeholder="Arrival Time"></input>
-                    <input type="textfield" oninput="" placeholder="place"></input>
+                    <div
+                        onMouseEnter={() => {
+                            setShowMessage(true);
+                        }}
+                        onMouseLeave={()=>{
+                            setShowMessage(false);
+                        }}
+                    >
+                        <input type="textfield" oninput="" placeholder="place"></input>
+                        {showMessage && <Notes />}
+                    </div>
                     <input type="number" placeholder="Cost"></input>
                     <button>Delete Row</button>
                     <Notes />
@@ -68,6 +80,7 @@ function Date() {
         </div>
     );
 }
+
 
 /*
 function BookingForm() {
