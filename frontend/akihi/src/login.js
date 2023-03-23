@@ -5,7 +5,7 @@ function Login () {
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let res = await fetch("http://localhost:3000/login", {
+            let res = await fetch("/login", {
                 method: "POST",
                 body: JSON.stringify({
                     username : username,
