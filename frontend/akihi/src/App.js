@@ -22,10 +22,10 @@ function App() {
         </div>
           <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="login" element={<Login/>}></Route>
-              <Route path="signup" element={<Signup/>}></Route>
-              <Route path='itinerary' element={<Date />}/>
-              <Route path = 'profile' element = {<UserInfo/>}/>
+              <Route path="/login" element={<Login/>}></Route>
+              <Route path="/signup" element={<Signup/>}></Route>
+              <Route path='/itinerary' element={<Date />}/>
+              <Route path = '/profile' element = {<UserInfo/>}/>
           </Routes>
         <hr></hr>
     </div>

@@ -7,15 +7,11 @@ const getUser = asyncHandler(async (req,res) => {
 })
 
 const login = asyncHandler(async (req,res) => {
-    const newUser = await Login.create()
-    res.status(200).json({message: "New user created"})
+    
 })
 
 
 
 module.exports = { 
-    getUser, 
-    createUser,
-    updateUser,
-    deleteUser,
+    login,
 }
