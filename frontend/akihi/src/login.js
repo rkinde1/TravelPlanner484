@@ -6,7 +6,7 @@ function Login () {
         e.preventDefault();
         try {
             let res = await fetch("/login", {
-                method: "POST",
+                method: "POST", 
                 body: JSON.stringify({
                     username : username,
                     password : password
