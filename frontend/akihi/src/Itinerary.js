@@ -46,7 +46,6 @@ function Date() {
     return(
         <div>
             <p>Toggle Google Maps?</p><ToggleGoogle />
-            <Map />
             <fieldset id='duplicate'>
                 <div className="flex-container">
                     <button className="expand">Expand</button> 
@@ -69,12 +68,11 @@ function Date() {
                             setShowMessage(false);
                         }}
                     >
-                        <input type="textfield" oninput="" placeholder="place"></input>
+                        <input type="textfield" placeholder="place"></input>
                         {showMessage && <Notes />}
                     </div>
                     <input type="number" placeholder="Cost"></input>
                     <button>Delete Row</button>
-                    <Notes />
                 </div>
             </fieldset>
         </div>

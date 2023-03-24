@@ -1,15 +1,21 @@
 import './googlemaps.css';
+import React, {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 function ToggleGoogle () {
-    const returnMaps = () => {
-        document.getElementById("addmap").innerHTML += <Map />;
-    };
+    const [map, returnMaps] = useState(true);
+    const handleCheck = () => {
+        if (map == true)
+            returnMaps(false);
+        else 
+            returnMaps(true);
+    }
     return (
         <div id="addmap">
             <label class="switch">
-                <input id="toggle" type="checkbox" onClick={returnMaps}></input>
+                <input id="toggle" type="checkbox" value={map} onClick={handleCheck}></input>
                 <span class="slider round"></span>
             </label>
+            {map && <Map />}
         </div>
     );
 }
