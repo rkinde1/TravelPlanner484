@@ -12,14 +12,14 @@ app.use(express.urlencoded({ extended: false}));
 app.use('/api/users', require('./routes/userRoute'));
 
 app.get('/', (req, res) => {
-    res.send("Testing!");
     res.sendFile(path.join(__dirname, "login.js"));
 });
 
 app.post('/login', (req, res) => {
-    res.send("Testing!");
-    const variable = req.body;
-    res.send(variable);
+    res.send(req.body);
+    const {username, password} = req.body;
+    res.send(username);
+    res.send(password);
 });
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

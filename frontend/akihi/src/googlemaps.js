@@ -2,6 +2,7 @@ import './googlemaps.css';
 import React, {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 function ToggleGoogle () {
+    //function that makes maps hideable
     const [map, returnMaps] = useState(false);
     const handleCheck = () => {
         if (map == true)

@@ -2,24 +2,31 @@ import React, {useState } from "react";
 function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    let handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            let res = await fetch("/login", {
+    const [posts, setPosts] = useState([]);
+    let handleSubmit = async (username, password) => {
+            await fetch("http://localhost:3000/login", {
                 method: "POST", 
                 body: JSON.stringify({
                     username : username,
                     password : password
-                })
-            });
-        }
-        catch (err) {
-            console.log(err);
-        }
+                }),
+                headers: {
+                    'Content-type' : 'application/json; charset=UTF-8',
+                },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                setPosts((posts) => [data, ...posts]);
+                setUsername('');
+                setPassword('');
+                console.log(data);
+            })
+            
+
     }
     return(
         <div>
-            <form action="POST" onsubmit={handleSubmit}>
+            <form method="POST" action="/login" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Login</h1>
                     <label for="username">Username:</label>

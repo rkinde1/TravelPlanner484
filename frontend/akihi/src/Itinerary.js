@@ -36,6 +36,7 @@ function Notes() {
 
 //Will display date field set in which notes is under
 function Date() {
+    //This is how we add another date on here
     const[showMessage, setShowMessage] = useState(false);
     let addNewRow = () => {
         var div = document.getElementById('duplicate'),
