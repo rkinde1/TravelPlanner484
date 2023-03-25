@@ -5,11 +5,11 @@ const connectDB = require('./config/db');
 const { getUser, register } = require('./controllers/userController');
 
 
+
 connectDB()
 const app = express() 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false}));
-
 app.use('/api/users', require('./routes/userRoute'));
 
 app.use('*', (req, res) => {

@@ -36,6 +36,7 @@ function Notes() {
 
 //Will display date field set in which notes is under
 function Date() {
+    //This is how we add another date on here
     const[showMessage, setShowMessage] = useState(false);
     let addNewRow = () => {
         var div = document.getElementById('duplicate'),
@@ -46,7 +47,6 @@ function Date() {
     return(
         <div>
             <p>Toggle Google Maps?</p><ToggleGoogle />
-            <Map />
             <fieldset id='duplicate'>
                 <div className="flex-container">
                     <button className="expand">Expand</button> 
@@ -69,12 +69,11 @@ function Date() {
                             setShowMessage(false);
                         }}
                     >
-                        <input type="textfield" oninput="" placeholder="place"></input>
+                        <input type="textfield" placeholder="place"></input>
                         {showMessage && <Notes />}
                     </div>
                     <input type="number" placeholder="Cost"></input>
                     <button>Delete Row</button>
-                    <Notes />
                 </div>
             </fieldset>
         </div>

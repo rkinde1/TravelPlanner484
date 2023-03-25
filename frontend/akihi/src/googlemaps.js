@@ -1,12 +1,22 @@
 import './googlemaps.css';
+import React, {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 function ToggleGoogle () {
+    //function that makes maps hideable
+    const [map, returnMaps] = useState(false);
+    const handleCheck = () => {
+        if (map == true)
+            returnMaps(false);
+        else 
+            returnMaps(true);
+    }
     return (
-        <div>
+        <div id="addmap">
             <label class="switch">
-                <input type="checkbox"></input>
+                <input id="toggle" type="checkbox" value={map} onClick={handleCheck}></input>
                 <span class="slider round"></span>
             </label>
+            {map && <Map />}
         </div>
     );
 }
