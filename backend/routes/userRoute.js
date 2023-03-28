@@ -9,7 +9,8 @@ const { getUser, login, register, updateUser, deleteUser } = require('../control
 */
 
 // Given this route if its get request do getUser, if post request do createUser.
-router.route('/').get(login).post(register);
+router.route('/login').get(login);
+router.route('/signup').post(register);
 
 
 //Given this route if its put request do updateUser, if post request do deleteUser.

@@ -8,7 +8,7 @@ function Signup () {
 
     return(
         <div className = "signupForm">
-            < form id = "form"s>
+            < form id = "form">
                 <fieldset>
                     <h1>Signup</h1>
                     <label htmlFor="fname">First Name: </label>
