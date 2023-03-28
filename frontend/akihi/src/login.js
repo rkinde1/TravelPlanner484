@@ -2,7 +2,7 @@ import React, {useState } from "react";
 function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [posts, setPosts] = useState([]);
+    const [setPosts] = useState([]);
     let handleSubmit = async (username, password) => {
             await fetch("http://localhost:3000/login", {
                 method: "POST", 
@@ -26,7 +26,7 @@ function Login () {
     }
     return(
         <div>
-            <form method="POST" action="/login" onSubmit={handleSubmit}>
+            <form method="POST" action="" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Login</h1>
                     <label for="username">Username:</label>
