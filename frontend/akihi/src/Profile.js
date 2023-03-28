@@ -14,7 +14,6 @@ export function UserInfo(){
             <h3>Date of Birth: </h3>
             <h3>Member Since: </h3>
             <h3>Number of Projects: </h3>
-
         </div>
     ) 
 }
