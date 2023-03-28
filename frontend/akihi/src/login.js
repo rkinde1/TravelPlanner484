@@ -2,7 +2,7 @@ import React, {useState } from "react";
 function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [posts, setPosts] = useState([]);
+    const [setPosts] = useState([]);
     let handleSubmit = async (username, password) => {
             await fetch("http://localhost:3000/api/login", {
                 method: "GET", 
@@ -21,8 +21,6 @@ function Login () {
                 setPassword('');
                 console.log(data);
             })
-            
-
     }
     return(
         <div>
