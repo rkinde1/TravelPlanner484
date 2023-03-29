@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import './Signup.css'
+import {useNavigate} from 'react-router-dom';
 
 function Signup () {
-const [goToProfile, setGoToProfile] = React.useState(false);
+    /*
+    const [goToProfile, setGoToProfile] = React.useState(false);
 
-if (goToProfile){
-    return <Navigate to = "/profile"/>;
-}
+    if (goToProfile){
+        return <Navigate to = "/profile"/>;
+    }
+    */
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
@@ -64,16 +67,18 @@ if (goToProfile){
                     <label htmlFor="verifypassword">Verify Password:</label>
                     <input type="password" id="verifypassword" placeholder="Verify Password"></input>
                     <br></br>
-                    <button type="submit" id = "submit" onClick={() => {setGoToProfile(true)}}>Sign Up</button>
+                    <button type="submit" id = "submit" >Sign Up</button>
+                    {/*
+                    onClick={() => {setGoToProfile(true)}}
                 </fieldset>
                 <p>
                     Already registered?<br/>
                     <span className = "line">
-                        {/*router link goes here*/}
+                        {/*router link goes here
                         <a href = "#">Login</a>
                     </span>
-                </p>
-               
+                    </p>*/}
+               </fieldset>
             </form>
         </div>
 
