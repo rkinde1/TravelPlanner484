@@ -5,7 +5,7 @@ function Login () {
     const [setPosts] = useState([]);
     let handleSubmit = async (username, password) => {
             await fetch("http://localhost:3000/login", {
-                method: "POST", 
+                method: "GET", 
                 body: JSON.stringify({
                     username : username,
                     password : password
@@ -21,12 +21,10 @@ function Login () {
                 setPassword('');
                 console.log(data);
             })
-            
-
     }
     return(
         <div>
-            <form method="POST" action="" onSubmit={handleSubmit}>
+            <form method="GET" action="" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Login</h1>
                     <label for="username">Username:</label>
