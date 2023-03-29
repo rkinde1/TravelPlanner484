@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
-import './Signup.css';
-import {useNavigate} from 'react-router-dom';
+import './Signup.css'
 
 function Signup () {
+const [goToProfile, setGoToProfile] = React.useState(false);
+
+if (goToProfile){
+    return <Navigate to = "/profile"/>;
+}
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
@@ -60,8 +64,15 @@ function Signup () {
                     <label htmlFor="verifypassword">Verify Password:</label>
                     <input type="password" id="verifypassword" placeholder="Verify Password"></input>
                     <br></br>
-                    <input type="submit" id = "submit"></input>
+                    <button type="submit" id = "submit" onClick={() => {setGoToProfile(true)}}>Sign Up</button>
                 </fieldset>
+                <p>
+                    Already registered?<br/>
+                    <span className = "line">
+                        {/*router link goes here*/}
+                        <a href = "#">Login</a>
+                    </span>
+                </p>
                
             </form>
         </div>
