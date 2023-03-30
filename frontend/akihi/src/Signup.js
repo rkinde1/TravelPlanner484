@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Navigate} from 'react-router-dom'
 import './Signup.css'
 
 function Signup () {
@@ -12,7 +13,7 @@ if (goToProfile){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let handleSubmit = async (fname, lname, email, password) => {
-            await fetch("/signup", {
+            await fetch("/api/signUp", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
