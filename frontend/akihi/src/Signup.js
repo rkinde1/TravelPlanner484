@@ -8,12 +8,13 @@ function Signup () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
-    let handleSubmit = async (fname, lname, password) => {
+    let handleSubmit = async (fname, lname, rmail, password) => {
             await fetch("http://localhost:3000/signup", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
                     lname : lname,
+                    email : email,
                     password : password
                 }),
             })
@@ -25,6 +26,7 @@ function Signup () {
                 setPassword('');
                 console.log(data);
             })
+            Navigate to="/profile";
         } 
     return(
         <div>
