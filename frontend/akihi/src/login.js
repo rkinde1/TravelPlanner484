@@ -1,5 +1,9 @@
 import React, {useState } from "react";
+import {Navigate} from 'react-router-dom';
+
 function Login () {
+    const[goToContact, setGoToContact] = React.useState(false);
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
@@ -27,15 +31,20 @@ function Login () {
             <form method="POST" action="/api/login/" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Login</h1>
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                    <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
                     <br></br>
-                    <label for="password">Password:</label>
                     <input type="password" name="password" placeholder="Password" value={password} onChange = {(e) => setPassword(e.target.value)}></input>
                     <br></br>
-                    <input type="submit"></input>
+                    <button type="submit" onClick = {() => {setGoToContact(true)}}>Login</button>
                 </fieldset>
             </form>
+            <p div = "line">
+                    Don't have an account?<br/>
+                    <span className = "line">
+                        {/*router link goes here*/}
+                        <a href = "/Signup">Sign up</a>
+                    </span>
+                </p>
         </div>
     );
 }
