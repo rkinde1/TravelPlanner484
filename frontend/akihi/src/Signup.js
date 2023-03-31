@@ -33,6 +33,7 @@ function Signup () {
         <div>
             <form method="POST" onSubmit={handleSubmit}>
                 <fieldset>
+                    <h1>Welcome to Akihi</h1>
                     <h1>Signup</h1>
                     <label>First Name: </label>
                     <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
@@ -61,7 +62,15 @@ function Signup () {
                     <br></br>
                     <button type="submit" id = "submit">Sign Up</button>
                 </fieldset>
-            </form>            
+                <p>
+                    Already registered?<br/>
+                    <span className = "line">
+                        {/*router link goes here*/}
+                        <a href = "/Login">Login</a>
+                    </span>
+                </p>
+               
+            </form>
         </div>
 
     );
