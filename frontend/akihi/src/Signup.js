@@ -30,33 +30,28 @@ function Signup () {
 
     return(
         <div>
-            <form method="POST" onSubmit={handleSubmit}>
+            <form method="POST" onSubmit={handleSubmit} class = "form-group">
                 <fieldset>
                     <h1>Welcome to Akihi</h1>
                     <h1>Signup</h1>
-                    <label>First Name: </label>
                     <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
                     </input>
                     <br></br>
 
-                    <label for="lname">Last Name: </label>
                     <input type="text" id="lname" placeholder="Last Name" name="lname"
                         value={lname} onChange={(e) => setLname(e.target.value)}
                         >
                     </input>
                     <br></br>
 
-                    <label for="email">Email: </label>
                     <input type="text" id="email" placeholder="Email" name="email"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                         >
                     </input>
                     <br></br>
 
-                    <label for="password">Password:</label>
                     <input type="password" id="password" placeholder="Password" name ="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     <br></br>
-                    <label for="verifypassword">Verify Password:</label>
                     <input type="password" id="verifypassword" placeholder="Verify Password"></input>
                     <br></br>
                     <button type="submit" id = "submit">Sign Up</button>
