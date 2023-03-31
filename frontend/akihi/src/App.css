@@ -39,7 +39,6 @@ img{
   width: "200px";
   height: "200px";
   border: "4px solid black";
-  objectFit: "cover";
   border: "50%";
 }
 

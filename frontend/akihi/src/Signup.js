@@ -33,7 +33,6 @@ function Signup () {
             <form method="POST" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Welcome to Akihi</h1>
-                    <input type="text" id="fname" placeholder="First Name" >
                     <h1>Signup</h1>
                     <label>First Name: </label>
                     <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
