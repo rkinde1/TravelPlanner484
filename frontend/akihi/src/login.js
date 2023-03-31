@@ -4,7 +4,7 @@ function Login () {
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
     let handleSubmit = async (username, password) => {
-            await fetch("http://localhost:3000/login", {
+            await fetch("/api/login/", {
                 method: "POST", 
                 body: JSON.stringify({
                     username : username,

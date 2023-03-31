@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Navigate} from 'react-router-dom'
 import './Signup.css'
-import {redirect} from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 
 function Signup () {
     const [fname, setFname] = useState("");
