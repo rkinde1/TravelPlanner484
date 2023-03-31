@@ -24,7 +24,7 @@ function Login () {
     }
     return(
         <div>
-            <form method="POST" action="" onSubmit={handleSubmit}>
+            <form method="POST" action="/api/login/" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Login</h1>
                     <label for="username">Username:</label>
