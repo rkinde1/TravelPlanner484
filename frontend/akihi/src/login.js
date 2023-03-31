@@ -2,6 +2,7 @@ import React, {useState } from "react";
 import {Navigate} from 'react-router-dom';
 
 function Login () {
+    //After login, redirect to profile page
     const[goToContact, setGoToContact] = React.useState(false);
 
     const [username, setUsername] = useState("");

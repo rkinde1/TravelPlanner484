@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 export function UserInfo(){
+    //Here will we will also show the user's currect made projects
     const firstName = localStorage.getItem('first-name')
     const lastName = localStorage.getItem('first-name')
     const email = localStorage.getItem('email')
