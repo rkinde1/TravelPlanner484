@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Signup.css'
-import {Navigate} from 'react-router-dom';
+import {redirect} from 'react-router-dom';
 
 function Signup () {
     const [fname, setFname] = useState("");
@@ -8,7 +8,7 @@ function Signup () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
-    let handleSubmit = async (fname, lname, rmail, password) => {
+    let handleSubmit = async (fname, lname, email, password) => {
             await fetch("http://localhost:3000/signup", {
                 method: "POST", 
                 body: JSON.stringify({
@@ -26,8 +26,8 @@ function Signup () {
                 setPassword('');
                 console.log(data);
             })
-            Navigate to="/profile";
-        } 
+    }
+
     return(
         <div>
             <form method="POST" onSubmit={handleSubmit}>
