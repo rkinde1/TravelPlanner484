@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { InputText } from 'primereact/inputtext';
 
 export function UserInfo(){
     const firstName = localStorage.getItem('first-name')
@@ -7,14 +8,15 @@ export function UserInfo(){
     const dob = localStorage.getItem('date-of-birth')
   
     return(
-        <div className = "UserInfo">
-          <h1>User Profile</h1>
-            <h3>Name: <span id = "first-name"></span></h3>
-            <h3>Email: </h3>
-            <h3>Date of Birth: </h3>
-            <h3>Member Since: </h3>
-            <h3>Number of Projects: </h3>
-        </div>
+      
+      <div className = "UserInfo">
+          <h1>Welcome!</h1>
+          <h3>Name: <span id = "first-name"></span></h3>
+          <h3>Email: </h3>
+          <h3>Date of Birth: </h3>
+          <h3>Member Since: </h3>
+          <h3>Number of Projects: </h3>
+     </div>
     ) 
 }
 
