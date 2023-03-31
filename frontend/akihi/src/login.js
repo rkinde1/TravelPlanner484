@@ -25,10 +25,7 @@ function Login () {
                 setPassword('');
                 console.log(data);
             })
-<<<<<<< HEAD
 
-=======
->>>>>>> main
     }
     return(
         <div>
@@ -42,7 +39,7 @@ function Login () {
                     <button type="submit" onClick = {() => {setGoToContact(true)}}>Login</button>
                 </fieldset>
             </form>
-            <p div = "line">
+            <p>
                     Don't have an account?<br/>
                     <span className = "line">
                         {/*router link goes here*/}
