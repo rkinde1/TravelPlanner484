@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Navigate} from 'react-router-dom'
-import './Signup.css'
+import {Navigate} from 'react-router-dom';
+import './Signup.css';
 import { redirect } from 'react-router-dom';
 
 function Signup () {
