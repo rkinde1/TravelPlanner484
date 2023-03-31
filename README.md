@@ -9,6 +9,10 @@
 
 -Figure out how to save the data and send it to backend
 
+-make a landing page with the person's name
+
+-make a create project page
+
 # Garett: Budget Feature
 # Tosin: Reservations page
 # Dan: NavBar

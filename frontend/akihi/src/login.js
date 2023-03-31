@@ -25,7 +25,10 @@ function Login () {
                 setPassword('');
                 console.log(data);
             })
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     }
     return(
         <div>
