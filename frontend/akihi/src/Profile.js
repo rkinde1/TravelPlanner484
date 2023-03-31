@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { InputText } from 'primereact/inputtext';
 
 export function UserInfo(){
     const firstName = localStorage.getItem('first-name')

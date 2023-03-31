@@ -15,6 +15,9 @@ app.use('/api/users', require('./routes/userRoute')); //Dont think we are going 
 app.use('/api/signup', require('./routes/signUpRoute')); // |
 app.use('/api/login', require('./routes/loginRoute')); //  V Both of these will use middleware in the userController
 
+app.post('/vacation', (req,res) => {
+    res.send(req.body);
+})
 /*
 app.use('*', (req, res) => {
     res.send('404! This not a valid URL.')

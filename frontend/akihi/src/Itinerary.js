@@ -17,7 +17,9 @@ The start and end date will send data to Date
 */
 function CreateProjectButton() {
     return (
-        <button type="button" >Create Project</button>
+        <form action="/vacation">
+            <input type="submit" value="Create Project"></input>
+        </form>
     );
 }
 
