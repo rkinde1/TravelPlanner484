@@ -7,7 +7,6 @@ function Login () {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [setPosts] = useState([]);
     let handleSubmit = async (username, password) => {
             await fetch("/api/login/", {
                 method: "POST", 
@@ -21,7 +20,6 @@ function Login () {
             })
             .then((response) => response.json())
             .then((data) => {
-                setPosts((posts) => [data, ...posts]);
                 setUsername('');
                 setPassword('');
                 console.log(data);

@@ -1,12 +1,7 @@
-import {CreateProjectButton, Date} from './Itinerary.js';
+import {CreateProjectButton} from './Itinerary.js';
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Login from './login.js';
-import Signup from './Signup.js';
-import {UserInfo} from './Profile'
-import Home from "./Home";
-import CreateProjectPage from './CreateProject.js';
+import {Link } from 'react-router-dom';
 
 function NavBar () {
     return (

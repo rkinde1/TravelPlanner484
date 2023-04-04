@@ -8,6 +8,7 @@ import {UserInfo} from './Profile'
 import Home from "./Home";
 import CreateProjectPage from './CreateProject.js';
 import NavBar from './navbar.js';
+
 //This establishes the routes
 function App() {
   return (
