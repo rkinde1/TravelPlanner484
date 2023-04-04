@@ -7,19 +7,14 @@ import Signup from './Signup.js';
 import {UserInfo} from './Profile'
 import Home from "./Home";
 import CreateProjectPage from './CreateProject.js';
-
+import NavBar from './navbar.js';
+//This establishes the routes
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
-      <div className="home">
-          <h1>Welcome to your Itinerary</h1>
-          <CreateProjectButton />
-        <br></br>
-          <Link to={'login'}>Login</Link>
-          <Link to={'signup'}>Signup</Link>
-          <Link to={'profile'}>Profile</Link>
-          <Link to={'itinerary'}>Itinerary</Link>
+    <div>
+      <div className="nav">
+        <NavBar/>
         </div>
           <Routes>
               <Route path="/" element={<Home />} />

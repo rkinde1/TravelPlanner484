@@ -69,10 +69,13 @@ const login = asyncHandler(async(req,res) => {
             username: user.firstName,
             email: user.email
         })
-    } else {                                   //Else there was invalid credentials
+        res.redirect('/itinerary')
+    } else {             
+                            //   Else there was invalid credentials
         res.status(400)
         throw new Error('Invalid Credentials')
     }
+
 })
 
 const updateUser = (req,res) => {

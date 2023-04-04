@@ -1,13 +1,7 @@
 import './Itinerary.css';
 import React, {useState} from 'react';
 import {ToggleGoogle, Map} from './googlemaps.js';
-
-/*A testing button that will turn into a turn button for the google maps*/
-function Testing(){
-
-
-
-}
+import NavBar from './navbar.js';
 
 /*When pressed this button will create another project under the username. It will send a window.alert for the 
 user to input name, location, start, and end date
@@ -53,8 +47,9 @@ function Date() {
                 <div className="flex-container">
                     <button className="expand">Expand</button> 
                     <h1>Day 1</h1> 
+                    <hr></hr>
                 </div>
-                <div>
+                <div className="flex-container">
                     <button onClick={addNewRow}>+</button>
                     <select>
                         <option value="Flight">Flight</option>
@@ -71,7 +66,7 @@ function Date() {
                             setShowMessage(false);
                         }}
                     >
-                        <input type="textfield" placeholder="place"></input>
+                        <input type="textfield" placeholder="place" className="place"></input>
                         {showMessage && <Notes />}
                     </div>
                     <input type="number" placeholder="Cost"></input>
@@ -98,4 +93,4 @@ function BookingForm() {
     )
 }
 */
-export {Testing, Notes, CreateProjectButton, Date};
+export {Notes, CreateProjectButton, Date};

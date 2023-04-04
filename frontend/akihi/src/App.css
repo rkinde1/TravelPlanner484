@@ -3,11 +3,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
   font-family: 'Forum';
   height: 100vh;
+  background-color:#16e9e676
+}
+
+.background {
+  background-color:#16e9e676
 }
 
 a, .line {
@@ -222,7 +228,22 @@ button {
   }
 }
 
+/*Have no idea what is going on above this so inserting css for navbar*/
+.nav {
+  height: 11%;
+  text-align: center;
+  justify-content: space-between;
+  padding-top: 8px;
+}
 
+.center {
+  justify-content: space-between;
+  display: flex;
+}
+
+hr {
+  border-bottom: 1px solid #000000;
+}
 
 /*.App {
   text-align: center;
