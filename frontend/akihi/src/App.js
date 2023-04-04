@@ -8,7 +8,7 @@ import {UserInfo} from './Profile'
 import Home from "./Home";
 import CreateProjectPage from './CreateProject.js';
 import NavBar from './navbar.js';
-import Budget from '.Budget.js;'
+import Budget from './Budget.js';
 
 //This establishes the routes
 function App() {
