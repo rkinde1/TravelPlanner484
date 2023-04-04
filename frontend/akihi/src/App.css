@@ -228,7 +228,7 @@ button {
   }
 }
 
-/*Have no idea what is going on above this so inserting css for navbar*/
+/*Have no idea what is going on above this so inserting css for navbar -Rose*/
 .nav {
   height: 11%;
   text-align: center;
@@ -243,6 +243,12 @@ button {
 
 hr {
   border-bottom: 1px solid #000000;
+}
+
+.border {
+  border: 2px solid black;
+  width: 25%;
+  height: 25%;
 }
 
 /*.App {

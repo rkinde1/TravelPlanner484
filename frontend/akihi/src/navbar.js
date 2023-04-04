@@ -10,10 +10,10 @@ function NavBar () {
                     <h1>Welcome to your Itinerary</h1>
                     <CreateProjectButton />
                     <div className="center">
-                        <Link to={'login'}>Login</Link>
-                        <Link to={'signup'}>Signup</Link>
-                        <Link to={'profile'}>Profile</Link>
-                        <Link to={'itinerary'}>Itinerary</Link>
+                        <Link to={'login'} className="border">Login</Link>
+                        <Link to={'signup'} className="border">Signup</Link>
+                        <Link to={'profile'} className="border">Profile</Link>
+                        <Link to={'itinerary'} className="border">Itinerary</Link>
                     </div>
                     <hr></hr>
                 </div>
