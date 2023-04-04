@@ -6,4 +6,4 @@ function Budget(){
     );
 }
 
-export {Budget};
+export default{Budget};
