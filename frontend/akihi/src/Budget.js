@@ -5,3 +5,5 @@ function Budget(){
         </div>
     );
 }
+
+export {Budget};
