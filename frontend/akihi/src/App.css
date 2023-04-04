@@ -6,14 +6,15 @@
   text-align: center;
 }
 
+/*favicon color; 4CD9CC*/
 body {
   font-family: 'Forum';
   height: 100vh;
-  background-color:#16e9e676
+  background-color:#16e9e676;
 }
 
 .background {
-  background-color:#16e9e676
+  background-color:#16e9e676;
 }
 
 a, .line {

@@ -6,7 +6,7 @@ import {Link } from 'react-router-dom';
 function NavBar () {
     return (
             <div>
-                <div>
+                <div className="nav">
                     <h1>Welcome to your Itinerary</h1>
                     <CreateProjectButton />
                     <div className="center">

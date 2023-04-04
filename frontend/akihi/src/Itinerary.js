@@ -1,6 +1,7 @@
 import './Itinerary.css';
 import React, {useState} from 'react';
 import {ToggleGoogle, Map} from './googlemaps.js';
+import Button from 'react-bootstrap/Button';
 import NavBar from './navbar.js';
 
 /*When pressed this button will create another project under the username. It will send a window.alert for the 
