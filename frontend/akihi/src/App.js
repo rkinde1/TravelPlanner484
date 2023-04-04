@@ -25,7 +25,7 @@ function App() {
               <Route path='/itinerary' element={<Date />}/>
               <Route path = '/profile' element = {<UserInfo/>}/>
               <Route path = '/vacation' element = {<CreateProjectPage/>}/>
-              <Route path = '/Budget' element = {<Budget/>}/>
+              <Route path = '/budget' element = {<Budget/>}/>
           </Routes>
         <hr></hr>
     </div>
