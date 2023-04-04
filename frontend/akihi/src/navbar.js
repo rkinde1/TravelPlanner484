@@ -14,6 +14,7 @@ function NavBar () {
                         <Link to={'signup'} className="border">Signup</Link>
                         <Link to={'profile'} className="border">Profile</Link>
                         <Link to={'itinerary'} className="border">Itinerary</Link>
+                        <Link to={'budget'} className="border">Budget</Link>
                     </div>
                     <hr></hr>
                 </div>
