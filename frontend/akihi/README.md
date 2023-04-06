@@ -1,3 +1,11 @@
+# cd backend 
+# npm start server 
+
+# in another terminal: cd frontend/akihi
+# npm start 
+
+# if start doesnt work use run
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
