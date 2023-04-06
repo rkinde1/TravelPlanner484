@@ -13,7 +13,6 @@ export function UserInfo(){
           <h1>Welcome!</h1>
           <h3>Name: <span id = "first-name"></span></h3>
           <h3>Email: </h3>
-          <h3>Date of Birth: </h3>
           <h3>Member Since: </h3>
           <h3>Number of Projects: </h3>
      </div>
