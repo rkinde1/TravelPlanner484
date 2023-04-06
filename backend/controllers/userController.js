@@ -2,14 +2,30 @@ const mongoose = require('mongoose');
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
-const getUser = (req,res) => {
-    res.status(200).json({message: 'Get users'});
-}
+const getUser = asyncHandler(async (req,res) => {
+    const {_id, firstName, username, email} = await User.findById(req.user.id);
+
+    res.status(200).json({
+        id: _id,
+        firstName,
+        username,
+        email
+    })
+})
+
+
 
 const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
     const {firstName,lastName, username, email, password, } = req.body;
+
+
+    if (!firstName || !lastName || !username || !email || !password) {
+        res.status(400)
+        throw new Error("Please submit all fields");
+    }
     
     //Check if user already exists given the credentials, if so, throw error
     const userExists = await User.findOne({ email });
@@ -40,13 +56,14 @@ const register = asyncHandler(async (req,res) => {
    
     // If the data matches the schema the user should be created...
     if(user) {
-        res.status(201).json({
+        return res.status(201).json({
             _id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
             password: user.password,
             email: user.email,
+            token: generateToken(user.id)
         });
     } else {                                 //Else the  user data was invalid
         res.status(400);
@@ -62,10 +79,11 @@ const login = asyncHandler(async(req,res) => {
 
     //Compare the hashes to see if they are the same, if so, send some of the credentials back to the client
     if (user && (await bcrypt.compare(password, user.password))) {
-        res.redirect('/itinerary')
-        return res.json({
-            username: user.firstName,
-            email: user.email
+        return res.status(200).json({
+            username: user.username,
+            email: user.email,
+            url:'/itinerary',
+            token: generateToken(user._id),
         })
         
     } else {             
@@ -74,6 +92,12 @@ const login = asyncHandler(async(req,res) => {
     }
 
 })
+
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '5d',
+    })
+}
 
 const updateUser = (req,res) => {
     res.status(200).json({message: `Update user info ${req.params.id}`});
@@ -89,4 +113,5 @@ module.exports = {
     login,
     updateUser,
     deleteUser,
+    getUser,
 }
