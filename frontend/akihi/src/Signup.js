@@ -10,7 +10,7 @@ function Signup () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
-    let handleSubmit = async (fname, lname, email, password) => {
+    let handleSubmit = async (fname, lname, email, username, password) => {
             await fetch("http://localhost:3000/signup", {
                 method: "POST", 
                 body: JSON.stringify({
