@@ -6,6 +6,7 @@ import { redirect } from 'react-router-dom';
 function Signup () {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
+    const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
@@ -15,6 +16,7 @@ function Signup () {
                 body: JSON.stringify({
                     fname : fname,
                     lname : lname,
+                    username, username,
                     email : email,
                     password : password
                 }),
@@ -46,7 +48,10 @@ function Signup () {
                         >
                     </input>
                     <br></br>
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
 
+                    <br/>
                     <label for="email">Email: </label>
                     <input type="text" id="email" placeholder="Email" name="email"
                         value={email} onChange={(e) => setEmail(e.target.value)}
@@ -54,10 +59,10 @@ function Signup () {
                     </input>
                     <br></br>
 
-                    <label for="password">Password:</label>
+                    <label for="password">Password: </label>
                     <input type="password" id="password" placeholder="Password" name ="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     <br></br>
-                    <label for="verifypassword">Verify Password:</label>
+                    <label for="verifypassword">Verify Password: </label>
                     <input type="password" id="verifypassword" placeholder="Verify Password"></input>
                     <br></br>
                     <button type="submit" id = "submit">Sign Up</button>
