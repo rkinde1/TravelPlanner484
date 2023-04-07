@@ -47,6 +47,7 @@ const register = asyncHandler(async (req,res) => {
             email: user.email,
             password: user.password,
             email: user.email,
+            DOB: username.DOB
         });
     } else {                                 //Else the  user data was invalid
         res.status(400);
