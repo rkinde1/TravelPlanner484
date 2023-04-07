@@ -33,6 +33,7 @@ const register = asyncHandler(async (req,res) => {
     const user = await User.create({
         firstName,
         lastName,
+        username,
         email,
         password: hashedPassword,
     })

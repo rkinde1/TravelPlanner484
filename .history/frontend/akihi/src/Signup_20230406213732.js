@@ -10,7 +10,7 @@ function Signup () {
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
     let handleSubmit = async (fname, lname, email, password) => {
-            await fetch("/api/signup", {
+            await fetch("http://localhost:3000/api/signup", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
@@ -31,7 +31,7 @@ function Signup () {
 
     return(
         <div>
-            <form method="POST" action="/api/login/" onSubmit={handleSubmit}>
+            <form method="POST" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Welcome to Akihi</h1>
                     <h1>Signup</h1>

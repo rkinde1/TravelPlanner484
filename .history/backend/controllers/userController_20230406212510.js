@@ -33,8 +33,10 @@ const register = asyncHandler(async (req,res) => {
     const user = await User.create({
         firstName,
         lastName,
+        username,
         email,
         password: hashedPassword,
+        DOB,
     })
    
    
@@ -44,13 +46,14 @@ const register = asyncHandler(async (req,res) => {
             _id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email,
+            username: user.username,
             password: user.password,
-            
+            email: user.email,
+            DOB: username.DOB
         });
     } else {                                 //Else the  user data was invalid
         res.status(400);
-        throw new Error('Invalid user data!');
+        throw new Error('Invalid user dat!');
     }
 })
 
@@ -62,15 +65,15 @@ const login = asyncHandler(async(req,res) => {
 
     //Compare the hashes to see if they are the same, if so, send some of the credentials back to the client
     if (user && (await bcrypt.compare(password, user.password))) {
-        res.redirect('/itinerary')
-        return res.json({
+        res.json({
             username: user.firstName,
             email: user.email
         })
-        
+        res.redirect('/itinerary')
     } else {             
                             //   Else there was invalid credentials
-        return res.status(400).json({message: "Invalid Credentials"})
+        res.status(400)
+        throw new Error('Invalid Credentials')
     }
 
 })

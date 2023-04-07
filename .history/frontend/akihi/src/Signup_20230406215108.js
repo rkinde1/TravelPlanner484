@@ -31,7 +31,7 @@ function Signup () {
 
     return(
         <div>
-            <form method="POST" action="/api/login/" onSubmit={handleSubmit}>
+            <form method="POST" action=action="/api/login/"onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Welcome to Akihi</h1>
                     <h1>Signup</h1>

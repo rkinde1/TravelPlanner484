@@ -33,8 +33,10 @@ const register = asyncHandler(async (req,res) => {
     const user = await User.create({
         firstName,
         lastName,
+        username,
         email,
         password: hashedPassword,
+        DOB,
     })
    
    
@@ -44,9 +46,9 @@ const register = asyncHandler(async (req,res) => {
             _id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email,
-            password: user.password,
             
+            password: user.password,
+            email: user.email,
         });
     } else {                                 //Else the  user data was invalid
         res.status(400);
