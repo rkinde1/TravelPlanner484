@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Signup.css'
 import {redirect} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 function Signup () {
     const [fname, setFname] = useState("");
@@ -32,7 +33,7 @@ function Signup () {
 
     return(
         <div>
-            <form method="POST" action="/api/signup" onSubmit={handleSubmit}>
+            <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group">
                 <fieldset>
                     <h1>Welcome to Akihi</h1>
                     <h1>Signup</h1>
@@ -45,11 +46,9 @@ function Signup () {
                         >
                     </input>
                     <br></br>
-                    <label for="username">Username: </label>
                     <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
 
                     <br/>
-                    <label for="email">Email: </label>
                     <input type="text" id="email" placeholder="Email" name="email"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                         >
@@ -66,13 +65,13 @@ function Signup () {
                     Already registered?<br/>
                     <span className = "line">
                         {/*router link goes here*/}
-                        <a href = "/Login">Login</a>
+                        <Link to={'/login'} className="border">Login</Link>
+                        {/*<a href = "/Login">Login</a>*/}
                     </span>
                 </p>
                
             </form>
         </div>
-
     );
 }
 

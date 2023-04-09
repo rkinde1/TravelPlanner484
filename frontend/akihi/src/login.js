@@ -1,5 +1,6 @@
 import React, {useState } from "react";
 import {Navigate} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 function Login () {
     //After login, redirect to profile page
@@ -28,7 +29,7 @@ function Login () {
     }
     return(
         <div>
-            <form method="POST" class = "form-group" action="" onSubmit={handleSubmit}>
+            <form method="POST" className="form-group" action="" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Login</h1>
                     <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
@@ -42,7 +43,7 @@ function Login () {
                     Don't have an account?<br/>
                     <span className = "line">
                         {/*router link goes here*/}
-                        <a href = "/Signup">Sign up</a>
+                        <Link to={'/signup'} className="border">Signup</Link>
                     </span>
                 </p>
         </div>
