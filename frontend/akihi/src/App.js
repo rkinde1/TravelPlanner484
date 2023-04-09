@@ -8,6 +8,7 @@ import {UserInfo} from './Profile'
 import Home from "./Home";
 import CreateProjectPage from './CreateProject.js';
 import NavBar from './navbar.js';
+import Budget from './Budget.js';
 
 //This establishes the routes
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route path='/itinerary' element={<Date />}/>
               <Route path = '/profile' element = {<UserInfo/>}/>
               <Route path = '/vacation' element = {<CreateProjectPage/>}/>
+              <Route path = '/budget' element = {<Budget/>}/>
           </Routes>
         <hr></hr>
     </div>
