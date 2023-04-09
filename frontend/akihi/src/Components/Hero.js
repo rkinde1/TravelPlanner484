@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Styling.css"
-import video from './Assets/rock-15527.mp4'
+import video from './Assets/plane.mp4'
 import {Link} from 'react-router-dom'
 
 function Hero(){
