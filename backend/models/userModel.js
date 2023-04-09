@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Itinerary = require('./itineraryModel').schema
 
 
 //Select means that when this schema is queried, that field comes with the query
@@ -9,7 +8,9 @@ const userSchema = mongoose.Schema({
     username: {type:String, select:true},
     email: {type:String, select:true},
     password: String,
-    iteneraries: [Itinerary]
+    DOB: Date,
+
+
 })
 
 module.exports = mongoose.model('User', userSchema);
