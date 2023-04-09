@@ -2,11 +2,11 @@ import React, {useState } from "react";
 import {Navigate} from 'react-router-dom';
 
 function Login () {
+    //After login, redirect to profile page
     const[goToContact, setGoToContact] = React.useState(false);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [setPosts] = useState([]);
     let handleSubmit = async (username, password) => {
             await fetch("http://localhost:3000/login", {
                 method: "POST", 
@@ -20,7 +20,6 @@ function Login () {
             })
             .then((response) => response.json())
             .then((data) => {
-                setPosts((posts) => [data, ...posts]);
                 setUsername('');
                 setPassword('');
                 console.log(data);

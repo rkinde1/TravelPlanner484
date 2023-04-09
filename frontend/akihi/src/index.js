@@ -8,6 +8,7 @@ import {Testing, Notes, CreateProjectButton, Date} from './Itinerary.js';
 import Login from './login.js';
 import Signup from './Signup.js';
 
+//This renders the entire app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <App />

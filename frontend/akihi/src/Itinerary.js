@@ -1,13 +1,8 @@
 import './Itinerary.css';
 import React, {useState} from 'react';
 import {ToggleGoogle, Map} from './googlemaps.js';
-
-/*A testing button that will turn into a turn button for the google maps*/
-function Testing(){
-
-
-
-}
+import Button from 'react-bootstrap/Button';
+import NavBar from './navbar.js';
 
 /*When pressed this button will create another project under the username. It will send a window.alert for the 
 user to input name, location, start, and end date
@@ -17,7 +12,9 @@ The start and end date will send data to Date
 */
 function CreateProjectButton() {
     return (
-        <button type="button" >Create Project</button>
+        <form action="/vacation">
+            <input type="submit" value="Create Project"></input>
+        </form>
     );
 }
 
@@ -37,6 +34,7 @@ function Notes() {
 //Will display date field set in which notes is under
 function Date() {
     //This is how we add another date on here
+    //The duplicate cannot include the day here
     const[showMessage, setShowMessage] = useState(false);
     let addNewRow = () => {
         var div = document.getElementById('duplicate'),
@@ -48,52 +46,40 @@ function Date() {
         <div>
             <p>Toggle Google Maps?</p><ToggleGoogle />
             <fieldset id='duplicate'>
-                <div className="flex-container">
-                    <button className="expand">Expand</button> 
-                    <h1>Day 1</h1> 
-                </div>
-                <div>
-                    <button onClick={addNewRow}>+</button>
-                    <select>
-                        <option value="Flight">Flight</option>
-                        <option value="hotel">Hotel</option>
-                        <option value="Restaurant">Restaurant</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <input type="datetime-local" placeholder="Arrival Time"></input>
-                    <div
-                        onMouseEnter={() => {
-                            setShowMessage(true);
-                        }}
-                        onMouseLeave={()=>{
-                            setShowMessage(false);
-                        }}
-                    >
-                        <input type="textfield" placeholder="place"></input>
-                        {showMessage && <Notes />}
+                <form method="GET" action="">
+                    <div className="flex-container">
+                        <button onClick={addNewRow}>+</button>
+                        <button className="expand">Expand</button> 
+                        <h1>Day 1</h1> 
+                        <hr></hr>
                     </div>
-                    <input type="number" placeholder="Cost"></input>
-                    <button>Delete Row</button>
-                </div>
+                    <div className="flex-container">
+                        <button>+</button>
+                        <select>
+                            <option value="Flight">Flight</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="Restaurant">Restaurant</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="time" placeholder="Arrival Time"></input>
+                        <div
+                            onMouseEnter={() => {
+                                setShowMessage(true);
+                            }}
+                            onMouseLeave={()=>{
+                                setShowMessage(false);
+                            }}
+                        >
+                            <input type="textfield" placeholder="place" className="place"></input>
+                            {showMessage && <Notes />}
+                        </div>
+                        <input type="number" placeholder="Cost"></input>
+                        <button>Delete Row</button>
+                    </div>
+                </form>
             </fieldset>
         </div>
     );
 }
 
-
-/*
-function BookingForm() {
-    const [events,setEvent] = useState(() => 'Date');
-    let addDay = (e) => {
-        e.preventDefault()
-        setEvent([events, <Date key={events.length} />])
-    }
-    return (
-        <div>
-            {events}
-            <button onClick={addDay}>+</button>
-        </div>
-    )
-}
-*/
-export {Testing, Notes, CreateProjectButton, Date};
+export {Notes, CreateProjectButton, Date};

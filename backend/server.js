@@ -12,6 +12,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false}));
 app.use('/api/users', require('./routes/userRoute'));
 
+app.post('/vacation', (req,res) => {
+    res.send(req.body);
+})
 /*
 app.use('*', (req, res) => {
     res.send('404! This not a valid URL.')

@@ -1,6 +1,8 @@
 import './googlemaps.css';
 import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
 import GoogleMapReact from 'google-map-react';
+
 function ToggleGoogle () {
     //function that makes maps hideable
     const [map, returnMaps] = useState(false);
@@ -27,13 +29,14 @@ function Map () {
         lat: 37,
         lng: 122
     }
+    const key = process.env.REACT_APP_API_KEY;
     return(
         <div className="map">
           <div className="google-map">
             <GoogleMapReact
-              bootstrapURLKeys={{ key: '' }}
+              bootstrapURLKeys={{ key: key}}
               defaultCenter={location}
-              defaultZoom={17}
+              defaultZoom={1}
             >
             </GoogleMapReact>
           </div>

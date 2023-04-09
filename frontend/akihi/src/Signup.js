@@ -5,15 +5,17 @@ import {redirect} from 'react-router-dom';
 function Signup () {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
+    const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [setPosts] = useState([]);
-    let handleSubmit = async (fname, lname, email, password) => {
+    let handleSubmit = async (fname, lname, email, username, password) => {
             await fetch("http://localhost:3000/signup", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
                     lname : lname,
+                    username, username,
                     email : email,
                     password : password
                 }),
@@ -30,7 +32,7 @@ function Signup () {
 
     return(
         <div>
-            <form method="POST" onSubmit={handleSubmit} class = "form-group">
+            <form method="POST" action="/api/signup" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Welcome to Akihi</h1>
                     <h1>Signup</h1>
@@ -43,7 +45,11 @@ function Signup () {
                         >
                     </input>
                     <br></br>
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
 
+                    <br/>
+                    <label for="email">Email: </label>
                     <input type="text" id="email" placeholder="Email" name="email"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                         >

@@ -9,7 +9,7 @@ const getUser = (req,res) => {
 
 const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
-    const {firstName,lastName, username, email, password, DOB } = req.body;
+    const {firstName,lastName, username, email, password, } = req.body;
     
     //Check if user already exists given the credentials, if so, throw error
     const userExists = await User.findOne({ email });
@@ -36,7 +36,6 @@ const register = asyncHandler(async (req,res) => {
         username,
         email,
         password: hashedPassword,
-        DOB,
     })
    
    
@@ -49,11 +48,10 @@ const register = asyncHandler(async (req,res) => {
             username: user.username,
             password: user.password,
             email: user.email,
-            DOB: username.DOB
         });
     } else {                                 //Else the  user data was invalid
         res.status(400);
-        throw new Error('Invalid user dat!');
+        throw new Error('Invalid user data!');
     }
 })
 
@@ -69,10 +67,13 @@ const login = asyncHandler(async(req,res) => {
             username: user.firstName,
             email: user.email
         })
-    } else {                                   //Else there was invalid credentials
+        res.redirect('/itinerary')
+    } else {             
+                            //   Else there was invalid credentials
         res.status(400)
         throw new Error('Invalid Credentials')
     }
+
 })
 
 const updateUser = (req,res) => {
