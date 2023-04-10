@@ -3,7 +3,7 @@ const router = express.Router()
 const { login, getUser } = require('../controllers/userController')
 const { protect } = require('../middleware/authMiddleware')
 
-router.route('/').post(login);
-router.get('/:username', protect, getUser)
+router.route('/').post(login).get(protect, getUser);
+
 
 module.exports = router;
