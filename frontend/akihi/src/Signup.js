@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './Signup.css'
 import {redirect} from 'react-router-dom';
 import {Link } from 'react-router-dom';
+import Axios from 'axios';
 
 function Signup () {
     const [fname, setFname] = useState("");
