@@ -31,30 +31,10 @@ function Notes() {
     );
 }
 
-//Will display date field set in which notes is under
-function Date() {
-    //This is how we add another date on here
-    //The duplicate cannot include the day here
+function Event() {
     const[showMessage, setShowMessage] = useState(false);
-    let addNewRow = () => {
-        var div = document.getElementById('duplicate'),
-        clone = div.cloneNode(true);
-        clone.id = "some_id";
-        document.body.appendChild(clone);
-    }
-    return(
-        <div>
-            <p>Toggle Google Maps?</p><ToggleGoogle />
-            <fieldset id='duplicate'>
-                <form method="GET" action="">
-                    <div className="flex-container">
-                        <button onClick={addNewRow}>+</button>
-                        <button className="expand">Expand</button> 
-                        <h1>Day 1</h1> 
-                        <hr></hr>
-                    </div>
-                    <div className="flex-container">
-                        <button>+</button>
+    return (
+        <div className="flex-container">
                         <select>
                             <option value="Flight">Flight</option>
                             <option value="hotel">Hotel</option>
@@ -74,12 +54,41 @@ function Date() {
                             {showMessage && <Notes />}
                         </div>
                         <input type="number" placeholder="Cost"></input>
-                        <button>Delete Row</button>
+                        <input type="submit" name="Confirm Changes"/>
+                    </div>
+    );
+}
+
+//Will display date field set in which notes is under
+function Date() {
+    //This is how we add another date on here
+    //The duplicate cannot include the day here
+    const [event, setEvent] = useState([<Event key={0} />])
+    let addNewRow = (e) => {
+        e.preventDefault()
+        setEvent([...event, <Event key={event.length} />]);
+        // var div = document.getElementById('duplicate'),
+        // clone = div.cloneNode(true);
+        // clone.id = "some_id";
+        // document.body.appendChild(clone);
+    }
+    return(
+        <div>
+            <fieldset>
+                <form method="GET" action="">
+                    <div className="flex-container">
+                        {/* <button className="expand">Expand</button>  */}
+                        {/* <h1>Day 1</h1>  */}
+                        <h1>Itinerary Events</h1>
+                        <button onClick={addNewRow}>+</button>
+                        <hr></hr>
+                        {event}
                     </div>
                 </form>
+                <p>Toggle Google Maps?</p><ToggleGoogle />
             </fieldset>
         </div>
     );
 }
 
-export {Notes, CreateProjectButton, Date};
+export {Notes, CreateProjectButton, Date, Event};
