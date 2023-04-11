@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './App.css';
 
 export default function CreateProjectPage () {
     const [vacation_id, setVacationId] = useState("");
@@ -27,17 +28,23 @@ export default function CreateProjectPage () {
     //will redirect to itinerary
     return (
         <div>
-            <form method="POST" action="" onSubmit={handleSubmit}> 
-                <label>Name:</label>
-                <input type="text" name="vacation_id" placeholder="name of vacation" value={vacation_id} onChange={(e) => setVacationId(e.target.value)}></input>
-                <label>Starting date</label>
-                <input type="date" name="start" placeholder="start date" value={start_date} onChange={(e) => setStartDate(e.target.value)}></input>
-                <label>End date</label>
-                <input type="date" name="end" placeholder="end date" value={end_date} onChange={(e) => setEndDate(e.target.value)}></input>
-                <label>Country</label>
-                <input type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
-                <input type="submit"></input>
-            </form>
+            <fieldset>
+                <form method="POST" action="" onSubmit={handleSubmit} className="form-group"> 
+                    <h1>Fill out this form to start your Itinerary</h1>
+                    <label>Name:</label>
+                    <input type="text" name="vacation_id" placeholder="name of vacation" value={vacation_id} onChange={(e) => setVacationId(e.target.value)}></input>
+                    <br></br>
+                    <label>Starting date</label>
+                    <input type="date" name="start" placeholder="start date" value={start_date} onChange={(e) => setStartDate(e.target.value)}></input>
+                    <br></br>
+                    <label>End date</label>
+                    <input type="date" name="end" placeholder="end date" value={end_date} onChange={(e) => setEndDate(e.target.value)}></input>
+                    <br></br>
+                    <label>Country</label>
+                    <input type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
+                    <button type="submit">Create</button>
+                </form>
+            </fieldset>
         </div>
     )
 }
