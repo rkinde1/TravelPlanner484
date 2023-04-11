@@ -35,13 +35,13 @@ function Event() {
     const[showMessage, setShowMessage] = useState(false);
     return (
         <div className="flex-container">
-                        <select>
+                        <select className="category">
                             <option value="Flight">Flight</option>
                             <option value="hotel">Hotel</option>
                             <option value="Restaurant">Restaurant</option>
                             <option value="other">Other</option>
                         </select>
-                        <input type="time" placeholder="Arrival Time"></input>
+                        <input type="time" placeholder="Arrival Time" className="time"></input>
                         <div
                             onMouseEnter={() => {
                                 setShowMessage(true);
@@ -53,7 +53,7 @@ function Event() {
                             <input type="textfield" placeholder="place" className="place"></input>
                             {showMessage && <Notes />}
                         </div>
-                        <input type="number" placeholder="Cost"></input>
+                        <input type="number" placeholder="Cost" className="cost"></input>
                         <input type="submit" name="Confirm Changes"/>
                     </div>
     );
@@ -81,7 +81,6 @@ function Date() {
                         {/* <h1>Day 1</h1>  */}
                         <h1>Itinerary Events</h1>
                         <button onClick={addNewRow}>+</button>
-                        <hr></hr>
                         {event}
                     </div>
                 </form>

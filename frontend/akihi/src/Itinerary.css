@@ -21,21 +21,34 @@
     flex-wrap: wrap;
     align-items: center;
     padding: 5px; 
-    height: 50%;
+    height: 100%;
+    width: 100%;
 }
 
+/* Sets the size of each box in Itineary*/
 .place {
-    width: 100%;
-    height: 100;
+    width:100%;
 }
 
 fieldset {
     margin: 15px;
     background-color: rgb(255, 255, 255);
-    width: 400x;
+    width: 100%;
 }
 
 textarea {
     width:100%;
     height:100%;
+}
+
+.category {
+    width: 10%;
+}
+
+.time {
+    width: 15%;
+}
+
+.cost {
+    width:10%;
 }
