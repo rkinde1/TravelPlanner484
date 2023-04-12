@@ -17,7 +17,7 @@ body {
 
 
 .background {
-  backgound-color:#16e9e676;
+  background-color:#16e9e676;
 }
 
 a, .line {
@@ -63,7 +63,7 @@ h3 {
 .form-group {
   margin-bottom: 10px;
 }
-/* 
+
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -79,7 +79,7 @@ h3 {
   text-align: left;
   display: block;
   margin: 0 0 5px 3px;
-} */
+} 
 
 button {
   padding: 10px 20px;
