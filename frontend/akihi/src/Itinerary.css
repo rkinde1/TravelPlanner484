@@ -21,15 +21,15 @@
     /* flex-direction: column; */
     flex-wrap: wrap;
     justify-content: space-around; /* aligns items at end of container*/
-    /* align-items: center; */
+    align-items: center; 
     padding: 5px; 
-    height: 100%;
-    width: 100%;
+    /* height: 50%;
+    width: 50%; */
 }
 
 /* Sets the size of each box in Itineary*/
 .place {
-    width:100%;
+    width:50%;
 }
 
 fieldset {
@@ -52,4 +52,10 @@ textarea {
 
 .cost {
     width:10%;
+}
+
+.itemrow {
+    text-align: left;
+    display: flex;
+    flex: wrap;
 }

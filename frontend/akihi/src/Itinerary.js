@@ -54,7 +54,6 @@ function Event() {
                             {showMessage && <Notes />}
                         </div>
                         <input type="number" placeholder="Cost" className="cost"></input>
-                        <input type="submit" name="Confirm Changes"/>
                     </div>
     );
 }
