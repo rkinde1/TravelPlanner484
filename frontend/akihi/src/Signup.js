@@ -33,10 +33,9 @@ function Signup () {
     }
 
     return(
-        <div>
-            <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group">
-                <fieldset>
-                    <h1>Welcome to Akihi</h1>
+        <div className = "screen">
+            <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group form-control no border">
+                    <div className = "inputContainer">
                     <h1>Signup</h1>
                     <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
                     </input>
@@ -60,8 +59,8 @@ function Signup () {
                     <br></br>
                     <input type="password" id="verifypassword" placeholder="Verify Password"></input>
                     <br></br>
-                    <button type="submit" id = "submit">Sign Up</button>
-                </fieldset>
+                    <button type="submit" className = "hvr-grow btn" id = "submit">Sign Up</button>
+                <br></br>
                 <p>
                     Already registered?<br/>
                     <span className = "line">
@@ -70,7 +69,7 @@ function Signup () {
                         {/*<a href = "/Login">Login</a>*/}
                     </span>
                 </p>
-               
+                </div>
             </form>
         </div>
     );

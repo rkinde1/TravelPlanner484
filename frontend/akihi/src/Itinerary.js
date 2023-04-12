@@ -53,6 +53,7 @@ function Date() {
                         <h1>Day 1</h1> 
                         <hr></hr>
                     </div>
+
                     <div className="flex-container">
                         <button>+</button>
                         <select>
