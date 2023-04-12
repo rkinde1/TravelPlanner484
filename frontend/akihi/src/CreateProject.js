@@ -7,6 +7,7 @@ export default function CreateProjectPage () {
     const [end_date, setEndDate] = useState("");
     const [country, setCountry] = useState("");
     let handleSubmit = async (vacation_id, start_date, end_date, country) => {
+        window.alert('Vacation has been created');
             await fetch("http://localhost:3000/vacation", {
                 method: "POST", 
                 body: JSON.stringify({
@@ -29,7 +30,7 @@ export default function CreateProjectPage () {
     return (
         <div>
             <fieldset>
-                <form method="POST" action="" onSubmit={handleSubmit} className="form-group"> 
+                <form method="POST" action="/api/vacation" onSubmit={handleSubmit} className="form-group"> 
                     <h1>Fill out this form to start your Itinerary</h1>
                     <label>Name:</label>
                     <input type="text" name="vacation_id" placeholder="name of vacation" value={vacation_id} onChange={(e) => setVacationId(e.target.value)}></input>
