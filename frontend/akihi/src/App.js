@@ -14,7 +14,7 @@ import Budget from './Budget.js';
 function App() {
   return (
     <BrowserRouter>
-    <div>
+    <div className = "page-container">
       <div className="nav">
           <NavBar/>
       </div>
@@ -28,7 +28,7 @@ function App() {
               <Route path = '/budget' element = {<Budget/>}/>
           </Routes>
         <hr></hr>
-    </div>
+        </div>
     </BrowserRouter>
   );
 }

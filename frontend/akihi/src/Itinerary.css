@@ -18,7 +18,9 @@
 
 .flex-container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    justify-content: space-around; /* aligns items at end of container*/
     align-items: center;
     padding: 5px; 
     height: 100%;
