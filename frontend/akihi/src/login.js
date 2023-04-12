@@ -33,11 +33,11 @@ function Login () {
             <form method="POST"  action="" onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div class="inputContainer">
-                    <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                    <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>
                     </div>
                     <br></br>
                     <div class="inputContainer">
-                    <input type="password" name="password" placeholder="Password" value={password} onChange = {(e) => setPassword(e.target.value)}></input>
+                    <input type="password" name="password" placeholder="Password" required value={password} onChange = {(e) => setPassword(e.target.value)}></input>
                     </div>
                     <br></br>
                     <div>
