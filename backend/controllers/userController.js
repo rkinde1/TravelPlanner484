@@ -19,8 +19,11 @@ const getUser = asyncHandler(async (req,res) => {
 
 const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
-    const {firstName,lastName, username, email, password, } = req.body;
+    
+    console.log(req.body)
+    const {firstName,lastName, username, email, password} = await req.body;
 
+    console.log(firstName)
 
     if (!firstName || !lastName || !username || !email || !password) {
         res.status(400)
