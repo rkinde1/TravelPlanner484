@@ -3,15 +3,15 @@
 # Spring Break Features to do list:
 -Delete row functionality in Itinerary.js
 
--Duplicate place row functionality in Itinerary.js
-
 -Connecting cost of place to Budget feature
-
--Figure out how to save the data and send it to backend
 
 -make a landing page with the person's name
 
--make a create project page
+-Redirecting after login
+
+-Making routes private unless there is a user in GET request
+
+-sending data to backend from Itinerary as an array
 
 # Garett: Budget Feature
 # Tosin: Reservations page
