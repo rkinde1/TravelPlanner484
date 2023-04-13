@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const { register, updateUser, deleteUser } = require('../controllers/userController');
+const { register, login, updateUser, deleteUser } = require('../controllers/userController');
 const { protect } = require('../middleware/authMiddleware');
 
 // Given this route if its get request do getUser, if post request do createUser.
