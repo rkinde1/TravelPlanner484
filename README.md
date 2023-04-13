@@ -13,6 +13,10 @@
 
 -sending data to backend from Itinerary as an array
 
+-edit profile setting
+
+-delete project setting
+
 # Garett: Budget Feature
 # Tosin: Reservations page
 # Dan: NavBar
