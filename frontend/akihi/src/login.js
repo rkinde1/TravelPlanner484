@@ -1,5 +1,6 @@
 import React, {useState } from "react";
 import {Navigate} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 function Login () {
     //After login, redirect to profile page
@@ -8,7 +9,7 @@ function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     let handleSubmit = async (username, password) => {
-            await fetch("/api/login/", {
+            await fetch("http://localhost:3000/login", {
                 method: "POST", 
                 body: JSON.stringify({
                     username : username,
@@ -24,10 +25,11 @@ function Login () {
                 setPassword('');
                 console.log(data);
             })
+
     }
     return(
         <div>
-            <form method="POST" action="/api/login/" onSubmit={handleSubmit}>
+            <form method="POST" className="form-group" action="" onSubmit={handleSubmit}>
                 <fieldset>
                     <h1>Login</h1>
                     <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
@@ -37,11 +39,11 @@ function Login () {
                     <button type="submit" onClick = {() => {setGoToContact(true)}}>Login</button>
                 </fieldset>
             </form>
-            <p div = "line">
+            <p>
                     Don't have an account?<br/>
                     <span className = "line">
                         {/*router link goes here*/}
-                        <a href = "/Signup">Sign up</a>
+                        <Link to={'/signup'} className="border">Signup</Link>
                     </span>
                 </p>
         </div>

@@ -8,7 +8,6 @@ import NavBar from './navbar.js';
 user to input name, location, start, and end date
 The location will send a request to Google Maps API
 The start and end date will send data to Date
-
 */
 function CreateProjectButton() {
     return (
@@ -31,37 +30,17 @@ function Notes() {
     );
 }
 
-//Will display date field set in which notes is under
-function Date() {
-    //This is how we add another date on here
-    //The duplicate cannot include the day here
+function Event() {
     const[showMessage, setShowMessage] = useState(false);
-    let addNewRow = () => {
-        var div = document.getElementById('duplicate'),
-        clone = div.cloneNode(true);
-        clone.id = "some_id";
-        document.body.appendChild(clone);
-    }
-    return(
-        <div>
-            <p>Toggle Google Maps?</p><ToggleGoogle />
-            <fieldset id='duplicate'>
-                <form method="GET" action="">
-                    <div className="flex-container">
-                        <button onClick={addNewRow}>+</button>
-                        <button className="expand">Expand</button> 
-                        <h1>Day 1</h1> 
-                        <hr></hr>
-                    </div>
-                    <div className="flex-container">
-                        <button>+</button>
-                        <select>
+    return (
+        <div className="flex-container">
+                        <select className="category">
                             <option value="Flight">Flight</option>
                             <option value="hotel">Hotel</option>
                             <option value="Restaurant">Restaurant</option>
                             <option value="other">Other</option>
                         </select>
-                        <input type="time" placeholder="Arrival Time"></input>
+                        <input type="time" placeholder="Arrival Time" className="time"></input>
                         <div
                             onMouseEnter={() => {
                                 setShowMessage(true);
@@ -73,13 +52,41 @@ function Date() {
                             <input type="textfield" placeholder="place" className="place"></input>
                             {showMessage && <Notes />}
                         </div>
-                        <input type="number" placeholder="Cost"></input>
-                        <button>Delete Row</button>
+                        <input type="number" placeholder="Cost" className="cost"></input>
+                        <input type="submit" name="Confirm Changes"/>
+                    </div>
+    );
+}
+
+//Will display date field set in which notes is under
+function Date() {
+    //This is how we add another date on here
+    //The duplicate cannot include the day here
+    const [event, setEvent] = useState([<Event key={0} />])
+    let addNewRow = (e) => {
+        e.preventDefault()
+        setEvent([...event, <Event key={event.length} />]);
+        // var div = document.getElementById('duplicate'),
+        // clone = div.cloneNode(true);
+        // clone.id = "some_id";
+        // document.body.appendChild(clone);
+    }
+    return(
+        <div>
+            <fieldset>
+                <form method="GET" action="">
+                    <div className="flex-container">
+                        {/* <button className="expand">Expand</button>  */}
+                        {/* <h1>Day 1</h1>  */}
+                        <h1>Itinerary Events</h1>
+                        <button onClick={addNewRow}>+</button>
+                        {event}
                     </div>
                 </form>
+                <p>Toggle Google Maps?</p><ToggleGoogle />
             </fieldset>
         </div>
     );
 }
 
-export {Notes, CreateProjectButton, Date};
+export {Notes, CreateProjectButton, Date, Event};
