@@ -33,7 +33,7 @@ function Signup () {
 
     return(
         <div className = "screen">
-            <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group form-control no border">
+            <form method="POST" action="/api/signup/" onSubmit={handleSubmit} className="form-group form-control no border">
                     <div className = "inputContainer">
                     <h1>Signup</h1>
                     <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
