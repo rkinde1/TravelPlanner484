@@ -8,7 +8,6 @@ import NavBar from './navbar.js';
 user to input name, location, start, and end date
 The location will send a request to Google Maps API
 The start and end date will send data to Date
-
 */
 function CreateProjectButton() {
     return (
