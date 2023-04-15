@@ -41,6 +41,7 @@ function Event() {
                             <option value="other">Other</option>
                         </select>
                         <input type="time" placeholder="Arrival Time" className="time"></input>
+                        <input type="number" placeholder="Cost" className="cost"></input>
                         <div
                             onMouseEnter={() => {
                                 setShowMessage(true);
@@ -52,8 +53,6 @@ function Event() {
                             <input type="textfield" placeholder="place" className="place"></input>
                             {showMessage && <Notes />}
                         </div>
-                        <input type="number" placeholder="Cost" className="cost"></input>
-                        <input type="submit" name="Confirm Changes"/>
                     </div>
     );
 }
@@ -79,7 +78,7 @@ function Date() {
                         {/* <button className="expand">Expand</button>  */}
                         {/* <h1>Day 1</h1>  */}
                         <h1>Itinerary Events</h1>
-                        <button onClick={addNewRow}>+</button>
+                        <button onClick={addNewRow}>Add Event</button>
                         {event}
                     </div>
                 </form>

@@ -21,8 +21,12 @@ const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
     
     console.log(req.body)
+<<<<<<< HEAD
     const firstname = req.body.fname;
     const lastname = req.body.lname;
+=======
+    const {firstName,lastName, username, email, password} = req.body;
+>>>>>>> a1fed32679d36557000fadbf509d64c0c805ad8e
 
     const { username, email, password} = req.body;
 
