@@ -10,7 +10,7 @@ function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     let handleSubmit = async (username, password) => {
-            await fetch("http://localhost:3000/login", {
+            await fetch("/api/login/", {
                 method: "POST", 
                 body: JSON.stringify({
                     username : username,
@@ -30,7 +30,7 @@ function Login () {
     }
     return(
         <div className="signupFrm">
-            <form method="POST"  action="" onSubmit={handleSubmit}>
+            <form method="POST"  action="/api/login/" onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div class="inputContainer">
                     <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>
