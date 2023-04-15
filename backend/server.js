@@ -23,7 +23,7 @@ app.use('/api/itinerary', require('./routes/itineraryRoute'));
 
 
 app.use('*', (req, res) => {
-    res.send('404! This not a valid URL.')
+    res.status(404).json({message: 'Page not found'});
 })
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

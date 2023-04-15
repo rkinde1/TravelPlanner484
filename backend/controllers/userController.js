@@ -19,13 +19,11 @@ const getUser = asyncHandler(async (req,res) => {
 
 const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
-    
-    console.log(req.body)
+
     const firstName = req.body.fname;
     const lastName = req.body.lname;
-    const {username, email, password} = req.body;
+    const { username, email, password } = req.body;
 
-    console.log(firstName)
 
     if (!firstName || !lastName || !username || !email || !password) {
         res.status(400)
@@ -54,6 +52,7 @@ const register = asyncHandler(async (req,res) => {
     const user = await User.create({
         firstName,
         lastName,
+        username,
         email,
         password: hashedPassword,
     })
