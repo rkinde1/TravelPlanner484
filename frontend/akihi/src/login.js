@@ -1,6 +1,7 @@
 import React, {useState } from "react";
 import {Navigate} from 'react-router-dom';
 import {Link } from 'react-router-dom';
+import styles from './login.css';
 
 function Login () {
     //After login, redirect to profile page
@@ -9,7 +10,7 @@ function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     let handleSubmit = async (username, password) => {
-            await fetch("http://localhost:3000/login", {
+            await fetch("/api/login/", {
                 method: "POST", 
                 body: JSON.stringify({
                     username : username,
@@ -28,24 +29,29 @@ function Login () {
 
     }
     return(
-        <div>
-            <form method="POST" className="form-group" action="" onSubmit={handleSubmit}>
-                <fieldset>
+        <div className="signupFrm">
+            <form method="POST"  action="/api/login/" onSubmit={handleSubmit}>
                     <h1>Login</h1>
-                    <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                    <div class="inputContainer">
+                    <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                    </div>
                     <br></br>
-                    <input type="password" name="password" placeholder="Password" value={password} onChange = {(e) => setPassword(e.target.value)}></input>
+                    <div class="inputContainer">
+                    <input type="password" name="password" placeholder="Password" required value={password} onChange = {(e) => setPassword(e.target.value)}></input>
+                    </div>
                     <br></br>
-                    <button type="submit" onClick = {() => {setGoToContact(true)}}>Login</button>
-                </fieldset>
-            </form>
-            <p>
+                    <div>
+                    <button type="submit" className = "hvr-grow btn" onClick = {() => {setGoToContact(true)}}>Login</button>
+                    </div>
+                <br></br>
+                <p>
                     Don't have an account?<br/>
                     <span className = "line">
                         {/*router link goes here*/}
                         <Link to={'/signup'} className="border">Signup</Link>
                     </span>
                 </p>
+            </form>
         </div>
     );
 }

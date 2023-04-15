@@ -1,0 +1,132 @@
+*{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.nav{
+    background-color: #EEEEEE;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 48rem;
+    margin-bottom: 20px;
+}
+
+.container{
+    float: right;
+    width: auto;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    justify-content: center;
+}
+
+
+.left{
+    float: left;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    gap: 1rem;
+}
+
+
+.site-title{
+    font-size: 2rem;
+}
+
+.nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    float: right;
+    font-size: 20px;
+}
+
+.nav li{
+    font-weight: bold;
+    display: inline-block;
+}
+nav{
+    align-items: center;       /* center ul container vertically */
+    justify-content: center; 
+    list-style: none;
+}
+
+li:hover{
+    color: #16e9e676;
+
+  }
+
+
+.nav a{
+    color: inherit;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: .25rem;
+    float: right;
+}
+
+.nav li.active{
+    background-color: aqua;
+}
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+
+  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  @media screen and (max-width: 850px){
+    .NavbarItems{
+        z-index: 99;
+    }
+
+    .nav-menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .form-container {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: all 0.6s ease-in-out;
+    }
+
+    body{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        background-color: white; 
+    }
+
+  }
+
+
+ 
+  
+

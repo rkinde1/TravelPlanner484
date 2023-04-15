@@ -10,7 +10,9 @@ function Hero(){
             <div className='hero-container'>
                 <video src={video} muted autoPlay loop type="video/mp4"></video>
                 <h1> START YOUR DREAM TO TRAVEL</h1>
-                <p>No Need To Remember We Do It For You</p>
+                <p>No Need To Remember We Do It For You</p> 
+                <br></br>
+                <br></br>
 
             <a href="/signup" className="btn btn-primary">Book Today!</a>
 
