@@ -21,7 +21,9 @@ const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
     
     console.log(req.body)
-    const {firstName,lastName, username, email, password} = req.body;
+    const firstName = req.body.fname;
+    const lastName = req.body.lname;
+    const {username, email, password} = req.body;
 
     console.log(firstName)
 
@@ -63,7 +65,7 @@ const register = asyncHandler(async (req,res) => {
             _id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email,
+            username: user.username,
             password: user.password,
             email: user.email,
             token: generateToken(user.id)

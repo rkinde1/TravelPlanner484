@@ -9,21 +9,19 @@ function Signup () {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [setPosts] = useState([]);
     let handleSubmit = async (fname, lname, email, username, password) => {
             await fetch("/api/signup", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
                     lname : lname,
-                    username, username,
+                    username: username,
                     email : email,
                     password : password
                 }),
             })
             .then((response) => response.json())
             .then((data) => {
-                setPosts((posts) => [data, ...posts]);
                 setFname('')
                 setLname('')
                 setPassword('');
@@ -33,7 +31,7 @@ function Signup () {
 
     return(
         <div className = "screen">
-            <form method="POST" action="/api/signup/" onSubmit={handleSubmit} className="form-group form-control no border">
+            <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group form-control no border">
                     <div className = "inputContainer">
                     <h1>Signup</h1>
                     <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
