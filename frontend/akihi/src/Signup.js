@@ -9,21 +9,20 @@ function Signup () {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [setPosts] = useState([]);
+    
     let handleSubmit = async (fname, lname, email, username, password) => {
             await fetch("/api/signup", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
                     lname : lname,
-                    username, username,
+                    username: username,
                     email : email,
                     password : password
                 }),
             })
             .then((response) => response.json())
             .then((data) => {
-                setPosts((posts) => [data, ...posts]);
                 setFname('')
                 setLname('')
                 setPassword('');

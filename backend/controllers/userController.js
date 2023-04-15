@@ -21,11 +21,14 @@ const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
     
     console.log(req.body)
-    const {firstName,lastName, username, email, password} = await req.body;
+    const firstname = req.body.fname;
+    const lastname = req.body.lname;
 
-    console.log(firstName)
+    const { username, email, password} = req.body;
 
-    if (!firstName || !lastName || !username || !email || !password) {
+    console.log(firstname)
+
+    if (!firstname || !lastname || !username || !email || !password) {
         res.status(400)
         throw new Error("Please submit all fields");
     }

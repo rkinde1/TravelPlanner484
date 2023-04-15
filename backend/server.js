@@ -19,11 +19,11 @@ app.use('/api/signup', require('./routes/signUpRoute')); //
 app.use('/api/login', require('./routes/loginRoute')); // Both of these will use middleware in the userController
 app.use('/api/itinerary', require('./routes/itineraryRoute'));
 
-app.use('/api/vacation', require('./routes/vacationRoute'));
+//app.use('/api/vacation', require('./routes/vacationRoute'));
 
 
 app.use('*', (req, res) => {
-    res.send('404! This not a valid URL.')
+    res.status(404).json({message: 'Page not found'});
 })
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
