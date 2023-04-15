@@ -10,11 +10,7 @@ function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     let handleSubmit = async (username, password) => {
-<<<<<<< HEAD
-            await fetch("api/login", {
-=======
             await fetch("/api/login/", {
->>>>>>> a1fed32679d36557000fadbf509d64c0c805ad8e
                 method: "POST", 
                 body: JSON.stringify({
                     username : username,

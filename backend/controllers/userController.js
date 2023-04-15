@@ -19,15 +19,13 @@ const getUser = asyncHandler(async (req,res) => {
 
 const register = asyncHandler(async (req,res) => {
     //Take params from body and store them
-    
-    console.log(req.body)
+
     const firstName = req.body.fname;
     const lastName = req.body.lname;
-    const {username, email, password} = req.body;
+    const { username, email, password } = req.body;
 
-    console.log(firstname)
 
-    if (!firstname || !lastname || !username || !email || !password) {
+    if (!firstName || !lastName || !username || !email || !password) {
         res.status(400)
         throw new Error("Please submit all fields");
     }
@@ -54,6 +52,7 @@ const register = asyncHandler(async (req,res) => {
     const user = await User.create({
         firstName,
         lastName,
+        username,
         email,
         password: hashedPassword,
     })
