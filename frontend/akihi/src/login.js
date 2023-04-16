@@ -43,7 +43,6 @@ function Login () {
                     <div>
                     <button type="submit" className = "hvr-grow btn" onClick = {() => {setGoToContact(true)}}>Login</button>
                     </div>
-                <br></br>
                 <p>
                     Don't have an account?<br/>
                     <span className = "line">
