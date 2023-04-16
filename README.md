@@ -17,7 +17,7 @@
 
 -delete project setting
 
-# Garett: Budget Feature
+# Garret: Budget Feature
 # Tosin: Reservations page
 # Dan: NavBar
 # Ibana: Home Page + Not Found page
