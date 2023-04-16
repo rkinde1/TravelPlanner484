@@ -78,6 +78,7 @@ h1{
   font-weight: 700;
   cursor: pointer;
   align-items: center;
+  width: 200px;
 }
 
 .btn svg {
