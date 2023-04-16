@@ -1,0 +1,132 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/*favicon color; 4CD9CC*/
+body {
+  font-family: 'Forum';
+  height: 100vh;
+  background-color:#16e9e676;
+  overflow: auto;
+}
+
+
+
+.background {
+  background-color:#16e9e676;
+}
+
+a, .line {
+  text-decoration: none;
+  color: blue;
+}
+
+body {
+  line-height: 2;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 60px;
+}
+
+.form,
+.content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.form-group label {
+  text-align: left;
+  display: block;
+  margin: 0 0 5px 3px;
+} 
+
+button {
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background: #3291E9;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100px; 
+  /* text-align: center;
+  appearance: button;
+  display: flex; */
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.btn-block {
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+
+/*Have no idea what is going on above this so inserting css for navbar -Rose*/
+.nav {
+  height: 11%;
+  text-align: center;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+
+.center {
+  justify-content: space-between;
+  display: flex;
+}
+
+hr {
+  border-bottom: 1px solid #000000;
+}
+
+/*.border {
+  border: 2px solid black;
+  width: 25%;
+  height: 25%;
+}*/
+

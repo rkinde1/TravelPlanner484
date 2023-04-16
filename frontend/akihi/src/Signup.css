@@ -1,0 +1,112 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+      width: 100%;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.form-group{
+
+  justify-content: center;
+  background-color: white;
+  width: 400px;
+  height: 500px;
+  padding: 20px 40px;
+  box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+form{
+  align-items: center;
+  margin:auto;  
+  
+}
+
+input{
+  font-size: 16px;
+  
+}
+
+.inputContainer{
+  margin-left: auto;
+  margin-right:auto;
+
+}
+
+p {
+  line-height: 1.7;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ff0101;
+  border-radius: 5px;
+  position: relative;
+  height: 30px;
+  width: 90%;
+  margin-bottom: 7px;
+  height: 38px;
+
+}
+
+h1{
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 2px;
+  border-radius: 5px;
+  background: #24d8e8;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  align-items: center;
+  width: 200px;
+}
+
+.btn svg {
+  margin-right: 8px;
+}
+
+.btn-reverse {
+  background: #fff;
+  color: #000;
+}
+
+.btn-block {
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
