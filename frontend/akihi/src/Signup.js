@@ -10,8 +10,11 @@ function Signup () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [verifypassword, setVerifyPassword] = useState("");
+    
     let handleSubmit = async (fname, lname, email, username, password) => {
-            await fetch("/api/signup", {
+            
+        
+        await fetch("/api/signup", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
@@ -30,37 +33,9 @@ function Signup () {
             })
     }
 
-    function registerWarden() {
-        
-        if (password.length < 6) {
-            alert("password must be at least 6 characters long");
-            return false;
-        }
-    
-        if (password.length > 24) {
-            alert("password must be less than 24 characters long");
-            return false;
-        }
-        
-        return true;  
-    }
-    
-    
-    function passMatch () {
-    
-        if (password != verifypassword) {
-            window.alert("Ensure passwords match");
-            return false;
-            
-        }
-        else {
-            return true;
-        }
-    } 
-
     return(
         <div className = "screen">
-            <form method="POST" action="/api/signup" onSubmit={registerWarden && passMatch && handleSubmit} className="form-group form-control no border">
+            <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group form-control no border">
                     <div className = "inputContainer">
                     <h1>Signup</h1>
                     <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
