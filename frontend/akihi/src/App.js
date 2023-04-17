@@ -9,7 +9,7 @@ import Home from "./Home";
 
 function App() {
   return (
-    <Home />
+    <Home/>
     <BrowserRouter>
     <div className="App">
       <div className="home">

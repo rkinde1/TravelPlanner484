@@ -29,7 +29,6 @@ const options = {
   url: 'https://skyscanner-api.p.rapidapi.com/v3e/hotels/live/search/poll/1/%7BsessionToken%7D',
   headers: {
 
-  }
 };
 
 axios.request(options).then(function (response) {
