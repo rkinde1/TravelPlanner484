@@ -1,15 +1,14 @@
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
 
 const vacationSchema = mongoose.Schema({
-    UserID: Number,
-    vacationID: Number,
+    userID: ObjectId,
+    vacationName: String,
     startDate: Date,
     endDate: Date,
     country: String,
-    budget: Number,
     NumberOfDays: Number,
-    VacationNum: Number
 });
 
-module.exports = mongoose.model('Vacation', vacationSchema);
+module.exports = mongoose.model('Vacation', vacationSchema, 'Vacations');
