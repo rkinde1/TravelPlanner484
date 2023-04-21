@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 export function UserInfo(){
     //Here will we will also show the user's currect made projects
     const fname = localStorage.getItem('fname');
-    const username = JSON.parse(localStorage.getItem("username"));
+    const username = localStorage.getItem("username");
     const email = localStorage.getItem('email');
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();

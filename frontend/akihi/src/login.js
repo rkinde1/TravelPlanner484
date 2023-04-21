@@ -13,34 +13,24 @@ function Login () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-    let handleSubmit = (username, email, token) => {
-        fetch('/api/login', {
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+        await fetch('/api/login', {
             method: 'POST',
           })
           .then(res => {
             //This is not navigating
             //Also goes to api/login
-            if (res.status === 200) {
-                res.json();
-                navigate('/profile');
-            }
-            else {
-                alert('Invalid Credentials');
-            }
+            res.json();
+            // localStorage.setItem("token", res['token']);
+            localStorage.setItem("username", res.json() );
+            // localStorage.setItem("email", res.email);
+            navigate('/profile');
           })
-          .then(data => {
-            //Insert if statement
-            //If message or status is invalid do not redirect
-            //If login is successful, redirect to profile and store token, username, and email in website 
-            if (data.statusText === "OK") {
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("username", JSON.stringify(data.username));
-                localStorage.setItem("email", data.email);
-                navigate('/profile');
-            } else {
-                alert("Wrong Credentials");
-            }
-         })
+          .then (data => {
+//Save data here
+//This is not working for some reason
+          })
           .catch(err => { console.log(err) })
     }
     return(
