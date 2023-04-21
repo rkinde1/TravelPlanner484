@@ -1,36 +1,51 @@
 import React, {useState } from "react";
-import {Navigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Link } from 'react-router-dom';
 import styles from './login.css';
 
+
+//Need to talk to Jal or someone else after preventing the page from redirecting to api/login
 function Login () {
     //After login, redirect to profile page
     const[goToContact, setGoToContact] = React.useState(false);
-
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    let handleSubmit = async (username, password) => {
-            await fetch("/api/login/", {
-                method: "POST", 
-                body: JSON.stringify({
-                    username : username,
-                    password : password
-                }),
-                headers: {
-                    'Content-type' : 'application/json; charset=UTF-8',
-                },
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                setUsername('');
-                setPassword('');
-                console.log(data);
-            })
-
+    const [message, setMessage] = useState("");
+    let handleSubmit = (username, email, token) => {
+        fetch('/api/login', {
+            method: 'POST',
+          })
+          .then(res => {
+            //This is not navigating
+            //Also goes to api/login
+            if (res.status === 200) {
+                res.json();
+                navigate('/profile');
+            }
+            else {
+                alert('Invalid Credentials');
+            }
+          })
+          .then(data => {
+            //Insert if statement
+            //If message or status is invalid do not redirect
+            //If login is successful, redirect to profile and store token, username, and email in website 
+            if (data.statusText === "OK") {
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("username", JSON.stringify(data.username));
+                localStorage.setItem("email", data.email);
+                navigate('/profile');
+            } else {
+                alert("Wrong Credentials");
+            }
+         })
+          .catch(err => { console.log(err) })
     }
     return(
         <div className="signupFrm">
-            <form method="POST"  action="/api/login/" onSubmit={handleSubmit}>
+            <form method="POST"  action="/api/login" onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div class="inputContainer">
                     <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>

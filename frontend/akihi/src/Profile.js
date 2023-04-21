@@ -1,21 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 export function UserInfo(){
     //Here will we will also show the user's currect made projects
-    const firstName = localStorage.getItem('first-name')
-    const lastName = localStorage.getItem('first-name')
-    const email = localStorage.getItem('email')
-    const dob = localStorage.getItem('date-of-birth')
+    const fname = localStorage.getItem('fname');
+    const username = JSON.parse(localStorage.getItem("username"));
+    const email = localStorage.getItem('email');
+    const [message, setMessage] = useState(null);
+    const navigate = useNavigate();
+  //   useEffect(() => {
+  //     const fetchToken = async () => {
+  //         const response = await fetch('/api/login/')
+  //         const json = await response.json()
+  //         if (response.ok) {
+  //             navigate('/profile');
+  //             setMessage(json);
+  //         }
+  //     }
+  // }, [])
   
     //This is very plain and will be edited later on
     return(
       
       <div className = "UserInfo">
         <fieldset>
-          <h1>Welcome!</h1>
-          <h3>Name: <span id = "first-name"></span></h3>
-          <h3>Email: </h3>
-          <h3>Member Since: </h3>
+          <h1>Welcome {fname}</h1>
+          <h3>Name: {username} <span id = "first-name"></span></h3>
+          <h3>Email: {email}</h3>
           <h3>Number of Projects: </h3>
         </fieldset>
      </div>

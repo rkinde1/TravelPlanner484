@@ -19,6 +19,9 @@ app.use('/api/signup', require('./routes/signUpRoute')); //
 app.use('/api/login', require('./routes/loginRoute')); // Both of these will use middleware in the userController
 app.use('/api/itinerary', require('./routes/itineraryRoute'));
 
+app.use('/vacation', (req, res) => {
+    res.send(req.body);
+})
 //app.use('/api/vacation', require('./routes/vacationRoute'));
 
 

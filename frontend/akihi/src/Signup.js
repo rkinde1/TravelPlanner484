@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Signup.css'
 import {redirect} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Link } from 'react-router-dom';
 
 function Signup () {
@@ -9,6 +10,7 @@ function Signup () {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
     let handleSubmit = async (fname, lname, email, username, password) => {
             await fetch("/api/signup", {
                 method: "POST", 
@@ -20,12 +22,9 @@ function Signup () {
                     password : password
                 }),
             })
-            .then((response) => response.json())
+            .then((response) => navigate('/login'))
             .then((data) => {
-                setFname('')
-                setLname('')
-                setPassword('');
-                console.log(data);
+                navigate('/login')
             })
     }
 
