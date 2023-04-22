@@ -1,8 +1,9 @@
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
 
 const itinerarySchema = mongoose.Schema({
-
+    VacationNum: ObjectId,
     ItineraryNum: Number,
     startDate: Date,
     endDate: Date,
