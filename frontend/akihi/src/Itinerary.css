@@ -18,27 +18,38 @@
 
 .flex-container {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     flex-wrap: wrap;
-    justify-content: space-around; /* aligns items at end of container*/
-    align-items: center;
+    /* align-items: center;  */
     padding: 5px; 
-    height: 100px;
-    border-bottom: 1px solid #000000;
+    height: 50%;
+    width: 100%; 
 }
 
+/* Sets the size of each box in Itineary*/
 .place {
-    width: 100%;
-    height: 100;
+    width: 200px; 
+    flex-wrap: wrap;
 }
 
 fieldset {
     margin: 15px;
     background-color: rgb(255, 255, 255);
-    width: 400x;
 }
 
 textarea {
-    width:100%;
+    width: 200px;
     height:100%;
+}
+
+.category {
+    width: 10%;
+}
+
+.time {
+    width: 15%;
+}
+
+.cost {
+    width:10%;
 }

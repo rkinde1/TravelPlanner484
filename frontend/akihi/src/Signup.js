@@ -9,21 +9,23 @@ function Signup () {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [setPosts] = useState([]);
+    const [verifypassword, setVerifyPassword] = useState("");
+    
     let handleSubmit = async (fname, lname, email, username, password) => {
-            await fetch("http://localhost:3000/signup", {
+            
+        
+        await fetch("/api/signup", {
                 method: "POST", 
                 body: JSON.stringify({
                     fname : fname,
                     lname : lname,
-                    username, username,
+                    username: username,
                     email : email,
                     password : password
                 }),
             })
             .then((response) => response.json())
             .then((data) => {
-                setPosts((posts) => [data, ...posts]);
                 setFname('')
                 setLname('')
                 setPassword('');
@@ -56,7 +58,7 @@ function Signup () {
 
                     <input type="password" id="password" placeholder="Password" name ="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     <br></br>
-                    <input type="password" id="verifypassword" placeholder="Verify Password"></input>
+                    <input type="password" id="verifypassword" placeholder="Verify Password" name="verifyPassword" value={verifypassword} onChange={(e) => setVerifyPassword(e.target.value)}></input>
                     <br></br>
                     <button type="submit" className = "hvr-grow btn" id = "submit">Sign Up</button>
                 <br></br>

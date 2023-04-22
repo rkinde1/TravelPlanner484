@@ -1,18 +1,20 @@
 import React, {useState} from "react";
+import './App.css';
 
 export default function CreateProjectPage () {
-    const [vacation_id, setVacationId] = useState("");
+    const [vacation_name, setVacationName] = useState("");
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
     const [country, setCountry] = useState("");
-    let handleSubmit = async (vacation_id, start_date, end_date, country) => {
-            await fetch("http://localhost:3000/vacation", {
+    let handleSubmit = async (vacation_name, start_date, end_date, country) => {
+        window.alert('Vacation has been created');
+            await fetch("/api/vacation", {
                 method: "POST", 
                 body: JSON.stringify({
-                    vacation_id : vacation_id,
+                    vacation_name : vacation_name,
                     start_date : start_date,
                     end_date : end_date,
-                    country : country
+                    country : country,
                 }),
                 headers: {
                     'Content-type' : 'application/json; charset=UTF-8',
@@ -27,17 +29,23 @@ export default function CreateProjectPage () {
     //will redirect to itinerary
     return (
         <div>
-            <form method="POST" action="" onSubmit={handleSubmit}> 
-                <label>Name:</label>
-                <input type="text" name="vacation_id" placeholder="name of vacation" value={vacation_id} onChange={(e) => setVacationId(e.target.value)}></input>
-                <label>Starting date</label>
-                <input type="date" name="start" placeholder="start date" value={start_date} onChange={(e) => setStartDate(e.target.value)}></input>
-                <label>End date</label>
-                <input type="date" name="end" placeholder="end date" value={end_date} onChange={(e) => setEndDate(e.target.value)}></input>
-                <label>Country</label>
-                <input type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
-                <input type="submit"></input>
-            </form>
+            <fieldset>
+                <form method="POST" action="/api/vacation" onSubmit={handleSubmit} className="form-group"> 
+                    <h1>Fill out this form to start your Itinerary</h1>
+                    <label>Name:</label>
+                    <input type="text" name="vacation_name" placeholder="name of vacation" value={vacation_name} onChange={(e) => setVacationName(e.target.value)}></input>
+                    <br></br>
+                    <label>Starting date</label>
+                    <input type="date" name="start" placeholder="start date" value={start_date} onChange={(e) => setStartDate(e.target.value)}></input>
+                    <br></br>
+                    <label>End date</label>
+                    <input type="date" name="end" placeholder="end date" value={end_date} onChange={(e) => setEndDate(e.target.value)}></input>
+                    <br></br>
+                    <label>Country</label>
+                    <input type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
+                    <button type="submit">Create</button>
+                </form>
+            </fieldset>
         </div>
     )
 }

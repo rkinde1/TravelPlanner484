@@ -10,7 +10,7 @@ function Login () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     let handleSubmit = async (username, password) => {
-            await fetch("http://localhost:3000/login", {
+            await fetch("/api/login/", {
                 method: "POST", 
                 body: JSON.stringify({
                     username : username,
@@ -30,20 +30,19 @@ function Login () {
     }
     return(
         <div className="signupFrm">
-            <form method="POST"  action="" onSubmit={handleSubmit}>
+            <form method="POST"  action="/api/login/" onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div class="inputContainer">
-                    <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                    <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>
                     </div>
                     <br></br>
                     <div class="inputContainer">
-                    <input type="password" name="password" placeholder="Password" value={password} onChange = {(e) => setPassword(e.target.value)}></input>
+                    <input type="password" name="password" placeholder="Password" required value={password} onChange = {(e) => setPassword(e.target.value)}></input>
                     </div>
                     <br></br>
                     <div>
                     <button type="submit" className = "hvr-grow btn" onClick = {() => {setGoToContact(true)}}>Login</button>
                     </div>
-                <br></br>
                 <p>
                     Don't have an account?<br/>
                     <span className = "line">

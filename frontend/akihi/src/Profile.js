@@ -7,14 +7,17 @@ export function UserInfo(){
     const email = localStorage.getItem('email')
     const dob = localStorage.getItem('date-of-birth')
   
+    //This is very plain and will be edited later on
     return(
       
       <div className = "UserInfo">
+        <fieldset>
           <h1>Welcome!</h1>
           <h3>Name: <span id = "first-name"></span></h3>
           <h3>Email: </h3>
           <h3>Member Since: </h3>
           <h3>Number of Projects: </h3>
+        </fieldset>
      </div>
     ) 
 }
