@@ -1,16 +1,16 @@
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
 
 const itinerarySchema = mongoose.Schema({
-
-    ItineraryNum: Number,
-    startDate: Date,
-    endDate: Date,
-    NameOfPlace: String,
-    TypeOfDest: String,
-    NumberOfDays: Number,
-    VacationNum: Number
+    userID: ObjectId,
+    VacationNum: ObjectId,
+    startDate: {type:Date, select:true},
+    endDate: {type:Date, select:true},
+    NameOfPlace: {type:String, select:true},
+    TypeOfDest: {type:String, select:true},
+    NumberOfDays: {type:Number, select:true},
 });
 
-module.exports = mongoose.model('Itenerary', itinerarySchema);
+module.exports = mongoose.model('Itinerary', itinerarySchema, 'Itineraries');
 

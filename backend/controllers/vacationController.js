@@ -21,15 +21,14 @@ const createVacation = asyncHandler(async (req, res) => {
     }
 
     const vacation = new Vacation({
-        userID,
-        vacationName,
-        startDate,
-        endDate,
-        country,
-        NumberOfDays,
+        userID: userID,
+        vacationName: vacationName,
+        startDate: startDate,
+        endDate: endDate,
+        country: country,
+        NumberOfDays: NumberOfDays,
     });
-   
-    if (vacation) {
+
         await vacation.save();
         
         return res.status(201).json({
@@ -41,10 +40,6 @@ const createVacation = asyncHandler(async (req, res) => {
             country: vacation.country,
             days: vacation.NumberOfDays,
         });
-    } else {
-        res.status(400);
-        throw new Error('Invalid vacation data');
-    }
 });
 
 const getVacations = asyncHandler(async (req, res) => {
