@@ -87,7 +87,7 @@ const login = asyncHandler(async(req,res) => {
             username: user.username,
             email: user.email,
             token: generateToken(user._id),
-        })
+        });
         
     } else {             
                             //   Else there was invalid credentials

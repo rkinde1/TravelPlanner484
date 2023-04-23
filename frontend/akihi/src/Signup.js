@@ -11,24 +11,22 @@ function Signup () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    let handleSubmit = async (e, fname, lname, email, username, password) => {
+    const json = useState('');
+    let handleSubmit = async (e) => {
         e.preventDefault();
             await fetch("/api/signup", {
                 method: "POST", 
-                body: JSON.stringify({
-                    fname : fname,
-                    lname : lname,
-                    username: username,
-                    email : email,
-                    password : password
-                }),
+                header: {
+                    'Accept': 'application/json',
+                },
             })
             .then((response) => {
-            if (response.statusText !== "400")
-                navigate('/login')
-            else {
-                alert('Please fill in all fields');
-            }
+                alert(JSON.stringify(response.json()))
+                if (response.json === "OK")
+                    navigate('/login')
+                else {
+                    alert('Please fill in all fields');
+                }
             })
             // .then((data) => {
             //     navigate('/login')

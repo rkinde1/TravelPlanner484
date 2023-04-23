@@ -13,15 +13,18 @@ function Login () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-    let handleSubmit = async (e) => {
+    let handleSubmit = (e) => {
+        //Prevents form redirecting to backend ('/api/login')
         e.preventDefault();
-        await fetch('/api/login', {
-            method: 'POST',
+        fetch('/api/login', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
           })
           .then(res => {
-            //This is not navigating
-            //Also goes to api/login
-            res.json();
+            alert(JSON.stringify(res.json()));
             // localStorage.setItem("token", res['token']);
             localStorage.setItem("username", res.json() );
             // localStorage.setItem("email", res.email);
@@ -29,7 +32,7 @@ function Login () {
           })
           .then (data => {
 //Save data here
-//This is not working for some reason
+//This is not working for some reason when I put anything in here
           })
           .catch(err => { console.log(err) })
     }
