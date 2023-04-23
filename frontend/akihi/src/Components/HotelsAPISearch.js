@@ -1,19 +1,11 @@
-import { useState } from "react";
-import axios from "axios";
-
-function HotelAPISearch() {
+import{useState}from "react";
+function HotelsAPISearch() {
     const [location, setName] = useState("");
-
+    //const [hotels, setHotels] = useState([]);
     return (
-        <form>
-            <label>Where To:
-                <input
-                    type="text"
-                    value={location}
-                    onChange={(e) => setName(e.target.value)}
-                />
-            </label>
+        <form onSubmit={handleSubmit}>
+
         </form>
     )
 }
-export default HotelAPISearch
+export default HotelsAPISearch

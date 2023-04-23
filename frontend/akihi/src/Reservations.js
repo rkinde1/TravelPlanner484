@@ -2,7 +2,6 @@ import React from 'react'
 import './App.css'
 
 
-function Reservations(){
-
+function Reservations() {
 }
 export default Reservations
