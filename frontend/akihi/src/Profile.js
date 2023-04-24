@@ -3,22 +3,14 @@ import {useNavigate} from 'react-router-dom';
 
 export function UserInfo(){
     //Here will we will also show the user's currect made projects
+    
+    //Must be sent by backend after login
     const fname = localStorage.getItem('fname');
     const username = localStorage.getItem("username");
     const email = localStorage.getItem('email');
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();
-  //   useEffect(() => {
-  //     const fetchToken = async () => {
-  //         const response = await fetch('/api/login/')
-  //         const json = await response.json()
-  //         if (response.ok) {
-  //             navigate('/profile');
-  //             setMessage(json);
-  //         }
-  //     }
-  // }, [])
-  
+    
     //This is very plain and will be edited later on
     return(
       

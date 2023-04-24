@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import './App.css';
 
 export default function CreateProjectPage () {
@@ -6,12 +7,16 @@ export default function CreateProjectPage () {
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
     const [country, setCountry] = useState("");
-    let handleSubmit = async (vacation_id, start_date, end_date, country) => {
+    var message;
+    const navigate = useNavigate();
+    var myRequest = new Request('/api/vacation');
+    let handleSubmit = async (e, vacation_id, start_date, end_date, country) => {
+        e.preventDefault();
         window.alert('Vacation has been created');
+        // e.preventDefault();
         //Local.getitem username
-        //If username exists then redirect to profile
         //Profile needs to show all projects
-            await fetch("/vacation", {
+            await fetch(myRequest, {
                 method: "POST", 
                 body: JSON.stringify({
                     vacation_id : vacation_id,
@@ -23,10 +28,17 @@ export default function CreateProjectPage () {
                     'Content-type' : 'application/json; charset=UTF-8',
                 },
             })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
+            .then(function(response) {
+                return response.text().then(function(text) {
+                    message = text;
+                    alert(message);
+                    navigate('/itinerary')
+                });
+            });
+            // .then((data) => {
+            //     alert(data);
+            //     navigate('/login');
+            // })
     }
     //upon submission, it will send request to backend
     //will redirect to itinerary

@@ -21,16 +21,12 @@ function Signup () {
                 },
             })
             .then((response) => {
-                alert(JSON.stringify(response.json()))
-                if (response.json === "OK")
+                if (response === 201)
                     navigate('/login')
                 else {
                     alert('Please fill in all fields');
                 }
             })
-            // .then((data) => {
-            //     navigate('/login')
-            // })
     }
 
     return(

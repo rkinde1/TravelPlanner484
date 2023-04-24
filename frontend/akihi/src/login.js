@@ -2,6 +2,7 @@ import React, {useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import {Link } from 'react-router-dom';
 import styles from './login.css';
+import axios from 'axios'
 
 
 //Need to talk to Jal or someone else after preventing the page from redirecting to api/login
@@ -12,29 +13,42 @@ function Login () {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
-    let handleSubmit = (e) => {
+    const [token, setToken] = useState('');
+    var message;
+    let handleSubmit = async (e) => {
         //Prevents form redirecting to backend ('/api/login')
         e.preventDefault();
-        fetch('/api/login', {
-            method: 'GET',
+        await fetch('/api/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
           })
-          .then(res => {
-            alert(JSON.stringify(res.json()));
-            // localStorage.setItem("token", res['token']);
-            localStorage.setItem("username", res.json() );
-            // localStorage.setItem("email", res.email);
-            navigate('/profile');
-          })
-          .then (data => {
-//Save data here
-//This is not working for some reason when I put anything in here
-          })
-          .catch(err => { console.log(err) })
+        //   .then((res) => {
+        //     if (res.ok) {
+        //         res.json();
+        //         localStorage.setItem("email", res.email);
+        //         localStorage.setItem("username", res.username);
+        //         localStorage.setItem("token", res.token);
+        //         navigate('/profile', {state:{token: res.token}})
+        //     }
+        //     else {
+        //         alert("Unsuccessful");
+        //     }
+        //   })
+          .then(function(response) {
+            return response.json().then(function(text) {
+                localStorage.setItem("email", text.email);
+                localStorage.setItem("username", text.username);
+                localStorage.setItem("token", text.token);
+                alert("Successful");
+                navigate('/profile')
+            });
+        });
     }
     return(
         <div className="signupFrm">
