@@ -20,13 +20,27 @@ function Signup () {
                     'Accept': 'application/json',
                 },
             })
-            .then((response) => {
-                if (response === 201)
-                    navigate('/login')
-                else {
-                    alert('Please fill in all fields');
+            // .then((response) => {
+            //     if (response === 201)
+            //         navigate('/login')
+            //     else {
+            //         alert('Please fill in all fields');
+            //     }
+            // })
+            .then(function(response) {
+                alert(response.status);
+                if (response.status === 201){
+                    return response.json().then(function(text) {
+                            localStorage.setItem("email", text.email);
+                            localStorage.setItem("username", text.username);
+                            localStorage.setItem("token", text.token);
+                            alert("Successful");
+                            navigate('/profile')
+                    });
                 }
-            })
+                else 
+                    alert("error");
+            });
     }
 
     return(

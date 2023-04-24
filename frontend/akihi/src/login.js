@@ -28,26 +28,19 @@ function Login () {
                 'Content-Type': 'application/json'
             },
           })
-        //   .then((res) => {
-        //     if (res.ok) {
-        //         res.json();
-        //         localStorage.setItem("email", res.email);
-        //         localStorage.setItem("username", res.username);
-        //         localStorage.setItem("token", res.token);
-        //         navigate('/profile', {state:{token: res.token}})
-        //     }
-        //     else {
-        //         alert("Unsuccessful");
-        //     }
-        //   })
           .then(function(response) {
-            return response.json().then(function(text) {
-                localStorage.setItem("email", text.email);
-                localStorage.setItem("username", text.username);
-                localStorage.setItem("token", text.token);
-                alert("Successful");
-                navigate('/profile')
-            });
+            if (response.status == 200) {
+                return response.json().then(function(text) {
+                    localStorage.setItem("email", text.email);
+                    localStorage.setItem("username", text.username);
+                    localStorage.setItem("token", text.token);
+                    alert("Successful");
+                    navigate('/profile')
+                });
+            }
+            else {
+                alert('Invalid Credentials');
+            }
         });
     }
     return(
