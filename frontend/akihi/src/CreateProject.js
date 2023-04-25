@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import './App.css';
 
 export default function CreateProjectPage () {
@@ -6,9 +7,16 @@ export default function CreateProjectPage () {
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
     const [country, setCountry] = useState("");
-    let handleSubmit = async (vacation_name, start_date, end_date, country) => {
+    var message;
+    const navigate = useNavigate();
+    var myRequest = new Request('/api/vacation');
+    let handleSubmit = async (e, vacation_id, start_date, end_date, country) => {
+        e.preventDefault();
         window.alert('Vacation has been created');
-            await fetch("/api/vacation", {
+        // e.preventDefault();
+        //Local.getitem username
+        //Profile needs to show all projects
+            await fetch(myRequest, {
                 method: "POST", 
                 body: JSON.stringify({
                     vacation_name : vacation_name,
@@ -20,17 +28,17 @@ export default function CreateProjectPage () {
                     'Content-type' : 'application/json; charset=UTF-8',
                 },
             })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
+            .then(function(response) {
+                return response.text().then(function(text) {
+                    navigate('/itinerary')
+                });
+            });
     }
     //upon submission, it will send request to backend
     //will redirect to itinerary
     return (
         <div>
-            <fieldset>
-                <form method="POST" action="/api/vacation" onSubmit={handleSubmit} className="form-group"> 
+                <form method="POST" action="/vacation" onSubmit={handleSubmit} className="form-group"> 
                     <h1>Fill out this form to start your Itinerary</h1>
                     <label>Name:</label>
                     <input type="text" name="vacation_name" placeholder="name of vacation" value={vacation_name} onChange={(e) => setVacationName(e.target.value)}></input>
@@ -45,7 +53,6 @@ export default function CreateProjectPage () {
                     <input type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
                     <button type="submit">Create</button>
                 </form>
-            </fieldset>
         </div>
     )
 }

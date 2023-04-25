@@ -24,7 +24,6 @@ app.use('/api/itinerary', require('./routes/itineraryRoute'));
 
 app.use('/api/vacation', require('./routes/vacationRoute'));
 
-
 app.use('*', (req, res) => {
     res.status(404).json({message: 'Page not found'});
 })

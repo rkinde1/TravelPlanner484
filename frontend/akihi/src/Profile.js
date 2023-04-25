@@ -1,35 +1,36 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
+
+
 
 export function UserInfo(){
     //Here will we will also show the user's currect made projects
-    const firstName = localStorage.getItem('first-name')
-    const lastName = localStorage.getItem('first-name')
-    const email = localStorage.getItem('email')
-    const dob = localStorage.getItem('date-of-birth')
-  
+
+    //Must be sent by backend after login
+    const fname = localStorage.getItem('fname');
+    const username = localStorage.getItem("username");
+    const email = localStorage.getItem('email');
+    //Send request this way
+    const token = localStorage.getItem("token");
+    const [message, setMessage] = useState(null);
+    const navigate = useNavigate();
+
+    const logout = async () => {
+      localStorage.clear();
+      navigate('/login');
+    }
+    
     //This is very plain and will be edited later on
     return(
       
       <div className = "UserInfo">
         <fieldset>
-          <h1>Welcome!</h1>
-          <h3>Name: <span id = "first-name"></span></h3>
-          <h3>Email: </h3>
-          <h3>Member Since: </h3>
+          <h1>Welcome {fname}</h1>
+          <h3>Name: {username} <span id = "first-name"></span></h3>
+          <h3>Email: {email}</h3>
           <h3>Number of Projects: </h3>
+          <button onClick={logout}>Logout</button>
         </fieldset>
      </div>
     ) 
-}
-
-export function Activity(){
-  return(
-    <h1>Posts and Comments</h1>
-  )
-}
-
-export function uploadProfilePicture(){
-  return(
-    <h1>hi</h1>
-  )
 }
