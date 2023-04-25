@@ -10,12 +10,13 @@ export function UserInfo(){
     const fname = localStorage.getItem('fname');
     const username = localStorage.getItem("username");
     const email = localStorage.getItem('email');
+    const token = localStorage.getItem("token");
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();
 
     const logout = async () => {
       localStorage.clear();
-  }
+    }
     
     //This is very plain and will be edited later on
     return(
@@ -24,9 +25,9 @@ export function UserInfo(){
         <fieldset>
           <h1>Welcome {fname}</h1>
           <h3>Name: {username} <span id = "first-name"></span></h3>
-          <button onClick={logout}></button>
           <h3>Email: {email}</h3>
-          <h3>Number of Projects: </h3>
+          <h3>Number of Projects: {token} </h3>
+          <button onClick={logout}>Logout</button>
         </fieldset>
      </div>
     ) 

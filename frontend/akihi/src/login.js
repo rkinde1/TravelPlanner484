@@ -5,15 +5,12 @@ import styles from './login.css';
 import axios from 'axios'
 
 
-//Need to talk to Jal or someone else after preventing the page from redirecting to api/login
 function Login () {
     //After login, redirect to profile page
     const[goToContact, setGoToContact] = React.useState(false);
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState('');
     var message;
     let handleSubmit = async (e) => {
         //Prevents form redirecting to backend ('/api/login')

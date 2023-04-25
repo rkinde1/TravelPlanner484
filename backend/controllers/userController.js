@@ -25,10 +25,10 @@ const register = asyncHandler(async (req,res) => {
     const { username, email, password } = req.body;
 
 
-    if (!firstName || !lastName || !username || !email || !password) {
-        res.status(400)
-        throw new Error("Please submit all fields");
-    }
+    // if (!firstName || !lastName || !username || !email || !password) {
+    //     res.status(400)
+    //     throw new Error("Please submit all fields");
+    // }
     
     //Check if user already exists given the credentials, if so, throw error
     const userExists = await User.findOne({ username });
@@ -60,7 +60,7 @@ const register = asyncHandler(async (req,res) => {
    
     // If the data matches the schema the user should be created...
     if(user) {
-        return res.status(201).json({
+        return res.status(200).json({
             _id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,

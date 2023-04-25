@@ -30,15 +30,9 @@ export default function CreateProjectPage () {
             })
             .then(function(response) {
                 return response.text().then(function(text) {
-                    message = text;
-                    alert(message);
                     navigate('/itinerary')
                 });
             });
-            // .then((data) => {
-            //     alert(data);
-            //     navigate('/login');
-            // })
     }
     //upon submission, it will send request to backend
     //will redirect to itinerary
