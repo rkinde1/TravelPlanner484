@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import './App.css';
 
 export default function CreateProjectPage () {
-    const [vacation_id, setVacationId] = useState("");
+    const [vacation_name, setVacationName] = useState("");
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
     const [country, setCountry] = useState("");
@@ -19,10 +19,10 @@ export default function CreateProjectPage () {
             await fetch(myRequest, {
                 method: "POST", 
                 body: JSON.stringify({
-                    vacation_id : vacation_id,
+                    vacation_name : vacation_name,
                     start_date : start_date,
                     end_date : end_date,
-                    country : country
+                    country : country,
                 }),
                 headers: {
                     'Content-type' : 'application/json; charset=UTF-8',
@@ -41,7 +41,7 @@ export default function CreateProjectPage () {
                 <form method="POST" action="/vacation" onSubmit={handleSubmit} className="form-group"> 
                     <h1>Fill out this form to start your Itinerary</h1>
                     <label>Name:</label>
-                    <input type="text" name="vacation_id" placeholder="name of vacation" value={vacation_id} onChange={(e) => setVacationId(e.target.value)}></input>
+                    <input type="text" name="vacation_name" placeholder="name of vacation" value={vacation_name} onChange={(e) => setVacationName(e.target.value)}></input>
                     <br></br>
                     <label>Starting date</label>
                     <input type="date" name="start" placeholder="start date" value={start_date} onChange={(e) => setStartDate(e.target.value)}></input>

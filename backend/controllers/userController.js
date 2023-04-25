@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 const getUser = asyncHandler(async (req,res) => {
     const {_id, firstName, username, email} = await User.findById(req.user.id);
 
-    res.status(200).json({
+    return res.status(200).json({
         id: _id,
         firstName,
         username,
