@@ -21,7 +21,6 @@ function NavBar () {
             <div className="container">
                 <ul class="navbar-nav">
                     <li className='hvr-grow'><Link to={'login'} className="border">Login</Link></li>
-                    <li className='hvr-grow'><Link to={'logout'} className="border">Logout</Link></li>
                     <li className='hvr-grow'><Link to={'signup'} className="border">Signup</Link></li>
                     <li className='hvr-grow'><Link to={'vacation'} className="border">Vacation</Link></li>
                     <li className='hvr-grow'><Link to={'profile'} className="border">Profile</Link></li>

@@ -10,12 +10,14 @@ export function UserInfo(){
     const fname = localStorage.getItem('fname');
     const username = localStorage.getItem("username");
     const email = localStorage.getItem('email');
+    //Send request this way
     const token = localStorage.getItem("token");
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();
 
     const logout = async () => {
       localStorage.clear();
+      navigate('/login');
     }
     
     //This is very plain and will be edited later on
@@ -26,7 +28,7 @@ export function UserInfo(){
           <h1>Welcome {fname}</h1>
           <h3>Name: {username} <span id = "first-name"></span></h3>
           <h3>Email: {email}</h3>
-          <h3>Number of Projects: {token} </h3>
+          <h3>Number of Projects: </h3>
           <button onClick={logout}>Logout</button>
         </fieldset>
      </div>

@@ -38,7 +38,6 @@ export default function CreateProjectPage () {
     //will redirect to itinerary
     return (
         <div>
-            <fieldset>
                 <form method="POST" action="/vacation" onSubmit={handleSubmit} className="form-group"> 
                     <h1>Fill out this form to start your Itinerary</h1>
                     <label>Name:</label>
@@ -54,7 +53,6 @@ export default function CreateProjectPage () {
                     <input type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
                     <button type="submit">Create</button>
                 </form>
-            </fieldset>
         </div>
     )
 }
