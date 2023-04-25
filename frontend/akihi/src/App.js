@@ -9,6 +9,7 @@ import Home from "./Home";
 import CreateProjectPage from './CreateProject.js';
 import NavBar from './navbar.js';
 import Budget from './Budget.js';
+import Logout from './logout.js';
 
 //This establishes the routes
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login/>}></Route>
+              <Route path="/logout" element={<Logout/>}/>
               <Route path='/signup' element={<Signup/>}></Route>
               <Route path='/itinerary' element={<Date />}/>
               <Route path = '/profile' element = {<UserInfo/>}/>

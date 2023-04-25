@@ -16,30 +16,28 @@ function Signup () {
         e.preventDefault();
             await fetch("/api/signup", {
                 method: "POST", 
+                body: JSON.stringify({
+                    fname : fname,
+                    lname : lname,
+                    username: username,
+                    email : email,
+                    password : password
+                }),
                 header: {
-                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 },
             })
-            // .then((response) => {
-            //     if (response === 201)
-            //         navigate('/login')
-            //     else {
-            //         alert('Please fill in all fields');
-            //     }
-            // })
             .then(function(response) {
-                alert(response.status);
-                if (response.status === 201){
-                    return response.json().then(function(text) {
-                            localStorage.setItem("email", text.email);
-                            localStorage.setItem("username", text.username);
-                            localStorage.setItem("token", text.token);
-                            alert("Successful");
-                            navigate('/profile')
+                // alert(response.status);
+                // if (response.status == 201){
+                    return response.text().then(function(text) {
+                        alert(text);
+                        alert("Successful");
+                        navigate('/profile')
                     });
-                }
-                else 
-                    alert("error");
+                // }
+                // else 
+                //     alert("Signup is unsuccessful");
             });
     }
 

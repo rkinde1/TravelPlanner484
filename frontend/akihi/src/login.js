@@ -29,12 +29,17 @@ function Login () {
             },
           })
           .then(function(response) {
+            //Checks what the status code is and works
             if (response.status == 200) {
+                //returns json response
                 return response.json().then(function(text) {
+                    //Saves the item in cookies
                     localStorage.setItem("email", text.email);
                     localStorage.setItem("username", text.username);
                     localStorage.setItem("token", text.token);
+                    //Alerts that it works
                     alert("Successful");
+                    //Navigates to profile page with information
                     navigate('/profile')
                 });
             }
