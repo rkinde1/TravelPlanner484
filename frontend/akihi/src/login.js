@@ -1,36 +1,53 @@
 import React, {useState } from "react";
-import {Navigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Link } from 'react-router-dom';
 import styles from './login.css';
+import axios from 'axios'
+
 
 function Login () {
     //After login, redirect to profile page
     const[goToContact, setGoToContact] = React.useState(false);
-
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    let handleSubmit = async (username, password) => {
-            await fetch("/api/login/", {
-                method: "POST", 
-                body: JSON.stringify({
-                    username : username,
-                    password : password
-                }),
-                headers: {
-                    'Content-type' : 'application/json; charset=UTF-8',
-                },
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                setUsername('');
-                setPassword('');
-                console.log(data);
-            })
-
+    var message;
+    let handleSubmit = async (e) => {
+        //Prevents form redirecting to backend ('/api/login')
+        e.preventDefault();
+        await fetch('/api/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+          })
+          .then(function(response) {
+            //Checks what the status code is and works
+            if (response.status == 200) {
+                //returns json response
+                return response.json().then(function(text) {
+                    //Saves the item in cookies
+                    localStorage.setItem("email", text.email);
+                    localStorage.setItem("username", text.username);
+                    localStorage.setItem("token", text.token);
+                    //Alerts that it works
+                    alert("Successful");
+                    //Navigates to profile page with information
+                    navigate('/profile')
+                });
+            }
+            else {
+                alert('Invalid Credentials');
+            }
+        });
     }
     return(
         <div className="signupFrm">
-            <form method="POST"  action="/api/login/" onSubmit={handleSubmit}>
+            <form method="POST"  action="/api/login" onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div class="inputContainer">
                     <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>

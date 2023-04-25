@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Signup.css'
-import {redirect} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Link } from 'react-router-dom';
 
 function Signup () {
@@ -9,13 +9,12 @@ function Signup () {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [verifypassword, setVerifyPassword] = useState("");
-    
-    let handleSubmit = async (fname, lname, email, username, password) => {
-            
-        
-        await fetch("/api/signup", {
-                method: "POST", 
+    const navigate = useNavigate();
+    const json = useState('');
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+            await fetch('/api/signup', {
+                method: 'POST', 
                 body: JSON.stringify({
                     fname : fname,
                     lname : lname,
@@ -23,14 +22,20 @@ function Signup () {
                     email : email,
                     password : password
                 }),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
             })
-            .then((response) => response.json())
-            .then((data) => {
-                setFname('')
-                setLname('')
-                setPassword('');
-                console.log(data);
-            })
+            .then(function(response) {
+                if (response.status == 200){
+                    return response.json().then(function(text) {
+                        alert("Successful");
+                        navigate('/login');
+                    });
+                }
+                else 
+                    alert("Signup is unsuccessful");
+            });
     }
 
     return(
@@ -38,27 +43,27 @@ function Signup () {
             <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group form-control no border">
                     <div className = "inputContainer">
                     <h1>Signup</h1>
-                    <input type="text" id="fname" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)}>
+                    <input type="text" id="fname" placeholder="First Name" name="fname" isRequired value={fname} onChange={(e) => setFname(e.target.value)}>
                     </input>
                     <br></br>
 
                     <input type="text" id="lname" placeholder="Last Name" name="lname"
-                        value={lname} onChange={(e) => setLname(e.target.value)}
+                        isRequired value={lname} onChange={(e) => setLname(e.target.value)}
                         >
                     </input>
                     <br></br>
-                    <input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                    <input isRequired type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
 
                     <br/>
-                    <input type="text" id="email" placeholder="Email" name="email"
+                    <input isRequired type="text" id="email" placeholder="Email" name="email"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                         >
                     </input>
                     <br></br>
 
-                    <input type="password" id="password" placeholder="Password" name ="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                    <input isRequired type="password" id="password" placeholder="Password" name ="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     <br></br>
-                    <input type="password" id="verifypassword" placeholder="Verify Password" name="verifyPassword" value={verifypassword} onChange={(e) => setVerifyPassword(e.target.value)}></input>
+                    <input isRequired type="password" id="verifypassword" placeholder="Verify Password"></input>
                     <br></br>
                     <button type="submit" className = "hvr-grow btn" id = "submit">Sign Up</button>
                 <br></br>
