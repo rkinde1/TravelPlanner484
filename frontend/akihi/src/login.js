@@ -46,7 +46,7 @@ function Login () {
     }
     return(
         <div className="signupFrm">
-            <form method="POST"  action="/api/login" onSubmit={handleSubmit}>
+            <form method="POST"  action="https://akihiserver.onrender.com/api/login" onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div class="inputContainer">
                     <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>
