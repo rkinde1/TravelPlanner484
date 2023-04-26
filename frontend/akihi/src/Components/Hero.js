@@ -14,7 +14,7 @@ function Hero(){
                 <br></br>
                 <br></br>
 
-            <Link to="/signup" className="btn btn-primary">Book Today!</Link>
+            <Link to='signup' className="btn btn-primary">Book Today!</Link>
 
             </div>
         </div>
