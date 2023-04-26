@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
-const port = 'https://akihiserver.onrender.com/';
+const port = process.env.Port || 5000;
 const connectDB = require('./config/db');
 
 
