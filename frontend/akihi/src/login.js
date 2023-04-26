@@ -14,7 +14,8 @@ function Login () {
     var message;
     let handleSubmit = async (e) => {
         //Prevents form redirecting to backend ('/api/login')
-        await fetch('/api/login', {
+        e.preventDefault();
+        await fetch('https://akihiserver.onrender.com/api/login', {
             method: 'POST',
             body: JSON.stringify({
                 username: username,
