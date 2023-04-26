@@ -14,7 +14,6 @@ function Login () {
     var message;
     let handleSubmit = async (e) => {
         //Prevents form redirecting to backend ('/api/login')
-        e.preventDefault();
         await fetch('/api/login', {
             method: 'POST',
             body: JSON.stringify({
