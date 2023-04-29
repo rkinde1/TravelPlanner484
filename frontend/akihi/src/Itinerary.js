@@ -32,6 +32,14 @@ function Notes() {
 
 function Event() {
     const[showMessage, setShowMessage] = useState(false);
+    //Create variables to store data of each event
+
+    //create array of Events 
+    var events = useState([]);
+    const assignEvents = () => {
+
+    }
+    //Send to /api/Itinerary as patch request
     return (
         <div className="flex-container">
                         <select className="category">
@@ -53,7 +61,7 @@ function Event() {
                             <input type="textfield" placeholder="place" className="place"></input>
                             {showMessage && <Notes />}
                         </div>
-                    </div>
+        </div>
     );
 }
 
@@ -65,18 +73,14 @@ function Date() {
     let addNewRow = (e) => {
         e.preventDefault()
         setEvent([...event, <Event key={event.length} />]);
-        // var div = document.getElementById('duplicate'),
-        // clone = div.cloneNode(true);
-        // clone.id = "some_id";
-        // document.body.appendChild(clone);
+
+
     }
     return(
         <div>
             <fieldset>
                 <form method="GET" action="">
                     <div className="flex-container">
-                        {/* <button className="expand">Expand</button>  */}
-                        {/* <h1>Day 1</h1>  */}
                         <h1>Itinerary Events</h1>
                         <button onClick={addNewRow}>Add Event</button>
                         {event}
