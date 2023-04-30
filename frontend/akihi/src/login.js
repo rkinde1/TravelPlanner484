@@ -33,6 +33,9 @@ function Login () {
                     //Saves the item in cookies
                     localStorage.setItem("email", text.email);
                     localStorage.setItem("username", text.username);
+                    localStorage.setItem("fname", text.fname);
+                    localStorage.setItem("id", text.id);
+                    //Token should be used to access all of this information
                     localStorage.setItem("token", text.token);
                     //Alerts that it works
                     alert("Successful");

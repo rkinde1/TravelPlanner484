@@ -9,7 +9,7 @@ import Home from "./Home";
 import CreateProjectPage from './CreateProject.js';
 import NavBar from './navbar.js';
 import Budget from './Budget.js';
-import Logout from './logout.js';
+import PrivateRoute from './util/privateRoute.js';
 
 //This establishes the routes
 function App() {
@@ -23,10 +23,12 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login/>}></Route>
               <Route path='/signup' element={<Signup/>}></Route>
-              <Route path='/itinerary' element={<Date />}/>
-              <Route path = '/profile' element = {<UserInfo/>}/>
-              <Route path = '/vacation' element = {<CreateProjectPage/>}/>
-              <Route path = '/budget' element = {<Budget/>}/>
+              <Route element={<PrivateRoute />}>
+                <Route path='/itinerary' element={<Date />} exact/>
+                <Route path = '/profile' element = {<UserInfo/>} exact/>
+                <Route path = '/vacation' element = {<CreateProjectPage/>} exact/>
+                <Route path = '/budget' element = {<Budget/>} exact/>
+              </Route>
           </Routes>
         <hr></hr>
         </div>

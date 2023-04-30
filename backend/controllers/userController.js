@@ -84,8 +84,10 @@ const login = asyncHandler(async(req,res) => {
     //Compare the hashes to see if they are the same, if so, send some of the credentials back to the client
     if (user && (await bcrypt.compare(password, user.password))) {
         return res.status(200).json({
+            id : user.id,
             username: user.username,
             email: user.email,
+            fname: user.firstName,
             token: generateToken(user._id)
         });
         

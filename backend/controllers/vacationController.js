@@ -15,11 +15,6 @@ const createVacation = asyncHandler(async (req, res) => {
     const  country  = req.body.country;
     const NumberOfDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
 
-    if (!vacationName || !startDate || !endDate || !country) {
-        res.status(400);
-        throw new Error('Please submit all fields');
-    }
-
     const vacation = new Vacation({
         userID: userID,
         vacationName: vacationName,

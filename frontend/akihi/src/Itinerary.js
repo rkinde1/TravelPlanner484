@@ -32,16 +32,20 @@ function Notes() {
 
 function Event() {
     const[showMessage, setShowMessage] = useState(false);
+    const [category, setCategory] = useState("");
+    const [time, setTime] = useState("");
+    const [cost, setCost] = useState("");
+    const [place, setPlace] = useState("");
     return (
         <div className="flex-container">
-                        <select className="category">
+                        <select className="category" value={category} onChange={(e) => setCategory(e.target.value)}>
                             <option value="Flight">Flight</option>
                             <option value="hotel">Hotel</option>
                             <option value="Restaurant">Restaurant</option>
                             <option value="other">Other</option>
                         </select>
-                        <input type="time" placeholder="Arrival Time" className="time"></input>
-                        <input type="number" placeholder="Cost" className="cost"></input>
+                        <input type="time" placeholder="Arrival Time" className="time" value={time} onChange={(e) => setTime(e.target.value)}></input>
+                        <input type="number" placeholder="Cost" className="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
                         <div
                             onMouseEnter={() => {
                                 setShowMessage(true);
@@ -50,7 +54,7 @@ function Event() {
                                 setShowMessage(false);
                             }}
                         >
-                            <input type="textfield" placeholder="place" className="place"></input>
+                            <input type="textfield" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
                             {showMessage && <Notes />}
                         </div>
                     </div>
@@ -62,23 +66,25 @@ function Date() {
     //This is how we add another date on here
     //The duplicate cannot include the day here
     const [event, setEvent] = useState([<Event key={0} />])
+    const [arrayOfEvents, setArrayOfEvents] = useState([
+
+    ])
     let addNewRow = (e) => {
         e.preventDefault()
         setEvent([...event, <Event key={event.length} />]);
-        // var div = document.getElementById('duplicate'),
-        // clone = div.cloneNode(true);
-        // clone.id = "some_id";
-        // document.body.appendChild(clone);
+    }
+    let deleteNewRow = (e) => {
+        e.preventDefault();
+        setEvent([<Event key={(event.length - 1)} />]);
     }
     return(
         <div>
             <fieldset>
-                <form method="GET" action="">
+                <form method="PATCH" action="">
                     <div className="flex-container">
-                        {/* <button className="expand">Expand</button>  */}
-                        {/* <h1>Day 1</h1>  */}
                         <h1>Itinerary Events</h1>
                         <button onClick={addNewRow}>Add Event</button>
+                        <button onClick={deleteNewRow}>Delete</button>
                         {event}
                     </div>
                 </form>
