@@ -43,15 +43,9 @@ export function DeleteVacation () {
             .then(function(response) {
             //Checks what the status code is and works
             if (response.status == 200) {
-                //returns json response
+                //If vacationName matches with id, store vacation id and then call delete2 function
                 return response.json().then(function(text) {
-                    // for (var i = 0 ; i < text.length; i ++) {
-                    //     listOfVacName[i] = (JSON.stringify(text[i].vacationName))
-                    //   }
-                    // alert(listOfVacName)
                     for (var i = 0; i < text.length; i ++ ) {
-                        // alert(text[i].vacationName);
-                        // alert(vacationName);
                         if (text[i].vacationName == vacationName) {
                             localStorage.setItem("vacation_id", text[i]._id)
                         }
@@ -79,40 +73,5 @@ export function DeleteVacation () {
 
 //Create a function here that user clicks delete on name of vacation
 //Sends to backend and deletes with matching id
-
-export function FindVacations () {
-    const [vacationName, setVacationName] = useState("");
-
-    // const listOfItinerary = async () => {
-    //     await fetch('/api/itinerary', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             //This is sent to back end
-    //             'Authorization' : 'Bearer ' + token
-    //         },
-    //     })
-    //     .then(function(response) {
-    //         //Checks what the status code is and works
-    //         if (response.status == 200) {
-    //             //returns json response
-    //             return response.text().then(function(text) {
-    //                 alert(text);
-    //             });
-    //         }
-    //         else {
-    //             alert('Unsuccessful');
-    //         }
-    //     });
-    // }
-    // useEffect(()=> {
-
-    // }, []);
-    return (
-        <div>
-            <input type="text" name="vacationName" value={vacationName} onChange={((e) => setVacationName(e.target.value))} placeholder="Enter name of vacation"></input>
-        </div>
-    );
-}
 
 export default DeleteVacation;

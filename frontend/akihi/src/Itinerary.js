@@ -95,7 +95,6 @@ function Date() {
     //The duplicate cannot include the day here
     const [event, setEvent] = useState([<Event key={0} />])
     const token= localStorage.getItem("token");
-    const vacation_id = useState("");
     let addNewRow = (e) => {
         e.preventDefault()
         setEvent([...event, <Event key={event.length} />]);
@@ -109,6 +108,7 @@ function Date() {
         fetch("/api/itinerary", {
             method: "GET", 
             body: JSON.stringify({
+
             }),
             headers: {
                 'Content-type' : 'application/json; charset=UTF-8',
@@ -123,7 +123,7 @@ function Date() {
     }
     useEffect(()=> {
         getItinerary();
-        
+
     }, []);
     return(
         <div>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {DeleteVacation, FindVacations} from './deleteVacation'
+import {DeleteVacation} from './deleteVacation'
 
 
 
@@ -69,7 +69,6 @@ export function UserInfo(){
           <h3>Number of Vacations: {vacations}</h3>
           <button onClick={logout}>Logout</button>
           <DeleteVacation/>
-          <FindVacations/>
         </fieldset>
      </div>
     ) 
