@@ -9,10 +9,12 @@ function Signup () {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [verifyPassword, setVerifyPassword] = useState("");
     const navigate = useNavigate();
     const json = useState('');
     let handleSubmit = async (e) => {
         e.preventDefault();
+        if (validateForm()) {
             await fetch('/api/signup', {
                 method: 'POST', 
                 body: JSON.stringify({
@@ -37,7 +39,45 @@ function Signup () {
                     alert("Signup is unsuccessful");
             });
     }
+}
 
+    const validateForm = () => {
+        let isValid = true;
+        if (fname === "") {
+            isValid = false;
+            alert("Please enter your first name.");
+        }
+        else if (lname === "") {
+            isValid = false;
+            alert("Please enter your last name.");
+        }
+       else if (username === "") {
+            isValid = false;
+            alert("Please enter a username.");
+        }
+        else if (email === "") {
+            isValid = false;
+            alert("Please enter your email address.");
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            isValid = false;
+            alert("Please enter a valid email address.");
+        }
+        else if (password === "") {
+            isValid = false;
+            alert("Please enter a password.");
+        } else if (password.length < 8) {
+            isValid = false;
+            alert("Password must be at least 8 characters long.");
+        }
+        else if (verifyPassword === "") {
+            isValid = false;
+            alert("Please verify your password.");
+        } else if (password !== verifyPassword) {
+            isValid = false;
+            alert("Passwords do not match.");
+        }
+        return isValid;
+    }
     return(
         <div className = "screen">
             <form method="POST" action="/api/signup" onSubmit={handleSubmit} className="form-group form-control no border">
