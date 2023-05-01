@@ -25,10 +25,6 @@ const register = asyncHandler(async (req,res) => {
     const { username, email, password } = req.body;
 
 
-    // if (!firstName || !lastName || !username || !email || !password) {
-    //     res.status(400)
-    //     throw new Error("Please submit all fields");
-    // }
     
     //Check if user already exists given the credentials, if so, throw error
     const userExists = await User.findOne({ username });

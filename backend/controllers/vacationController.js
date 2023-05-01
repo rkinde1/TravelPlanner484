@@ -73,9 +73,9 @@ const updateVacation = asyncHandler(async (req, res) => {
 });
 
 const deleteVacation = asyncHandler(async (req, res) => {
-    const vacation = await Vacation.findById(req.params.id);
+    const vacation = await Vacation.findById(req.body);
     if (vacation) {
-        await Vacation.findByIdAndDelete(req.params.id);
+        await Vacation.findByIdAndDelete(req.body);
         return res.status(200).json({message: 'Vacation removed'});
     } else {
         res.status(404);

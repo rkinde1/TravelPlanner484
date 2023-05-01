@@ -7,8 +7,8 @@ export default function CreateProjectPage () {
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
     const [country, setCountry] = useState("");
+    const [vacation_id] = useState("");
     const token = localStorage.getItem("token");
-    var message;
     const navigate = useNavigate();
     let handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,12 +27,14 @@ export default function CreateProjectPage () {
                 },
             })
             .then(function(response) {
-                return response.text().then(function(text) {
+                return response.json().then(function(text) {
                     if (response.status == 201) {
                         window.alert('Vacation has been created');
+                        localStorage.setItem("vacation_id", JSON.stringify(text._id))
+                        alert(JSON.stringify(text));
+                        alert(JSON.stringify(text._id));
                         navigate('/itinerary')
                     }
-                    alert(text);
                 });
             });
     }
@@ -40,7 +42,7 @@ export default function CreateProjectPage () {
     //will redirect to itinerary
     return (
         <div>
-                <form method="POST" action="/vacation" onSubmit={handleSubmit} className="form-group"> 
+                <form method="POST" action="api/vacation" onSubmit={handleSubmit} className="form-group"> 
                     <h1>Fill out this form to start your Itinerary</h1>
                     <label>Name:</label>
                     <input required type="text" name="vacation_name" placeholder="name of vacation" value={vacation_name} onChange={(e) => setVacationName(e.target.value)}></input>

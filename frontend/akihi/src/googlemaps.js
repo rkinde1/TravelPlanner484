@@ -24,22 +24,27 @@ function ToggleGoogle () {
 }
 
 function Map () {
+    const [destination, setDestination] = useState('');
+
     const location = {
-        address: '1600 Amphitheatre Parkway, Mountain View, california.',
+        address: destination,
         lat: 37,
         lng: 122
     }
     const key = process.env.REACT_APP_API_KEY;
     return(
-        <div className="map">
-          <div className="google-map">
-            <GoogleMapReact
-              bootstrapURLKeys={{ key: key}}
-              defaultCenter={location}
-              defaultZoom={1}
-            >
-            </GoogleMapReact>
-          </div>
+        <div>
+            <input type="text" placeholder="Enter destination" value={destination} onChange={(e) => setDestination(e.target.value)}></input>
+            <div className="map">
+            <div className="google-map">
+                <GoogleMapReact
+                bootstrapURLKeys={{ key: key}}
+                defaultCenter={location}
+                defaultZoom={1}
+                >
+                </GoogleMapReact>
+            </div>
+            </div>
         </div>
     )
 }

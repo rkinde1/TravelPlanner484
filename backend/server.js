@@ -22,11 +22,11 @@ app.use('/api/login', require('./routes/loginRoute')); // Will use middleware in
 
 app.use('/api/itinerary', require('./routes/itineraryRoute'));
 
+app.use('/api/event', function (req, res) {
+    res.send(req.body);
+});
+
 app.use('/api/vacation', require('./routes/vacationRoute'));
-// app.use('/api/vacation', (req, res) => {
-//     res.send(req.body);
-// }
-// )
 
 app.use('*', (req, res) => {
     res.status(404).json({message: 'Page not found'});

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {DeleteVacation, FindVacations} from './deleteVacation'
 
 
 
@@ -10,7 +11,6 @@ export function UserInfo(){
     const fname = localStorage.getItem('fname');
     const username = localStorage.getItem("username");
     const email = localStorage.getItem('email');
-    const id = localStorage.getItem('id');
     const vacations = localStorage.getItem("vacations");
     //Send request this way
     const token = localStorage.getItem("token");
@@ -63,6 +63,9 @@ export function UserInfo(){
           <h3>Email: {email}</h3>
           <h3>Number of Vacations: {vacations}</h3>
           <button onClick={logout}>Logout</button>
+          <DeleteVacation/>
+          {localStorage.getItem("vacation_id")}
+          <FindVacations/>
         </fieldset>
      </div>
     ) 
