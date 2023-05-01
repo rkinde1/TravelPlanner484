@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 
 const vacationSchema = mongoose.Schema({
     userID: ObjectId,
-    vacationName: {type:String, select:true, unique:true},
+    vacationName: {type:String, select:true, unique:false},
+    id: {type:String, select:true, unique:true},
     startDate: {type:Date, select:true},
     endDate: {type:Date, select:true},
     country: {type:String, select:true},

@@ -12,13 +12,14 @@ export function UserInfo(){
     const username = localStorage.getItem("username");
     const email = localStorage.getItem('email');
     const vacations = localStorage.getItem("vacations");
+    const listOfVacName = useState([])
     //Send request this way
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
-    let getVacations = async (e) => {
+    //This gets the names of every vacation
+    let getVacations = async () => {
       //Prevents form redirecting to backend ('/api/login')
-      // e.preventDefault();
       await fetch('/api/vacation', {
           method: 'GET',
           headers: {
@@ -32,7 +33,12 @@ export function UserInfo(){
           if (response.status == 200) {
               //returns json response
               return response.json().then(function(text) {
+                alert(JSON.stringify(text));
                 localStorage.setItem("vacations", JSON.stringify(text.length));
+                for (var i = 0 ; i < text.length; i ++) {
+                  listOfVacName[i] = (JSON.stringify(text[i].vacationName))
+                }
+                alert(listOfVacName)
               });
           }
           else {
@@ -53,7 +59,6 @@ export function UserInfo(){
       navigate('/login');
     }
     
-    //This is very plain and will be edited later on
     return(
       
       <div className = "UserInfo">
@@ -64,7 +69,6 @@ export function UserInfo(){
           <h3>Number of Vacations: {vacations}</h3>
           <button onClick={logout}>Logout</button>
           <DeleteVacation/>
-          {localStorage.getItem("vacation_id")}
           <FindVacations/>
         </fieldset>
      </div>

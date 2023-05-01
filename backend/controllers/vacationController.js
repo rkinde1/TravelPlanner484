@@ -72,10 +72,11 @@ const updateVacation = asyncHandler(async (req, res) => {
     }
 });
 
+//Don't think this is working
 const deleteVacation = asyncHandler(async (req, res) => {
-    const vacation = await Vacation.findById(req.body);
+    const vacation = await Vacation.findById(req.body.id);
     if (vacation) {
-        await Vacation.findByIdAndDelete(req.body);
+        await Vacation.findByIdAndDelete(req.body.id);
         return res.status(200).json({message: 'Vacation removed'});
     } else {
         res.status(404);

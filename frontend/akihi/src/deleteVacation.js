@@ -5,10 +5,13 @@ import './App.css';
 const token = localStorage.getItem("token");
 
 export function DeleteVacation () {
+    const [vacationName, setVacationName] = useState("");
     //get id from vacation presed
     //send id to backend through fetch
-    let delete2 = () => {
-        fetch("/api/vacation", {
+    const navigate = useNavigate();
+    let delete2 = (e) => {
+        e.preventDefault();
+        fetch("/api/vacation/:id", {
             method: "DELETE", 
             body: JSON.stringify({
                 id: localStorage.getItem("vacation_id")
@@ -19,16 +22,55 @@ export function DeleteVacation () {
             },
         })
         .then(function(res) {
-            localStorage.setItem("vacation_id", null)
-            return res.json().then(function(text) {
-                alert('Deleted');
+            return res.text().then(function(text) {
+                alert(text);
+                // localStorage.setItem("vacation_id", null)
+                // alert('Deleted');
+                // navigate('/profile');
             });
         });
     }
+    let getVacationId = async () => {
+        //Prevents form redirecting to backend ('/api/login')
+        await fetch('/api/vacation', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                //This is sent to back end
+                'Authorization' : 'Bearer ' + token
+            },
+            })
+            .then(function(response) {
+            //Checks what the status code is and works
+            if (response.status == 200) {
+                //returns json response
+                return response.json().then(function(text) {
+                    // for (var i = 0 ; i < text.length; i ++) {
+                    //     listOfVacName[i] = (JSON.stringify(text[i].vacationName))
+                    //   }
+                    // alert(listOfVacName)
+                    for (var i = 0; i < text.length; i ++ ) {
+                        // alert(text[i].vacationName);
+                        // alert(vacationName);
+                        if (text[i].vacationName == vacationName) {
+                            localStorage.setItem("vacation_id", text[i]._id)
+                        }
+                    }
+                });
+            }
+            else {
+                alert('Unsuccessful');
+            }
+        });
+        }
+    useEffect(() => {
+        getVacationId();
+    }, [vacationName]);
     return (
         <div>
             <form action="/api/vacation" method="DELETE" onSubmit={delete2}>
-                <input type="textfield" name="id" value={localStorage.getItem("vacation_id")}></input>
+                <input type="text" name="vacationName" value={vacationName} onChange={((e) => setVacationName(e.target.value))} placeholder="Enter name of vacation"></input>
+                {/* <input type="textfield" name="id" value={localStorage.getItem("vacation_id")}></input> */}
                 <button type="submit">Delete Vacation</button>
             </form>
         </div>
@@ -39,37 +81,36 @@ export function DeleteVacation () {
 //Sends to backend and deletes with matching id
 
 export function FindVacations () {
-    const vacationName = useState("");
-    const listOfVacations = async () => {
-        await fetch('/api/vacation', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                //This is sent to back end
-                'Authorization' : 'Bearer ' + token
-            },
-        })
-        .then(function(response) {
-            //Checks what the status code is and works
-            if (response.status == 200) {
-                //returns json response
-                return response.text().then(function(text) {
-                    alert(text);
-                    alert(text)
-                });
-            }
-            else {
-                alert('Unsuccessful');
-            }
-        });
-    }
+    const [vacationName, setVacationName] = useState("");
 
-    useEffect(()=> {
-        listOfVacations();
-    }, []);
+    // const listOfItinerary = async () => {
+    //     await fetch('/api/itinerary', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             //This is sent to back end
+    //             'Authorization' : 'Bearer ' + token
+    //         },
+    //     })
+    //     .then(function(response) {
+    //         //Checks what the status code is and works
+    //         if (response.status == 200) {
+    //             //returns json response
+    //             return response.text().then(function(text) {
+    //                 alert(text);
+    //             });
+    //         }
+    //         else {
+    //             alert('Unsuccessful');
+    //         }
+    //     });
+    // }
+    // useEffect(()=> {
+
+    // }, []);
     return (
         <div>
-
+            <input type="text" name="vacationName" value={vacationName} onChange={((e) => setVacationName(e.target.value))} placeholder="Enter name of vacation"></input>
         </div>
     );
 }
