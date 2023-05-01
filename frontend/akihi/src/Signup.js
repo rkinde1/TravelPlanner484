@@ -103,7 +103,7 @@ function Signup () {
 
                     <input isRequired type="password" id="password" placeholder="Password" name ="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     <br></br>
-                    <input isRequired type="password" id="verifypassword" placeholder="Verify Password"></input>
+                    <input isRequired type="password" id="verifypassword" placeholder="Verify Password" value={verifyPassword} onChange={(e) => setVerifyPassword(e.target.value)}></input>
                     <br></br>
                     <button type="submit" className = "hvr-grow btn" id = "submit">Sign Up</button>
                 <br></br>

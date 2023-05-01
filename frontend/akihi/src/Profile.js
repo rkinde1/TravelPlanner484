@@ -33,12 +33,14 @@ export function UserInfo(){
           if (response.status == 200) {
               //returns json response
               return response.json().then(function(text) {
-                alert(JSON.stringify(text));
+                // alert(JSON.stringify(text));
                 localStorage.setItem("vacations", JSON.stringify(text.length));
-                for (var i = 0 ; i < text.length; i ++) {
-                  listOfVacName[i] = (JSON.stringify(text[i].vacationName))
+                if (text.length !== 0) {
+                  for (var i = 0 ; i < text.length; i ++) {
+                    listOfVacName[i] = (JSON.stringify(text[i].vacationName))
+                  }
+                  alert(listOfVacName)
                 }
-                alert(listOfVacName)
               });
           }
           else {
