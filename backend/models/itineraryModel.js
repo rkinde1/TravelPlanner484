@@ -1,6 +1,7 @@
 const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
+//Itinerary will just be full of events
 
 const itinerarySchema = mongoose.Schema({
     userID: ObjectId,

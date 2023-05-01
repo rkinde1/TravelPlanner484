@@ -1,5 +1,5 @@
 import './Itinerary.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ToggleGoogle, Map} from './googlemaps.js';
 import Button from 'react-bootstrap/Button';
 import NavBar from './navbar.js';
@@ -32,16 +32,45 @@ function Notes() {
 
 function Event() {
     const[showMessage, setShowMessage] = useState(false);
+    const token = localStorage.getItem("token");
+    const [category, setCategory] = useState("");
+    const [time, setTime] = useState("");
+    const [cost, setCost] = useState("");
+    const [place, setPlace] = useState("");
+    const [myArray, setMyArray] = useState([]);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await fetch("/api/event", {
+            method: "PATCH", 
+            body: JSON.stringify({
+                category: category,
+                time: time,
+                cost: cost,
+                place: place
+            }),
+            headers: {
+                'Content-type' : 'application/json; charset=UTF-8',
+                "Authorization" : 'Bearer ' + token,
+            },
+        })
+        .then(function(res) {
+            return res.text().then(function(text) {
+                alert(text);
+                alert("Saved");
+            });
+        });
+    }
     return (
         <div className="flex-container">
-                        <select className="category">
+            <form action="/api/event" method="PATCH" onSubmit={handleSubmit}>
+                        <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
                             <option value="Flight">Flight</option>
                             <option value="hotel">Hotel</option>
                             <option value="Restaurant">Restaurant</option>
                             <option value="other">Other</option>
                         </select>
-                        <input type="time" placeholder="Arrival Time" className="time"></input>
-                        <input type="number" placeholder="Cost" className="cost"></input>
+                        <input type="time" name="time" placeholder="Arrival Time" className="time" value={time} onChange={(e) => setTime(e.target.value)}></input>
+                        <input type="number" name="cost" placeholder="Cost" className="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
                         <div
                             onMouseEnter={() => {
                                 setShowMessage(true);
@@ -50,10 +79,13 @@ function Event() {
                                 setShowMessage(false);
                             }}
                         >
-                            <input type="textfield" placeholder="place" className="place"></input>
+                            <input type="textfield" name="place" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
                             {showMessage && <Notes />}
                         </div>
-                    </div>
+                        <button type="submit">Save</button>
+            </form>
+        </div>
+                    
     );
 }
 
@@ -62,26 +94,46 @@ function Date() {
     //This is how we add another date on here
     //The duplicate cannot include the day here
     const [event, setEvent] = useState([<Event key={0} />])
+    const token= localStorage.getItem("token");
     let addNewRow = (e) => {
         e.preventDefault()
         setEvent([...event, <Event key={event.length} />]);
-        // var div = document.getElementById('duplicate'),
-        // clone = div.cloneNode(true);
-        // clone.id = "some_id";
-        // document.body.appendChild(clone);
     }
+    let deleteNewRow = (e) => {
+        e.preventDefault();
+        setEvent([<Event key={(event.length - 1)} />]);
+    }
+
+    let getItinerary = () => {
+        fetch("/api/itinerary", {
+            method: "GET", 
+            body: JSON.stringify({
+
+            }),
+            headers: {
+                'Content-type' : 'application/json; charset=UTF-8',
+                "Authorization" : 'Bearer ' + token,
+            },
+        })
+        .then(function(res) {
+            return res.text().then(function(text) {
+                alert(text);
+            });
+        });
+    }
+    useEffect(()=> {
+        getItinerary();
+
+    }, []);
     return(
         <div>
             <fieldset>
-                <form method="GET" action="">
-                    <div className="flex-container">
-                        {/* <button className="expand">Expand</button>  */}
-                        {/* <h1>Day 1</h1>  */}
-                        <h1>Itinerary Events</h1>
-                        <button onClick={addNewRow}>Add Event</button>
-                        {event}
-                    </div>
-                </form>
+                <div className="flex-container">
+                    <h1>Itinerary Events</h1>
+                    <button onClick={addNewRow}>Add Event</button>
+                    <button onClick={deleteNewRow}>Delete</button>
+                    {event}
+                </div>
                 <p>Toggle Google Maps?</p><ToggleGoogle />
             </fieldset>
         </div>

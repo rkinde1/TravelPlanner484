@@ -7,16 +7,13 @@ export default function CreateProjectPage () {
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
     const [country, setCountry] = useState("");
-    var message;
+    const [vacation_id] = useState("");
+    const token = localStorage.getItem("token");
     const navigate = useNavigate();
-    var myRequest = new Request('/api/vacation');
-    let handleSubmit = async (e, vacation_id, start_date, end_date, country) => {
+    let handleSubmit = async (e) => {
         e.preventDefault();
-        window.alert('Vacation has been created');
-        // e.preventDefault();
-        //Local.getitem username
         //Profile needs to show all projects
-            await fetch(myRequest, {
+            await fetch('/api/vacation', {
                 method: "POST", 
                 body: JSON.stringify({
                     vacation_name : vacation_name,
@@ -26,11 +23,18 @@ export default function CreateProjectPage () {
                 }),
                 headers: {
                     'Content-type' : 'application/json; charset=UTF-8',
+                    "Authorization" : 'Bearer ' + token,
                 },
             })
             .then(function(response) {
-                return response.text().then(function(text) {
-                    navigate('/itinerary')
+                return response.json().then(function(text) {
+                    if (response.status == 201) {
+                        window.alert('Vacation has been created');
+                        localStorage.setItem("vacation_id", JSON.stringify(text._id))
+                        alert(JSON.stringify(text));
+                        alert(JSON.stringify(text._id));
+                        navigate('/itinerary')
+                    }
                 });
             });
     }
@@ -38,19 +42,19 @@ export default function CreateProjectPage () {
     //will redirect to itinerary
     return (
         <div>
-                <form method="POST" action="/vacation" onSubmit={handleSubmit} className="form-group"> 
+                <form method="POST" action="api/vacation" onSubmit={handleSubmit} className="form-group"> 
                     <h1>Fill out this form to start your Itinerary</h1>
                     <label>Name:</label>
-                    <input type="text" name="vacation_name" placeholder="name of vacation" value={vacation_name} onChange={(e) => setVacationName(e.target.value)}></input>
+                    <input required type="text" name="vacation_name" placeholder="name of vacation" value={vacation_name} onChange={(e) => setVacationName(e.target.value)}></input>
                     <br></br>
                     <label>Starting date</label>
-                    <input type="date" name="start" placeholder="start date" value={start_date} onChange={(e) => setStartDate(e.target.value)}></input>
+                    <input required type="date" name="start" placeholder="start date" value={start_date} onChange={(e) => setStartDate(e.target.value)}></input>
                     <br></br>
                     <label>End date</label>
-                    <input type="date" name="end" placeholder="end date" value={end_date} onChange={(e) => setEndDate(e.target.value)}></input>
+                    <input required type="date" name="end" placeholder="end date" value={end_date} onChange={(e) => setEndDate(e.target.value)}></input>
                     <br></br>
                     <label>Country</label>
-                    <input type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
+                    <input required type="country" name="country" placeholder="country" value={country} onChange={(e) => setCountry(e.target.value)}></input>
                     <button type="submit">Create</button>
                 </form>
         </div>

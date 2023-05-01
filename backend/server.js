@@ -22,6 +22,10 @@ app.use('/api/login', require('./routes/loginRoute')); // Will use middleware in
 
 app.use('/api/itinerary', require('./routes/itineraryRoute'));
 
+app.use('/api/event', function (req, res) {
+    res.send(req.body);
+});
+
 app.use('/api/vacation', require('./routes/vacationRoute'));
 
 app.use('*', (req, res) => {

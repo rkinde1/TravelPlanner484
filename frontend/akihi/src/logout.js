@@ -6,6 +6,7 @@ function Logout() {
     const navigate=useNavigate();
     const logout = () => {
         localStorage.removeItem("username");
+        alert("You have successfully been logged out");
         navigate('/signup');
     }
     return (

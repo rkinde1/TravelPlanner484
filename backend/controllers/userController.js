@@ -25,10 +25,6 @@ const register = asyncHandler(async (req,res) => {
     const { username, email, password } = req.body;
 
 
-    // if (!firstName || !lastName || !username || !email || !password) {
-    //     res.status(400)
-    //     throw new Error("Please submit all fields");
-    // }
     
     //Check if user already exists given the credentials, if so, throw error
     const userExists = await User.findOne({ username });
@@ -84,8 +80,10 @@ const login = asyncHandler(async(req,res) => {
     //Compare the hashes to see if they are the same, if so, send some of the credentials back to the client
     if (user && (await bcrypt.compare(password, user.password))) {
         return res.status(200).json({
+            id : user.id,
             username: user.username,
             email: user.email,
+            fname: user.firstName,
             token: generateToken(user._id)
         });
         
