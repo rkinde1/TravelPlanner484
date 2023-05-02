@@ -101,6 +101,7 @@ const updateItinerary = asyncHandler(async (req, res) => {
             name_of_place: updatedItinerary.NameOfPlace,
             type_of_dest: updatedItinerary.TypeOfDest,
             number_of_days: updatedItinerary.NumberOfDays,
+            events: updatedItinerary.Events,
         });
     } else {
         res.status(404);
