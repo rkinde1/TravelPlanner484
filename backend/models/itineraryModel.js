@@ -11,6 +11,7 @@ const itinerarySchema = mongoose.Schema({
     NameOfPlace: {type:String, select:true},
     TypeOfDest: {type:String, select:true},
     NumberOfDays: {type:Number, select:true},
+    Events: {type:Array, select:true},
 });
 
 module.exports = mongoose.model('Itinerary', itinerarySchema, 'Itineraries');
