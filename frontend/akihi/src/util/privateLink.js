@@ -1,21 +1,18 @@
 import {Outlet, Navigate, Link} from 'react-router-dom';
+import './../navbar.css'
 
 const PrivateRoute = () => {
-    let auth = false;
-    if (localStorage.getItem("authorized")) {
-        auth = true;
-    }
     return (
-        auth ? <MenuBar/> : <LogAndSign/>
+        localStorage.getItem("token") ? <MenuBar/> : <LogAndSign/>
     )
 }
 const MenuBar =() => {
     return(
         <div>
-            <li><Link to={'vacation'}>Vacation</Link></li>
-            <li><Link to={'profile'}>Profile</Link></li>
-            <li><Link to={'itinerary'}>Itinerary</Link></li>
-            <li><Link to={'budget'}>Budget</Link></li>
+            <li className='hvr-grow'><Link to={'vacation'} className="border">Vacation</Link></li>
+            <li className='hvr-grow'><Link to={'profile'} className="border">Profile</Link></li>
+            <li className='hvr-grow'><Link to={'itinerary'} className="border">Itinerary</Link></li>
+            <li className='hvr-grow'><Link to={'budget'} className="border">Budget</Link></li>
         </div>
     );
 }

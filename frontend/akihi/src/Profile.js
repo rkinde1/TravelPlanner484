@@ -12,7 +12,8 @@ export function UserInfo(){
     const username = localStorage.getItem("username");
     const email = localStorage.getItem('email');
     const vacations = localStorage.getItem("vacations");
-    const listOfVacName = useState([])
+    const [listOfVacName, copy] = useState([])
+
     //Send request this way
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
@@ -30,43 +31,36 @@ export function UserInfo(){
         })
         .then(function(response) {
           //Checks what the status code is and works
-          if (response.status == 200) {
+          if (response.status === 200) {
               //returns json response
               return response.json().then(function(text) {
                 //Sets number of vacations on profile
                 localStorage.setItem("vacations", JSON.stringify(text.length));
-                
-                if (JSON.stringify(text.length) == 1) {
+                if (JSON.stringify(text.length) === 1) {
                   listOfVacName[0] = text[0].vacationName;
                   alert(listOfVacName[0])
                 }
                 else if (JSON.stringify(text.length) > 1) {
                   for (var i = 0 ; i < JSON.stringify(text.length); i ++) {
-                    listOfVacName[i] = (text[i].vacationName)
+                    listOfVacName[i] = JSON.stringify(text[i].vacationName)
                   }
                   alert(listOfVacName)
                 }
                 else {
                   alert("You have no vacations created")
                 }
-                
-                // else if (text.length == 1) {
-                //   listOfVacName[0] = JSON.stringify(text[0].vacationName)
-                // }
-
               });
           }
           else {
-              alert('Unsuccessful');
           }
       });
     }
 
     //We will need to create a function that will link to the vacation and the itinerary
-
+    
     useEffect(() => {
       getVacations();
-    }, []);
+    }, [listOfVacName]);
 
     const logout = async () => {
       localStorage.clear();
@@ -82,8 +76,13 @@ export function UserInfo(){
           <h3>Username: {username} <span id = "first-name"></span></h3>
           <h3>Email: {email}</h3>
           <h3>Number of Vacations: {vacations}</h3>
-          <button onClick={logout}>Logout</button>
+          <h3>Your Vacations: </h3>
+          <p>{listOfVacName.map(item => (
+            <p>{item}</p>
+          ))}</p>
+
           <DeleteVacation/>
+          <button onClick={logout}>Logout</button>
         </fieldset>
      </div>
     ) 
