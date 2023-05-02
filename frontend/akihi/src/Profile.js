@@ -44,7 +44,7 @@ export function UserInfo(){
                   for (var i = 0 ; i < JSON.stringify(text.length); i ++) {
                     listOfVacName[i] = JSON.stringify(text[i].vacationName)
                   }
-                  alert(listOfVacName)
+                  // alert(listOfVacName)
                 }
                 else {
                   alert("You have no vacations created")
@@ -60,13 +60,19 @@ export function UserInfo(){
     
     useEffect(() => {
       getVacations();
-    }, [listOfVacName]);
+    });
 
     const logout = async () => {
       localStorage.clear();
       alert("You have been successfully logged out")
       navigate('/login');
     }
+
+    const tableRows=listOfVacName.map((item) => {
+      return (
+        <p>{item}</p>
+      );
+    })
     
     return(
       
@@ -76,11 +82,11 @@ export function UserInfo(){
           <h3>Username: {username} <span id = "first-name"></span></h3>
           <h3>Email: {email}</h3>
           <h3>Number of Vacations: {vacations}</h3>
+          <h3>*Click Profile again if you want to see a list of your vacations*</h3>
           <h3>Your Vacations: </h3>
           <p>{listOfVacName.map(item => (
             <p>{item}</p>
           ))}</p>
-
           <DeleteVacation/>
           <button onClick={logout}>Logout</button>
         </fieldset>
