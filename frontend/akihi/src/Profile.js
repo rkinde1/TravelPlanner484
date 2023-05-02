@@ -33,14 +33,27 @@ export function UserInfo(){
           if (response.status == 200) {
               //returns json response
               return response.json().then(function(text) {
-                // alert(JSON.stringify(text));
+                //Sets number of vacations on profile
                 localStorage.setItem("vacations", JSON.stringify(text.length));
-                if (text.length !== 0) {
-                  for (var i = 0 ; i < text.length; i ++) {
-                    listOfVacName[i] = (JSON.stringify(text[i].vacationName))
+                
+                if (JSON.stringify(text.length) == 1) {
+                  listOfVacName[0] = text[0].vacationName;
+                  alert(listOfVacName[0])
+                }
+                else if (JSON.stringify(text.length) > 1) {
+                  for (var i = 0 ; i < JSON.stringify(text.length); i ++) {
+                    listOfVacName[i] = (text[i].vacationName)
                   }
                   alert(listOfVacName)
                 }
+                else {
+                  alert("You have no vacations created")
+                }
+                
+                // else if (text.length == 1) {
+                //   listOfVacName[0] = JSON.stringify(text[0].vacationName)
+                // }
+
               });
           }
           else {

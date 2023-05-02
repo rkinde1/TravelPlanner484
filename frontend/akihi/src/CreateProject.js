@@ -31,8 +31,8 @@ export default function CreateProjectPage () {
                     if (response.status == 201) {
                         window.alert('Vacation has been created');
                         localStorage.setItem("vacation_id", JSON.stringify(text._id))
-                        alert(JSON.stringify(text));
-                        alert(JSON.stringify(text._id));
+                        // alert(JSON.stringify(text));
+                        // alert(JSON.stringify(text._id));
                         navigate('/itinerary')
                     }
                 });

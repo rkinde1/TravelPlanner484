@@ -19,30 +19,44 @@ function CreateProjectButton() {
 
 /*Separate Notes function that is part of a single place*/
 function Notes() {
+    const [checkbox, setCheckbox] = useState('');
     return (
         <div>
             <fieldset className="noteSeparate">
                 <legend>Notes: </legend>
-                <labal>Have you booked this event?</labal><input type="checkbox"></input><br></br>
+                <labal>Have you booked this event?</labal><input type="checkbox" name="checkbox" value={checkbox} onChange={(e) => setCheckbox(e.target.value)}></input><br></br>
                 <textarea></textarea>
             </fieldset>
         </div>
     );
 }
 
-function Event() {
-    const[showMessage, setShowMessage] = useState(false);
+function Event (props) {
+    const[message, setMessage] = useState('');
+    const [checkbox, setCheckbox] = useState(false);
     const token = localStorage.getItem("token");
     const [category, setCategory] = useState("");
     const [time, setTime] = useState("");
     const [cost, setCost] = useState("");
     const [place, setPlace] = useState("");
-    const [myArray, setMyArray] = useState([]);
+    const [array, setArray] = useState([{
+        message: message,
+        checkbox: checkbox,
+        category: category,
+        time: time,
+        cost: cost,
+        place: place
+    }])
+    //send vacation_id in header
+    const vacation_id = useState('');
+    //Must have id of vacationId
     const handleSubmit = async (e) => {
         e.preventDefault();
         await fetch("/api/event", {
             method: "PATCH", 
             body: JSON.stringify({
+                message: message,
+                checkbox: checkbox,
                 category: category,
                 time: time,
                 cost: cost,
@@ -56,7 +70,7 @@ function Event() {
         .then(function(res) {
             return res.text().then(function(text) {
                 alert(text);
-                alert("Saved");
+                alert("Saved")
             });
         });
     }
@@ -71,17 +85,10 @@ function Event() {
                         </select>
                         <input type="time" name="time" placeholder="Arrival Time" className="time" value={time} onChange={(e) => setTime(e.target.value)}></input>
                         <input type="number" name="cost" placeholder="Cost" className="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
-                        <div
-                            onMouseEnter={() => {
-                                setShowMessage(true);
-                            }}
-                            onMouseLeave={()=>{
-                                setShowMessage(false);
-                            }}
-                        >
                             <input type="textfield" name="place" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
-                            {showMessage && <Notes />}
-                        </div>
+                        <legend>Notes: </legend>
+                        <label>Have you booked this event?</label><input type="checkbox" name="checkbox" value={checkbox} onChange={(e) => setCheckbox(e.target.value)}></input><br></br>
+                        <textarea type="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
                         <button type="submit">Save</button>
             </form>
         </div>
@@ -93,12 +100,22 @@ function Event() {
 function Date() {
     //This is how we add another date on here
     //The duplicate cannot include the day here
-    const [event, setEvent] = useState([<Event key={0} />])
+    const [event, setEvent] = useState([
+        
+        <Event key={0} />
+
+    ])
+    const [arrayOfEvents, setMyArrayOfEvents] = useState([{
+
+    }]);
     const token= localStorage.getItem("token");
     let addNewRow = (e) => {
         e.preventDefault()
-        setEvent([...event, <Event key={event.length} />]);
+        setEvent([...event, <Event key={event.length}
+        />]);
+        alert(event[0].time)
     }
+
     let deleteNewRow = (e) => {
         e.preventDefault();
         setEvent([<Event key={(event.length - 1)} />]);
@@ -107,7 +124,7 @@ function Date() {
     let getItinerary = () => {
         fetch("/api/itinerary", {
             method: "GET", 
-            body: JSON.stringify({
+            body: ({
 
             }),
             headers: {
@@ -132,6 +149,7 @@ function Date() {
                     <h1>Itinerary Events</h1>
                     <button onClick={addNewRow}>Add Event</button>
                     <button onClick={deleteNewRow}>Delete</button>
+                    {/* This will show all of the Event functions */}
                     {event}
                 </div>
                 <p>Toggle Google Maps?</p><ToggleGoogle />
