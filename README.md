@@ -1,21 +1,9 @@
 # TravelPlanner484
 # For the front end design we have assigned certain design tasks with figma links included:
 # Spring Break Features to do list:
--Delete row functionality in Itinerary.js
+-Delete row function in Itinerary
 
--Connecting cost of place to Budget feature
-
--make a landing page with the person's name
-
--Redirecting after login
-
--Making routes private unless there is a user in GET request
-
--sending data to backend from Itinerary as an array
-
--edit profile setting
-
--delete project setting
+-Access vacations and itinerary
 
 # Garret: Budget Feature
 # Tosin: Reservations page
