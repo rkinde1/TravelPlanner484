@@ -22,7 +22,7 @@ app.use('/api/login', require('./routes/loginRoute')); // Will use middleware in
 
 app.use('/api/itinerary', require('./routes/itineraryRoute'));
 
-app.use('/api/event', function (req, res) {
+app.post('/api/event', function (req, res) {
     res.send(req.body);
 });
 

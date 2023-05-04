@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {ToggleGoogle, Map} from './googlemaps.js';
 import Button from 'react-bootstrap/Button';
 import NavBar from './navbar.js';
+import EditSpecificVacation from './EditItinerary'
 
 const token = localStorage.getItem("token");
 let id = 0;
@@ -15,6 +16,7 @@ function Event () {
     const [place, setPlace] = useState("");
     const [event, setEvent] = useState([
     ])
+    const [finalEvents, setFinalEvents] = useState([])
     //send vacation_id in header
     const vacation_id = useState('');
     //Must have id of vacationId
@@ -30,30 +32,64 @@ function Event () {
         }])
     }
 
+    //This will send the events to itinerary as a patch update
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await fetch("/api/event", {
+        await fetch("/api/itinerary/:id", {
             method: "PATCH", 
-            body: JSON.stringify(event),
+            body: JSON.stringify({
+                _id: localStorage.getItem("itinerary_id"),
+                events: event
+            }),
             headers: {
                 'Content-type' : 'application/json; charset=UTF-8',
                 "Authorization" : 'Bearer ' + token,
             },
         })
         .then(function(res) {
-            return res.text().then(function(text) {
-                alert(text);
+            return res.json().then(function(text) {
+                alert(JSON.stringify(text));
+                // setFinalEvent(JSON.stringify(text.events))
+                alert(JSON.stringify(text.events))
                 alert("Saved")
             });
         });
     }
+    
+    //Gets the final Itinerary after everything has been saved
+    const finalItinerary = () => {
+        fetch("/api/itinerary/vacationName", {
+            method: "POST", 
+            body: JSON.stringify({
+                vacationName: localStorage.getItem("vacationName")
+            }),
+            headers: {
+                'Content-type' : 'application/json; charset=UTF-8',
+                "Authorization" : 'Bearer ' + token,
+            },
+        })
+        .then(function(res) {
+            return res.json().then(function(text) {
+                // alert(JSON.stringify(text))
+                // alert(JSON.stringify(text[0].Events))
+                //This is what sets up the final Itinerary
+                setFinalEvents(JSON.stringify(text[0].Events))
+            });
+        });
+    }
+
+    useEffect(() => {
+        finalItinerary();
+    })
     return (
         <div className="flex-container">
             <fieldset>
                 <div className="flex-container">
                     <h1>Itinerary Events</h1>
+                    {finalEvents}
                 </div>
-                <form action="/api/event" method="PATCH" onSubmit={handleSubmit}>
+                <h1>Want to change your itinerary? Fill out the form below</h1>
+                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit}>
                     <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
                         <option value="Flight">Flight</option>
                         <option value="Hotel">Hotel</option>

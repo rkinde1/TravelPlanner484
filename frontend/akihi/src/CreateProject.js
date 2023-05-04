@@ -10,6 +10,7 @@ export default function CreateProjectPage () {
     const [vacation_id] = useState("");
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+    //create vacation link
     let handleSubmit = async (e) => {
         e.preventDefault();
         //Profile needs to show all projects
@@ -31,8 +32,29 @@ export default function CreateProjectPage () {
                     if (response.status == 201) {
                         window.alert('Vacation has been created');
                         localStorage.setItem("vacation_id", JSON.stringify(text._id))
-                        // alert(JSON.stringify(text));
-                        // alert(JSON.stringify(text._id));
+                    }
+                });
+            });
+            await fetch('/api/itinerary', {
+                method: "POST", 
+                body: JSON.stringify({
+                    _id: localStorage.getItem("vacation_id"),
+                    vacation_name : vacation_name,
+                    start_date : start_date,
+                    end_date : end_date,
+                    country : country,
+                }),
+                headers: {
+                    'Content-type' : 'application/json; charset=UTF-8',
+                    "Authorization" : 'Bearer ' + token,
+                },
+            })
+            .then(function(response) {
+                return response.json().then(function(text) {
+                    if (response.status == 201) {
+                        alert(JSON.stringify(text))
+                        localStorage.setItem("itinerary_id", text._id)
+                        alert(text._id)
                         navigate('/itinerary')
                     }
                 });

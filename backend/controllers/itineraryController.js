@@ -69,8 +69,7 @@ const createItinerary = asyncHandler(async (req, res) => {
 });
 
 const getItineraries = asyncHandler(async (req, res) => {
-    
-    const vacation = await Vacation.findOne({vacationName: req.body.vacation_name});
+    const vacation = await Vacation.findOne({vacationName: req.body.vacationName});
     
     const vacationNum = vacation._id.toString();
     
@@ -82,7 +81,7 @@ const getItineraries = asyncHandler(async (req, res) => {
 const updateItinerary = asyncHandler(async (req, res) => {
     
 
-    const itinerary = await Itinerary.findById(req.params.id);
+    const itinerary = await Itinerary.findById(req.body._id);
 
     if(itinerary) {
         
@@ -102,6 +101,7 @@ const updateItinerary = asyncHandler(async (req, res) => {
             type_of_dest: updatedItinerary.TypeOfDest,
             number_of_days: updatedItinerary.NumberOfDays,
             events: updatedItinerary.Events,
+
         });
     } else {
         res.status(404);

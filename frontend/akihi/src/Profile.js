@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {DeleteVacation} from './deleteVacation'
-
+import EditSpecificVacation from './EditItinerary'
 
 
 export function UserInfo(){
@@ -44,7 +44,6 @@ export function UserInfo(){
                   for (var i = 0 ; i < JSON.stringify(text.length); i ++) {
                     listOfVacName[i] = JSON.stringify(text[i].vacationName)
                   }
-                  // alert(listOfVacName)
                 }
                 else {
                   alert("You have no vacations created")
@@ -89,6 +88,7 @@ export function UserInfo(){
           ))}</p>
           <DeleteVacation/>
           <button onClick={logout}>Logout</button>
+          <EditSpecificVacation/>
         </fieldset>
      </div>
     ) 
