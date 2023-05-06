@@ -3,7 +3,7 @@ import './../navbar.css'
 
 const PrivateRoute = () => {
     return (
-        localStorage.getItem("token") ? <MenuBar/> : <LogAndSign/>
+        localStorage.getItem("id") ? <MenuBar/> : <LogAndSign/>
     )
 }
 const MenuBar =() => {

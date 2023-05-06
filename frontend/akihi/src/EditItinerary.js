@@ -92,7 +92,6 @@ function EditSpecificVacation() {
             <form action="/api/itinerary/vacationName" method="POST" onSubmit={getVacationId}>
                 <h1>Start typing to see vacations</h1>
                 {tableRows}
-                {vacationName}
                 <input type="text" name="vacationName" placeholder="Enter Vacation name here" value={vacationName} onChange={(e) => setVacationName(e.target.value)}></input>
                 <button type="submit">Search</button>
             </form>
