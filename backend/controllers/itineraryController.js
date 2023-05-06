@@ -18,6 +18,7 @@ const createItinerary = asyncHandler(async (req, res) => {
     const numberOfDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
     const vacation = await Vacation.findOne({vacationName: vacationName}); //Try to find the vacation in the database
     const vacationNum = vacation._id;
+    const events  = req.body.events;
    
    
     //Check if vacation exists
@@ -44,6 +45,7 @@ const createItinerary = asyncHandler(async (req, res) => {
             NameOfPlace: nameOfPlace,
             TypeOfDest: typeOfDest,
             NumberOfDays: numberOfDays,
+            Events: events,
         });
 
     
@@ -60,14 +62,14 @@ const createItinerary = asyncHandler(async (req, res) => {
             nameOfPlace: itinerary.NameOfPlace,
             typeOfDest: itinerary.TypeOfDest,
             days: itinerary.NumberOfDays,
+            events: itinerary.Events,
 
         });  
 
 });
 
 const getItineraries = asyncHandler(async (req, res) => {
-    
-    const vacation = await Vacation.findOne({vacationName: req.body.vacation_name});
+    const vacation = await Vacation.findOne({vacationName: req.body.vacationName});
     
     const vacationNum = vacation._id.toString();
     
@@ -79,7 +81,7 @@ const getItineraries = asyncHandler(async (req, res) => {
 const updateItinerary = asyncHandler(async (req, res) => {
     
 
-    const itinerary = await Itinerary.findById(req.params.id);
+    const itinerary = await Itinerary.findById(req.body._id);
 
     if(itinerary) {
         
@@ -88,6 +90,7 @@ const updateItinerary = asyncHandler(async (req, res) => {
         if(req.body.name_of_place) itinerary.NameOfPlace = req.body.name_of_place; else itinerary.NameOfPlace = itinerary.NameOfPlace;
         if(req.body.type_of_dest) itinerary.TypeOfDest = req.body.type_of_dest; else itinerary.TypeOfDest = itinerary.TypeOfDest;
         if(req.body.number_of_days) Math.round((itinerary.endDate - itinerary.startDate) / (1000 * 60 * 60 * 24));
+        if(req.body.events) itinerary.Events = req.body.events; else itinerary.Events = itinerary.Events;
 
         
         const updatedItinerary = await itinerary.save();
@@ -97,6 +100,8 @@ const updateItinerary = asyncHandler(async (req, res) => {
             name_of_place: updatedItinerary.NameOfPlace,
             type_of_dest: updatedItinerary.TypeOfDest,
             number_of_days: updatedItinerary.NumberOfDays,
+            events: updatedItinerary.Events,
+
         });
     } else {
         res.status(404);

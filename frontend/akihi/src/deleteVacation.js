@@ -24,9 +24,9 @@ export function DeleteVacation () {
         .then(function(res) {
             return res.text().then(function(text) {
                 alert(text);
-                // localStorage.setItem("vacation_id", null)
+                localStorage.setItem("vacation_id", null)
                 // alert('Deleted');
-                // navigate('/profile');
+                navigate('/profile');
             });
         });
     }
@@ -63,8 +63,8 @@ export function DeleteVacation () {
     return (
         <div>
             <form action="/api/vacation" method="DELETE" onSubmit={delete2}>
+                <h2>Type in name of Vacation you wish to delete</h2>
                 <input type="text" name="vacationName" value={vacationName} onChange={((e) => setVacationName(e.target.value))} placeholder="Enter name of vacation"></input>
-                {/* <input type="textfield" name="id" value={localStorage.getItem("vacation_id")}></input> */}
                 <button type="submit">Delete Vacation</button>
             </form>
         </div>

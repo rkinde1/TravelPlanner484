@@ -37,6 +37,7 @@ function Login () {
                     localStorage.setItem("id", text.id);
                     //Token should be used to access all of this information
                     localStorage.setItem("token", text.token);
+                    localStorage.setItem("authorized", true);
                     //Alerts that it works
                     alert("Successful");
                     //Navigates to profile page with information
@@ -45,6 +46,7 @@ function Login () {
             }
             else {
                 alert('Invalid Credentials');
+                localStorage.setItem("authorized", false)
             }
         });
     }

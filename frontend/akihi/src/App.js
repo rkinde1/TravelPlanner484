@@ -1,4 +1,4 @@
-import {CreateProjectButton, Date} from './Itinerary.js';
+import {Event} from './Itinerary.js';
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
@@ -24,7 +24,7 @@ function App() {
               <Route path="/login" element={<Login/>}></Route>
               <Route path='/signup' element={<Signup/>}></Route>
               <Route element={<PrivateRoute />}>
-                <Route path='/itinerary' element={<Date />} exact/>
+                <Route path='/itinerary' element={<Event />} exact/>
                 <Route path = '/profile' element = {<UserInfo/>} exact/>
                 <Route path = '/vacation' element = {<CreateProjectPage/>} exact/>
                 <Route path = '/budget' element = {<Budget/>} exact/>

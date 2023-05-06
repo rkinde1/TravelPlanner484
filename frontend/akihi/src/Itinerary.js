@@ -3,50 +3,43 @@ import React, {useState, useEffect} from 'react';
 import {ToggleGoogle, Map} from './googlemaps.js';
 import Button from 'react-bootstrap/Button';
 import NavBar from './navbar.js';
+import EditSpecificVacation from './EditItinerary'
 
-/*When pressed this button will create another project under the username. It will send a window.alert for the 
-user to input name, location, start, and end date
-The location will send a request to Google Maps API
-The start and end date will send data to Date
-*/
-function CreateProjectButton() {
-    return (
-        <form action="/vacation">
-            <input type="submit" value="Create Project"></input>
-        </form>
-    );
-}
+const token = localStorage.getItem("token");
+let id = 0;
 
-/*Separate Notes function that is part of a single place*/
-function Notes() {
-    return (
-        <div>
-            <fieldset className="noteSeparate">
-                <legend>Notes: </legend>
-                <labal>Have you booked this event?</labal><input type="checkbox"></input><br></br>
-                <textarea></textarea>
-            </fieldset>
-        </div>
-    );
-}
-
-function Event() {
-    const[showMessage, setShowMessage] = useState(false);
-    const token = localStorage.getItem("token");
+function Event () {
+    const [checkbox, setCheckbox] = useState(false);
     const [category, setCategory] = useState("");
     const [time, setTime] = useState("");
     const [cost, setCost] = useState("");
     const [place, setPlace] = useState("");
-    const [myArray, setMyArray] = useState([]);
+    const [event, setEvent] = useState([
+    ])
+    const [finalEvents, setFinalEvents] = useState([])
+    //send vacation_id in header
+    const vacation_id = useState('');
+    //Must have id of vacationId
+    const addEvent = async (e) => {
+        e.preventDefault();
+        setEvent([...event, {
+            id: id++,
+            category: category,
+            time: time,
+            cost: cost,
+            place: place,
+            checkbox: checkbox,
+        }])
+    }
+
+    //This will send the events to itinerary as a patch update
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await fetch("/api/event", {
+        await fetch("/api/itinerary/:id", {
             method: "PATCH", 
             body: JSON.stringify({
-                category: category,
-                time: time,
-                cost: cost,
-                place: place
+                _id: localStorage.getItem("itinerary_id"),
+                events: event
             }),
             headers: {
                 'Content-type' : 'application/json; charset=UTF-8',
@@ -54,90 +47,70 @@ function Event() {
             },
         })
         .then(function(res) {
-            return res.text().then(function(text) {
-                alert(text);
-                alert("Saved");
+            return res.json().then(function(text) {
+                alert(JSON.stringify(text));
+                // setFinalEvent(JSON.stringify(text.events))
+                alert(JSON.stringify(text.events))
+                alert("Saved")
             });
         });
     }
+    
+    //Gets the final Itinerary after everything has been saved
+    const finalItinerary = () => {
+        fetch("/api/itinerary/vacationName", {
+            method: "POST", 
+            body: JSON.stringify({
+                vacationName: localStorage.getItem("vacationName")
+            }),
+            headers: {
+                'Content-type' : 'application/json; charset=UTF-8',
+                "Authorization" : 'Bearer ' + token,
+            },
+        })
+        .then(function(res) {
+            return res.json().then(function(text) {
+                // alert(JSON.stringify(text))
+                // alert(JSON.stringify(text[0].Events))
+                //This is what sets up the final Itinerary
+                setFinalEvents(JSON.stringify(text[0].Events))
+            });
+        });
+    }
+
+    useEffect(() => {
+        finalItinerary();
+    })
     return (
         <div className="flex-container">
-            <form action="/api/event" method="PATCH" onSubmit={handleSubmit}>
-                        <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-                            <option value="Flight">Flight</option>
-                            <option value="hotel">Hotel</option>
-                            <option value="Restaurant">Restaurant</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <input type="time" name="time" placeholder="Arrival Time" className="time" value={time} onChange={(e) => setTime(e.target.value)}></input>
-                        <input type="number" name="cost" placeholder="Cost" className="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
-                        <div
-                            onMouseEnter={() => {
-                                setShowMessage(true);
-                            }}
-                            onMouseLeave={()=>{
-                                setShowMessage(false);
-                            }}
-                        >
-                            <input type="textfield" name="place" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
-                            {showMessage && <Notes />}
-                        </div>
-                        <button type="submit">Save</button>
-            </form>
+            <fieldset>
+                <div className="flex-container">
+                    <h1>Itinerary Events</h1>
+                    {finalEvents}
+                </div>
+                <h1>Want to change your itinerary? Fill out the form below</h1>
+                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit}>
+                    <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+                        <option value="Flight">Flight</option>
+                        <option value="Hotel">Hotel</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="time" name="time" placeholder="Arrival Time" className="time" value={time} onChange={(e) => setTime(e.target.value)}></input>
+                    <input type="number" name="cost" placeholder="Cost" className="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
+                        <input type="textfield" name="place" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
+                    <label>Have you booked this event?</label><input type="checkbox" name="checkbox" value={checkbox} onChange={(e) => setCheckbox(e.target.value)}></input><br></br>
+                    <button onClick={addEvent}>Add Event</button>
+                    {event.map(event => (
+                        <p key={event.id}>{event.time} {event.place} Cost of Event: {event.cost} Has it been booked? {event.checkbox}</p>
+                    ))}
+                    <button type="submit">Save Itinerary</button>
+                </form>
+                <p>Toggle Google Maps?</p><ToggleGoogle />
+            </fieldset>
         </div>
                     
     );
 }
 
-//Will display date field set in which notes is under
-function Date() {
-    //This is how we add another date on here
-    //The duplicate cannot include the day here
-    const [event, setEvent] = useState([<Event key={0} />])
-    const token= localStorage.getItem("token");
-    let addNewRow = (e) => {
-        e.preventDefault()
-        setEvent([...event, <Event key={event.length} />]);
-    }
-    let deleteNewRow = (e) => {
-        e.preventDefault();
-        setEvent([<Event key={(event.length - 1)} />]);
-    }
-
-    let getItinerary = () => {
-        fetch("/api/itinerary", {
-            method: "GET", 
-            body: JSON.stringify({
-
-            }),
-            headers: {
-                'Content-type' : 'application/json; charset=UTF-8',
-                "Authorization" : 'Bearer ' + token,
-            },
-        })
-        .then(function(res) {
-            return res.text().then(function(text) {
-                alert(text);
-            });
-        });
-    }
-    useEffect(()=> {
-        getItinerary();
-
-    }, []);
-    return(
-        <div>
-            <fieldset>
-                <div className="flex-container">
-                    <h1>Itinerary Events</h1>
-                    <button onClick={addNewRow}>Add Event</button>
-                    <button onClick={deleteNewRow}>Delete</button>
-                    {event}
-                </div>
-                <p>Toggle Google Maps?</p><ToggleGoogle />
-            </fieldset>
-        </div>
-    );
-}
-
-export {Notes, CreateProjectButton, Date, Event};
+export {Event};
