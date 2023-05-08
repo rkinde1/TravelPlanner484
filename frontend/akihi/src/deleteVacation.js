@@ -23,10 +23,15 @@ export function DeleteVacation () {
         })
         .then(function(res) {
             return res.text().then(function(text) {
-                alert(text);
-                localStorage.setItem("vacation_id", null)
-                // alert('Deleted');
-                navigate('/profile');
+                if (res.status == 200) {
+                    alert(text);
+                    localStorage.setItem("vacation_id", null)
+                    // alert('Deleted');
+                    navigate('/profile');
+                }
+                else {
+                    alert('Cannot find vacation');
+                }
             });
         });
     }
@@ -63,9 +68,9 @@ export function DeleteVacation () {
     return (
         <div>
             <form action="/api/vacation" method="DELETE" onSubmit={delete2}>
-                <h2>Type in name of Vacation you wish to delete</h2>
+                <h2>Type in name of Vacation you wish to <em className="delete">delete</em></h2>
                 <input type="text" name="vacationName" value={vacationName} onChange={((e) => setVacationName(e.target.value))} placeholder="Enter name of vacation"></input>
-                <button type="submit">Delete Vacation</button>
+                <button className="deleteButton" type="submit">Delete Vacation</button>
             </form>
         </div>
     );

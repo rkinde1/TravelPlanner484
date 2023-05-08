@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import {DeleteVacation} from './deleteVacation'
 import EditSpecificVacation from './EditItinerary'
 
@@ -36,9 +36,8 @@ export function UserInfo(){
               return response.json().then(function(text) {
                 //Sets number of vacations on profile
                 localStorage.setItem("vacations", JSON.stringify(text.length));
-                if (JSON.stringify(text.length) === 1) {
+                if (JSON.stringify(text.length) == 1) {
                   listOfVacName[0] = text[0].vacationName;
-                  alert(listOfVacName[0])
                 }
                 else if (JSON.stringify(text.length) > 1) {
                   for (var i = 0 ; i < JSON.stringify(text.length); i ++) {
@@ -67,12 +66,6 @@ export function UserInfo(){
       navigate('/login');
     }
 
-    const tableRows=listOfVacName.map((item) => {
-      return (
-        <p>{item}</p>
-      );
-    })
-    
     return(
       
       <div className = "UserInfo">
@@ -81,14 +74,7 @@ export function UserInfo(){
           <h3>Username: {username} <span id = "first-name"></span></h3>
           <h3>Email: {email}</h3>
           <h3>Number of Vacations: {vacations}</h3>
-          <h3>*Click Profile again if you want to see a list of your vacations*</h3>
-          <h3>Your Vacations: </h3>
-          <p>{listOfVacName.map(item => (
-            <p>{item}</p>
-          ))}</p>
-          <DeleteVacation/>
           <button onClick={logout}>Logout</button>
-          <EditSpecificVacation/>
         </fieldset>
      </div>
     ) 

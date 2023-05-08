@@ -12,7 +12,6 @@ const MenuBar =() => {
             <li className='hvr-grow'><Link to={'vacation'} className="border">Vacation</Link></li>
             <li className='hvr-grow'><Link to={'profile'} className="border">Profile</Link></li>
             <li className='hvr-grow'><Link to={'itinerary'} className="border">Itinerary</Link></li>
-            <li className='hvr-grow'><Link to={'budget'} className="border">Budget</Link></li>
         </div>
     );
 }

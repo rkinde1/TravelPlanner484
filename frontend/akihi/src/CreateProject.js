@@ -52,9 +52,9 @@ export default function CreateProjectPage () {
             .then(function(response) {
                 return response.json().then(function(text) {
                     if (response.status == 201) {
-                        alert(JSON.stringify(text))
+                        // alert(JSON.stringify(text))
                         localStorage.setItem("itinerary_id", text._id)
-                        alert(text._id)
+                        // alert(text._id)
                         navigate('/itinerary')
                     }
                 });

@@ -25,7 +25,7 @@ function EditSpecificVacation() {
                 if (response.status == 200) {
                     return response.json().then(function(text) {
                         //uncomment this code to see the data
-                        alert(JSON.stringify(text))
+                        // alert(JSON.stringify(text))
                         // alert(text[0]._id)
                         //Stores itinerary Id in here
                         localStorage.setItem("itinerary_id", text[0]._id)
@@ -54,9 +54,8 @@ function EditSpecificVacation() {
                 return response.json().then(function(text) {
                   //Sets number of vacations on profile
                   localStorage.setItem("vacations", JSON.stringify(text.length));
-                  if (JSON.stringify(text.length) === 1) {
+                  if (JSON.stringify(text.length) == 1) {
                     listOfVacName[0] = text[0].vacationName;
-                    alert(listOfVacName[0])
                   }
                   else if (JSON.stringify(text.length) > 1) {
                     for (var i = 0 ; i < JSON.stringify(text.length); i ++) {
@@ -65,7 +64,6 @@ function EditSpecificVacation() {
                       }
                       listOfVacName[i] = JSON.stringify(text[i].vacationName)
                     }
-                    alert(listOfVacName)
                   }
                   else {
                     alert("You have no vacations created")
@@ -90,7 +88,9 @@ function EditSpecificVacation() {
     return(
         <div>
             <form action="/api/itinerary/vacationName" method="POST" onSubmit={getVacationId}>
-                <h1>Start typing to see vacations</h1>
+                <h1>Please enter the vacation you wish to access</h1>
+                <h5>*Note*: Start typing to see pre-existing vacations</h5>
+                <h5>Don't forget to refresh the page!</h5>
                 {tableRows}
                 <input type="text" name="vacationName" placeholder="Enter Vacation name here" value={vacationName} onChange={(e) => setVacationName(e.target.value)}></input>
                 <button type="submit">Search</button>

@@ -130,3 +130,10 @@ hr {
   height: 25%;
 }*/
 
+.delete {
+  color: red;
+}
+
+.deleteButton {
+  background-color: red;
+}

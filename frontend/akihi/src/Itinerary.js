@@ -4,6 +4,7 @@ import {ToggleGoogle, Map} from './googlemaps.js';
 import Button from 'react-bootstrap/Button';
 import NavBar from './navbar.js';
 import EditSpecificVacation from './EditItinerary'
+import DeleteVacation from './deleteVacation';
 
 const token = localStorage.getItem("token");
 let id = 0;
@@ -48,9 +49,9 @@ function Event () {
         })
         .then(function(res) {
             return res.json().then(function(text) {
-                alert(JSON.stringify(text));
+                // alert(JSON.stringify(text));
                 // setFinalEvent(JSON.stringify(text.events))
-                alert(JSON.stringify(text.events))
+                // alert(JSON.stringify(text.events))
                 alert("Saved")
             });
         });
@@ -72,8 +73,14 @@ function Event () {
             return res.json().then(function(text) {
                 // alert(JSON.stringify(text))
                 // alert(JSON.stringify(text[0].Events))
+                // alert(text[0].Events[0].cost)
                 //This is what sets up the final Itinerary
-                setFinalEvents(JSON.stringify(text[0].Events))
+                if (JSON.stringify(text[0].Events.length) == 0) {
+                    setFinalEvents("Current Itinerary is empty");
+                }
+                else {
+                    setFinalEvents(JSON.stringify(text[0].Events))
+                }
             });
         });
     }
@@ -83,6 +90,9 @@ function Event () {
     })
     return (
         <div className="flex-container">
+            <fieldset>
+                <EditSpecificVacation/>
+            </fieldset>
             <fieldset>
                 <div className="flex-container">
                     <h1>Itinerary Events</h1>
@@ -99,7 +109,7 @@ function Event () {
                     <input type="time" name="time" placeholder="Arrival Time" className="time" value={time} onChange={(e) => setTime(e.target.value)}></input>
                     <input type="number" name="cost" placeholder="Cost" className="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
                         <input type="textfield" name="place" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
-                    <label>Have you booked this event?</label><input type="checkbox" name="checkbox" value={checkbox} onChange={(e) => setCheckbox(e.target.value)}></input><br></br>
+                    <label>Have you booked this event?</label><input type="checkbox" name="checkbox" value={checkbox} onChange={(e) => setCheckbox(e.target.checked)}></input><br></br>
                     <button onClick={addEvent}>Add Event</button>
                     {event.map(event => (
                         <p key={event.id}>{event.time} {event.place} Cost of Event: {event.cost} Has it been booked? {event.checkbox}</p>
@@ -107,6 +117,10 @@ function Event () {
                     <button type="submit">Save Itinerary</button>
                 </form>
                 <p>Toggle Google Maps?</p><ToggleGoogle />
+            </fieldset>
+            <fieldset>
+                <h1 className="delete">Delete Vacation</h1>
+                <DeleteVacation/>
             </fieldset>
         </div>
                     
