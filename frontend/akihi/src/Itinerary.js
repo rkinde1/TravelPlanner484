@@ -79,7 +79,7 @@ function Event () {
                     setFinalEvents("Current Itinerary is empty");
                 }
                 else {
-                    setFinalEvents(JSON.stringify(text[0].Events))
+                    setFinalEvents(JSON.parse(JSON.stringify(text[0].Events)))
                 }
             });
         });
@@ -94,10 +94,17 @@ function Event () {
                 <EditSpecificVacation/>
             </fieldset>
             <fieldset>
-                <div className="flex-container">
                     <h1>Itinerary Events</h1>
-                    {finalEvents}
-                </div>
+                    <div className="event-container">
+                        {finalEvents.map((event) => (
+                                <div className="event">
+                                    <h3>Category: {event.category}</h3>
+                                    <h3>Time: {event.time}</h3>
+                                    <h3>Cost: {event.cost}</h3>
+                                    <h3>Place: {event.place}</h3>
+                                </div>
+                        ))}
+                        </div>
                 <h1>Want to change your itinerary? Fill out the form below</h1>
                 <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit}>
                     <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
