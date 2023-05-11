@@ -14,6 +14,7 @@ export function UserInfo(){
     const vacations = localStorage.getItem("vacations");
     const [listOfVacName, copy] = useState([])
 
+    const[vacationData, setVacationData] = useState([]);
     //Send request this way
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
@@ -34,6 +35,8 @@ export function UserInfo(){
           if (response.status === 200) {
               //returns json response
               return response.json().then(function(text) {
+                //Sets the vacation data
+                setVacationData(text);
                 //Sets number of vacations on profile
                 localStorage.setItem("vacations", JSON.stringify(text.length));
                 if (JSON.stringify(text.length) == 1) {
@@ -74,6 +77,20 @@ export function UserInfo(){
           <h3>Username: {username} <span id = "first-name"></span></h3>
           <h3>Email: {email}</h3>
           <h3>Number of Vacations: {vacations}</h3>
+          {/* display the list of vacation data */}
+          <div id = "vacation-list">
+            <h3>Vacations: </h3>
+            <ul>
+              {listOfVacName.map((vacation) => (
+                <li>
+                  <Link to = "/itinerary">
+                    {vacation}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            
+          </div>
           <button onClick={logout}>Logout</button>
         </fieldset>
      </div>
