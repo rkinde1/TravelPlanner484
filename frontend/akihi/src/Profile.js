@@ -73,7 +73,7 @@ export function UserInfo(){
     return(
       
       <div className = "profile">
-          <h1>Welcome {fname}</h1>
+          <h1>Welcome {fname}!</h1>
           <h3>Username: {username} <span id = "first-name"></span></h3>
           <h3>Email: {email}</h3>
           <h3>Number of Vacations: {vacations}</h3>

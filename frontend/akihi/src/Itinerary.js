@@ -106,8 +106,8 @@ function Event () {
                                 </div>
                         ))}
                         </div>
-                <h1>Want to change your itinerary? Fill out the form below</h1>
-                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit}>
+                <h1>Add Event</h1>
+                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit} className>
                     <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
                         <option value="Flight">Flight</option>
                         <option value="Hotel">Hotel</option>
