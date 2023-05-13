@@ -90,10 +90,11 @@ function Event () {
     })
     return (
         <div className="flex-container">
-            <fieldset>
+            <div>
                 <EditSpecificVacation/>
-            </fieldset>
-            <fieldset>
+            </div>
+            
+                <div class = "itinerary">
                     <h1>Itinerary Events</h1>
                     <div className="event-container">
                         {finalEvents.map((event) => (
@@ -124,11 +125,11 @@ function Event () {
                     <button type="submit">Save Itinerary</button>
                 </form>
                 <p>Toggle Google Maps?</p><ToggleGoogle />
-            </fieldset>
-            <fieldset>
+                </div>
+                <div className='deleteItinerary'>
                 <h1 className="delete">Delete Vacation</h1>
                 <DeleteVacation/>
-            </fieldset>
+                </div>
         </div>
                     
     );
