@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
 import './App.css';
+import './Itinerary.css';
 
 const token = localStorage.getItem("token");
 
@@ -66,7 +67,7 @@ export function DeleteVacation () {
         getVacationId();
     }, [vacationName]);
     return (
-        <div>
+        <div >
             <form action="/api/vacation" method="DELETE" onSubmit={delete2}>
                 <h2>Type in name of Vacation you wish to <em className="delete">delete</em></h2>
                 <input type="text" name="vacationName" value={vacationName} onChange={((e) => setVacationName(e.target.value))} placeholder="Enter name of vacation"></input>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
+import './Itinerary.css';
 
 const token = localStorage.getItem("token");
 function EditSpecificVacation() {
@@ -86,7 +87,7 @@ function EditSpecificVacation() {
         );
       })
     return(
-        <div>
+        <div class = 'editItinerary'>
             <form action="/api/itinerary/vacationName" method="POST" onSubmit={getVacationId}>
                 <h1>Please enter the vacation you wish to access</h1>
                 <h5>*Note*: Start typing to see pre-existing vacations</h5>

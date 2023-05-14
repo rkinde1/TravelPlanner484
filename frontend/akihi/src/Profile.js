@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import {DeleteVacation} from './deleteVacation'
 import EditSpecificVacation from './EditItinerary'
+import './Profile.css';
 
 
 export function UserInfo(){
@@ -71,9 +72,8 @@ export function UserInfo(){
 
     return(
       
-      <div className = "UserInfo">
-        <fieldset>
-          <h1>Welcome {fname}</h1>
+      <div className = "profile">
+          <h1>Welcome {fname}!</h1>
           <h3>Username: {username} <span id = "first-name"></span></h3>
           <h3>Email: {email}</h3>
           <h3>Number of Vacations: {vacations}</h3>
@@ -92,7 +92,6 @@ export function UserInfo(){
             
           </div>
           <button onClick={logout}>Logout</button>
-        </fieldset>
      </div>
     ) 
 }

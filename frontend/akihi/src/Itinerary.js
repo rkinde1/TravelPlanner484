@@ -90,10 +90,11 @@ function Event () {
     })
     return (
         <div className="flex-container">
-            <fieldset>
+            <div>
                 <EditSpecificVacation/>
-            </fieldset>
-            <fieldset>
+            </div>
+            
+                <div class = "itinerary">
                     <h1>Itinerary Events</h1>
                     <div className="event-container">
                         {finalEvents.map((event) => (
@@ -105,8 +106,8 @@ function Event () {
                                 </div>
                         ))}
                         </div>
-                <h1>Want to change your itinerary? Fill out the form below</h1>
-                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit}>
+                <h1>Add Event</h1>
+                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit} className>
                     <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
                         <option value="Flight">Flight</option>
                         <option value="Hotel">Hotel</option>
@@ -124,11 +125,11 @@ function Event () {
                     <button type="submit">Save Itinerary</button>
                 </form>
                 <p>Toggle Google Maps?</p><ToggleGoogle />
-            </fieldset>
-            <fieldset>
+                </div>
+                <div className='deleteItinerary'>
                 <h1 className="delete">Delete Vacation</h1>
                 <DeleteVacation/>
-            </fieldset>
+                </div>
         </div>
                     
     );
