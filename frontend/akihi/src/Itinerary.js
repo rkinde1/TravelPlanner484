@@ -76,7 +76,7 @@ function Event () {
                 // alert(text[0].Events[0].cost)
                 //This is what sets up the final Itinerary
                 if (JSON.stringify(text[0].Events.length) == 0) {
-                    setFinalEvents("Current Itinerary is empty");
+                    // setFinalEvents("Current Itinerary is empty");
                 }
                 else {
                     setFinalEvents(JSON.parse(JSON.stringify(text[0].Events)))

@@ -61,4 +61,18 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+Copy code
+.link-style {
+  color: blue;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.link-style:hover {
+  color: red;
+  cursor: pointer;
+    font-weight: bold;  
+
+}
+
 

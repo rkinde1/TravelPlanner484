@@ -83,7 +83,7 @@ export function UserInfo(){
             <ul>
               {listOfVacName.map((vacation) => (
                 <li>
-                  <Link to = "/itinerary">
+                  <Link to = "/itinerary" className="link-style">
                     {vacation}
                   </Link>
                 </li>

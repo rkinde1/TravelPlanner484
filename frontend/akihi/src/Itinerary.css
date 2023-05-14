@@ -95,9 +95,9 @@ fieldset {
     margin-right: 50px;
     padding: 20px;
     border-radius: 10px;
-    background-color: #f2f2f2;
+    background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 50%;
+    width: 70%;
     margin: 30px auto;
 }
 
@@ -112,9 +112,9 @@ fieldset {
     margin-right: 50px;
     padding: 20px;
     border-radius: 10px;
-    background-color: #f2f2f2;
+    background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 50%;
+    width: 70%;
     margin: 30px auto;
 }
 
@@ -130,9 +130,9 @@ fieldset {
     margin-right: 50px;
     padding: 20px;
     border-radius: 10px;
-    background-color: #f2f2f2;
+    background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 50%;
+    width: 70%;
     margin: 30px auto;
 }
 
@@ -180,6 +180,4 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    align: center;
-
 }
