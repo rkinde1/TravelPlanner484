@@ -8,9 +8,9 @@ import {UserInfo} from './Profile'
 import Home from "./Home";
 import CreateProjectPage from './CreateProject.js';
 import NavBar from './navbar.js';
-import Budget from './Budget.js';
+//import Budget from './Budget.js';
 import PrivateRoute from './util/privateRoute.js';
-
+import Booking from "./Booking.js";
 //This establishes the routes
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
                 <Route path='/itinerary' element={<Event />} exact/>
                 <Route path = '/profile' element = {<UserInfo/>} exact/>
                 <Route path = '/vacation' element = {<CreateProjectPage/>} exact/>
-                <Route path = '/budget' element = {<Budget/>} exact/>
+                <Route path = '/budget' element = {<Booking/>} exact/>
               </Route>
           </Routes>
         <hr></hr>
