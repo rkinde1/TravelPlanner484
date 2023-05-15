@@ -1,4 +1,4 @@
-import FlightBooking from "./Components/Assets/FlightBooking";
+/*import FlightBooking from "./Components/Assets/FlightBooking";
 
 
 function Booking(){
@@ -9,4 +9,4 @@ function Booking(){
         </div>
     )
 }
-export default Booking
+export default Booking*/
