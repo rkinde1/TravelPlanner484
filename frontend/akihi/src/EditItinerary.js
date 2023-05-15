@@ -31,7 +31,7 @@ function EditSpecificVacation() {
                         //Stores itinerary Id in here
                         localStorage.setItem("itinerary_id", text[0]._id)
                         localStorage.setItem("vacationName", vacationName)
-                        navigate('/itinerary')
+                        window.location.reload();
                     });
                 }
                 else {
