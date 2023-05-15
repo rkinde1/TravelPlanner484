@@ -62,7 +62,7 @@ export function UserInfo(){
     
     useEffect(() => {
       getVacations();
-    });
+    }, [listOfVacName.length]);
 
     const logout = async () => {
       localStorage.clear();
