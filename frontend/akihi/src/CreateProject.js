@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import './App.css';
+import './CreateProject.css';
+
 
 export default function CreateProjectPage () {
     const [vacation_name, setVacationName] = useState("");
@@ -63,7 +65,7 @@ export default function CreateProjectPage () {
     //upon submission, it will send request to backend
     //will redirect to itinerary
     return (
-        <div>
+        <div className="vacation">
                 <form method="POST" action="api/vacation" onSubmit={handleSubmit} className="form-group"> 
                     <h1>Fill out this form to start your Itinerary</h1>
                     <label>Name:</label>

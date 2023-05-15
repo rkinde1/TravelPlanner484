@@ -57,11 +57,9 @@ function Login () {
                     <div class="inputContainer">
                     <input type="text" name="username" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}></input>
                     </div>
-                    <br></br>
                     <div class="inputContainer">
                     <input type="password" name="password" placeholder="Password" required value={password} onChange = {(e) => setPassword(e.target.value)}></input>
                     </div>
-                    <br></br>
                     <div>
                     <button type="submit" className = "hvr-grow btn" onClick = {() => {setGoToContact(true)}}>Login</button>
                     </div>
