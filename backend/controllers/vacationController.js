@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb').ObjectId;
-const jwt = require('jsonwebtoken');
+//const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 const Vacation =  require('../models/vacationModel');
 
 
 const createVacation = asyncHandler(async (req, res) => {
-    //req.user will return the user object from the token!! Remember this!
+
     
-    const  userID  = req.user._id.toString(); //This is the user id from the token, have to convert to string.
+    const  userID  = req.user._id.toString();
     const  vacationName  = req.body.vacation_name;
     const  startDate  = new Date(req.body.start_date);
     const  endDate  = new Date(req.body.end_date);
