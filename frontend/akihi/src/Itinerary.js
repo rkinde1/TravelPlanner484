@@ -10,7 +10,7 @@ const token = localStorage.getItem("token");
 let id = 0;
 
 function Event () {
-    const [checkbox, setCheckbox] = useState(false);
+    const [checkbox, setCheckbox] = useState("");
     const [category, setCategory] = useState("");
     const [time, setTime] = useState("");
     const [cost, setCost] = useState("");
@@ -71,9 +71,6 @@ function Event () {
         })
         .then(function(res) {
             return res.json().then(function(text) {
-                // alert(JSON.stringify(text))
-                // alert(JSON.stringify(text[0].Events))
-                // alert(text[0].Events[0].cost)
                 //This is what sets up the final Itinerary
                 if (JSON.stringify(text[0].Events.length) == 0) {
                     // setFinalEvents("Current Itinerary is empty");
@@ -103,11 +100,12 @@ function Event () {
                                     <h3>Time: {event.time}</h3>
                                     <h3>Cost: {event.cost}</h3>
                                     <h3>Place: {event.place}</h3>
+                                    <h3>Has it been booked: {event.checkbox}</h3>
                                 </div>
                         ))}
                         </div>
                 <h1>Add Event</h1>
-                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit} className>
+                <form action="/api/itinerary/:id" method="PATCH" onSubmit={handleSubmit}>
                     <select className="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
                         <option value="Flight">Flight</option>
                         <option value="Hotel">Hotel</option>
@@ -116,11 +114,11 @@ function Event () {
                     </select>
                     <input type="time" name="time" placeholder="Arrival Time" className="time" value={time} onChange={(e) => setTime(e.target.value)}></input>
                     <input type="number" name="cost" placeholder="Cost" className="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
-                        <input type="textfield" name="place" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
-                    <label>Have you booked this event?</label><input type="checkbox" name="checkbox" value={checkbox} onChange={(e) => setCheckbox(e.target.checked)}></input><br></br>
+                    <input type="textfield" name="place" placeholder="place" className="place" value={place} onChange={(e) => setPlace(e.target.value)}></input>
+                    <input type="textfield" name="checkbox" placeholder="Have you booked this event?" className="place" value={checkbox} onChange={(e) => setCheckbox(e.target.value)}></input>
                     <button onClick={addEvent}>Add Event</button>
                     {event.map(event => (
-                        <p key={event.id}>{event.time} {event.place} Cost of Event: {event.cost} Has it been booked? {event.checkbox}</p>
+                        <p key={event.id}>{event.key} Time: {event.time} place: {event.place} Cost of Event: {event.cost} Has it been booked? {event.checkbox}</p>
                     ))}
                     <button type="submit">Save Itinerary</button>
                 </form>
