@@ -7,7 +7,7 @@ const reservationSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('Reservation', reservationSchema, 'Reservations');*/
-const axios = require('axios');
+/*const axios = require('axios');
 const Flight = require('../models/flight');
 
 const apiKey = process.env.AMADEUS_API_KEY;
@@ -88,3 +88,4 @@ const flightController = {
 };
 
 module.exports = flightController;
+*/

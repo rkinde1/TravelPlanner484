@@ -1,4 +1,4 @@
-const axios = require('axios');
+/*const axios = require('axios');
 const Flight = require('../models/flight');
 require('dotenv').config();
 
@@ -82,3 +82,4 @@ const flightController = {
 
 module.exports = flightController;
 
+*/
