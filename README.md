@@ -2,13 +2,19 @@
 
 # What you will require: 
 - google Maps API key (.env in frontend folder)
+- 
 REACT_APP_API_KEY = 
 
 - .env on backend structured as below (place in backend folder):
+
 MONGO_PASSWORD =
+
 MONGO_DBNAME = 
+
 PORT = 
+
 MONGO_URI = 
+
 JWT_SECRET = 
 
 # To download and run the app
