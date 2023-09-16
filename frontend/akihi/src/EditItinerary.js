@@ -31,7 +31,6 @@ function EditSpecificVacation() {
                         //Stores itinerary Id in here
                         localStorage.setItem("itinerary_id", text[0]._id)
                         localStorage.setItem("vacationName", vacationName)
-                        window.location.reload();
                     });
                 }
                 else {
@@ -81,18 +80,18 @@ function EditSpecificVacation() {
       useEffect(() => {
         getVacations();
       }, [listOfVacName]);
-      const tableRows=listOfVacName.map((item) => {
-        return (
-          <p>{item}</p>
-        );
-      })
+      
     return(
         <div class = 'editItinerary'>
             <form action="/api/itinerary/vacationName" method="POST" onSubmit={getVacationId}>
                 <h1>Please enter the vacation you wish to access</h1>
                 <h5>*Note*: Start typing to see pre-existing vacations</h5>
                 <h5>Don't forget to refresh the page!</h5>
-                {tableRows}
+                {listOfVacName.map((item) => (
+                  <div>
+                    <p>{item}</p>
+                  </div>
+                ))}
                 <input type="text" name="vacationName" placeholder="Enter Vacation name here" value={vacationName} onChange={(e) => setVacationName(e.target.value)}></input>
                 <button type="submit">Search</button>
             </form>

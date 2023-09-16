@@ -29,6 +29,7 @@ function Signup () {
                 },
             })
             .then(function(response) {
+                alert(response.status);
                 if (response.status == 200){
                     return response.json().then(function(text) {
                         alert("Successful");
