@@ -15,7 +15,15 @@ body {
     align-items: center;
     padding: 0 1rem;
     gap: 48rem;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+
 }
 
 .container{
@@ -56,6 +64,7 @@ body {
 .nav li{
     font-weight: bold;
     display: inline-block;
+    width: 100px;
 }
 nav{
     align-items: center;       /* center ul container vertically */
@@ -123,6 +132,8 @@ li:hover{
         padding: 0;
         background-color: white; 
     }
+
+    
 
   }
 

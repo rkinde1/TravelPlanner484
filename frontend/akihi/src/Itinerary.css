@@ -18,27 +18,167 @@
 
 .flex-container {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     flex-wrap: wrap;
-    justify-content: space-around; /* aligns items at end of container*/
-    align-items: center;
+    /* align-items: center;  */
     padding: 5px; 
-    height: 100px;
-    border-bottom: 1px solid #000000;
+    height: 50%;
+    width: 100%; 
+    flex-direction: column;
+
 }
 
+/* Sets the size of each box in Itineary*/
 .place {
-    width: 100%;
-    height: 100;
+    width: 200px; 
+    flex-wrap: wrap;
 }
 
 fieldset {
     margin: 15px;
     background-color: rgb(255, 255, 255);
-    width: 400x;
 }
 
 textarea {
-    width:100%;
+    width: 200px;
     height:100%;
+}
+
+.category {
+    width: 10%;
+
+}
+
+.time {
+    width: 15%;
+
+}
+
+.cost {
+    width:10%;
+}
+.event-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 5px; 
+    height: 50%;
+    width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.event {
+    border: 1px solid rgb(118, 93, 93);
+    width: 200px; 
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 5px;
+    background-color: rgb(220, 249, 242);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px rgb(118, 93, 93);   
+}
+
+fieldset {
+    margin: 15px;
+    background-color: rgb(255, 255, 255);
+}
+
+.itinerary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    margin: 30px auto;
+}
+
+.deleteItinerary{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    margin: 30px auto;
+}
+
+
+.editItinerary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    margin: 30px auto;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    
+    margin: 30px auto;
+
+}
+
+.category{
+    width: 100%;
+    margin: 10px;
+}
+.time{
+    width: 100%;
+    margin: 10px;
+}
+
+.cost{
+    width: 100%;
+    margin: 10px;
+}
+
+.place{
+    width: 100%;
+    margin: 10px;
+}
+
+button{
+    width: 100%;
+    margin: 10px;
+    /* center button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

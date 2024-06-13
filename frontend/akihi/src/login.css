@@ -27,6 +27,7 @@ form{
     margin-right: auto;
     text-align: left;
   margin:auto;
+  width: 100%;
 
 }
 
@@ -78,7 +79,6 @@ form{
 
 .inputContainer {
   position: relative;
-  height: 5px;
   width: 90%;
   margin-bottom: 7px;
   
